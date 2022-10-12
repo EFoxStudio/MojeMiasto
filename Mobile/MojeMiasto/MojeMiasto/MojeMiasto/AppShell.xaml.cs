@@ -11,6 +11,7 @@ namespace MojeMiasto
         public AppShell()
         {
             InitializeComponent();
+            
         }
     }
 }
