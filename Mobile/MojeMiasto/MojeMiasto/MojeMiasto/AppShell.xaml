@@ -73,7 +73,10 @@
         <ShellContent Route="HomePage" ContentTemplate="{DataTemplate local:HomePage}" />
     </FlyoutItem>
 
-    
+    <FlyoutItem Title="LoginPage">
+        <ShellContent Route="LoginPage" ContentTemplate="{DataTemplate local:LoginPage}" />
+    </FlyoutItem>
+
 
 
 

@@ -14,8 +14,6 @@
                 </StackLayout>
             </pancake:PancakeView>
 
-            <!--Login page button-->
-            <Button Text="Go To Login Page" Command="{Binding ToLoginPageCommand}" BackgroundColor="#FF4444"/>
 
      
         </StackLayout>
