@@ -14,8 +14,8 @@
                 </StackLayout>
             </pancake:PancakeView>
 
+            <Button Text="Login" Command="{Binding ToLoginPageCommand}"/>
 
-            
             <Label Text="Welcome to Xamarin.Forms!"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />

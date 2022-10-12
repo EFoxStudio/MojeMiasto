@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
-             x:Class="MojeMiasto.Views.LoginPage">
+             x:Class="MojeMiasto.Views.LoginPage"
+             Shell.NavBarIsVisible="False">
 
     <ContentPage.Content>
         <StackLayout>
@@ -12,6 +13,12 @@
                     <ImageButton Source="bell.png" BackgroundColor="Transparent" WidthRequest="30" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" Margin="0,0,25,0"/>
                 </StackLayout>
             </pancake:PancakeView>
+
+            
+            
+            <Entry Text="{Binding Email, Mode=TwoWay}" Placeholder="Email"/>
+            <Entry Text="{Binding Password, Mode=TwoWay}" Placeholder="password"/>
+            <Button Command="{Binding LoginCommand}"/>
 
 
 
