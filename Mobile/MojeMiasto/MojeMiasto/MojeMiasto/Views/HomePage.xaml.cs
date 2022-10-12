@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using MojeMiasto.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -12,7 +13,7 @@ namespace MojeMiasto.Views
         {
             InitializeComponent();
 
-            BindingContext = new HomePageModel();
+            BindingContext = new HomeViewModel();
 
         }
     }

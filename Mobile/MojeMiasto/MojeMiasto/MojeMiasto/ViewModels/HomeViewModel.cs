@@ -17,12 +17,12 @@ namespace MojeMiasto.ViewModels
             Shell.Current.FlyoutIsPresented = true;
 
         }
+
+
         [RelayCommand]
         async void ToLoginPage()
         {
-
             await Shell.Current.GoToAsync(nameof(LoginPage));
-
         }
     }
 }
