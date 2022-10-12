@@ -1,5 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using EFox.ApiConnection.Toolkit;
+using MojeMiasto.Models;
 using MojeMiasto.Views;
 using System;
 using System.Collections.Generic;
@@ -10,8 +12,7 @@ namespace MojeMiasto.ViewModels
 {
     internal partial class LoginViewModel : ObservableObject
     {
-<<<<<<< Updated upstream
-=======
+
         Connection<User> conn = new Connection<User>("https://api.efox.com.pl/mycity/");
 
         public LoginViewModel()
@@ -27,13 +28,13 @@ namespace MojeMiasto.ViewModels
         string password;
 
 
->>>>>>> Stashed changes
+
         [RelayCommand]
-        public void OpenMenu()
+        public async void OpenMenu()
         {
-<<<<<<< Updated upstream
+
             Shell.Current.FlyoutIsPresented = true;
-=======
+
             User user = await conn.Get($"email/{ Email }");
 
             if (user == default(User))
@@ -43,7 +44,7 @@ namespace MojeMiasto.ViewModels
             {
                 await Shell.Current.GoToAsync(nameof(HomePage));
             }
->>>>>>> Stashed changes
+
 
         }
     }
