@@ -13,9 +13,9 @@
                     <ImageButton Source="bell.png" BackgroundColor="Transparent" WidthRequest="30" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" Margin="0,0,25,0"/>
                 </StackLayout>
             </pancake:PancakeView>
-            
-            
-            
+
+
+            <Button Command="{Binding ToLoginPageCommand}" Text="Login"></Button>
             
             
             

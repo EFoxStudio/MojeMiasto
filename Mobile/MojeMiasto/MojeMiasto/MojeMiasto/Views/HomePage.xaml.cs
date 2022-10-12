@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -16,14 +12,8 @@ namespace MojeMiasto.Views
         {
             InitializeComponent();
 
-            //Janek to do list:
-            /*
-             * Zapoznać się z strukurą i siąść do tego do środy do niedzieli albo tego nie zrobimy!!!!
-             * Stworzyć zakładkę informacyja do eventu +
-             * Dodać tablice z miastami. +
-             * Stworzyć jeden przykłądowy box i do niego stworzyć tablicę z Miejscem i potem dopisywać miejsca +
-             * Do boxa 2 dodać datę zaciągniętą z bazy danych (Event/date)
-             */
+            BindingContext = new HomePageModel();
+
         }
     }
 }

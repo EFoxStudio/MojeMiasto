@@ -1,8 +1,5 @@
-﻿using MojeMiasto.ViewModels;
-using MojeMiasto.Views;
-using System;
-using System.Collections.Generic;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
+using LoginPage = MojeMiasto.Views.LoginPage;
 
 namespace MojeMiasto
 {
@@ -11,7 +8,9 @@ namespace MojeMiasto
         public AppShell()
         {
             InitializeComponent();
-            
+
+            Routing.RegisterRoute(nameof(LoginPage), typeof(LoginPage));
+
         }
     }
 }
