@@ -1,4 +1,5 @@
-﻿using Xamarin.Forms;
+﻿using MojeMiasto.Views;
+using Xamarin.Forms;
 using LoginPage = MojeMiasto.Views.LoginPage;
 
 namespace MojeMiasto
@@ -10,6 +11,7 @@ namespace MojeMiasto
             InitializeComponent();
 
             Routing.RegisterRoute(nameof(LoginPage), typeof(LoginPage));
+            Routing.RegisterRoute(nameof(HomePage), typeof(HomePage));
 
         }
     }

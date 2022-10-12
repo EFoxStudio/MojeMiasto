@@ -9,6 +9,5 @@
         public int city_id { get; set; }
         public int region_id { get; set; }
         public int points { get; set; }
-
     }
 }
