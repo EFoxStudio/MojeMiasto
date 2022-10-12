@@ -10,33 +10,28 @@ using Xamarin.Forms;
 
 namespace MojeMiasto.ViewModels
 {
-    internal partial class LoginViewModel : ObservableObject
+    internal partial class LoginViewModel : BaseViewModel
     {
 
+        //Create a variable to be referenced with the base
         Connection<User> conn = new Connection<User>("https://api.efox.com.pl/mycity/");
 
-        public LoginViewModel()
-        {
-            conn.AddHeader("ApiKey", "g84@RRGA%!bP8vNzK7p&uLXz&");
-        }
 
 
+        //Create a varible email
         [ObservableProperty]
         string email;
-
+        //Create a varible password
         [ObservableProperty]
         string password;
 
-
-
+        //Function for checking data from API
         [RelayCommand]
-        public async void OpenMenu()
+        public async void Login()
         {
+            User user = await conn.Get($"users/email/{ Email }");
 
-            Shell.Current.FlyoutIsPresented = true;
-
-            User user = await conn.Get($"email/{ Email }");
-
+            //Function for not receiving data
             if (user == default(User))
                 return;
 
@@ -45,7 +40,8 @@ namespace MojeMiasto.ViewModels
                 await Shell.Current.GoToAsync(nameof(HomePage));
             }
 
-
         }
+
+     
     }
 }

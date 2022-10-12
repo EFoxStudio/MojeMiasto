@@ -9,20 +9,9 @@ using Xamarin.Forms;
 
 namespace MojeMiasto.ViewModels
 {
-    internal partial class HomeViewModel : ObservableObject
+    public partial class HomeViewModel : BaseViewModel
     {
-        [RelayCommand]
-        public void OpenMenu()
-        {
-            Shell.Current.FlyoutIsPresented = true;
-
-        }
-
-
-        [RelayCommand]
-        async void ToLoginPage()
-        {
-            await Shell.Current.GoToAsync(nameof(LoginPage));
-        }
+        
+        
     }
 }

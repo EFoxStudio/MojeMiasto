@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.Input;
+using MojeMiasto.ViewModels;
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -18,6 +19,7 @@ namespace MojeMiasto.Views
         public LoginPage()
         {
             InitializeComponent();
+            BindingContext = new LoginViewModel();
         }
     }
 }
