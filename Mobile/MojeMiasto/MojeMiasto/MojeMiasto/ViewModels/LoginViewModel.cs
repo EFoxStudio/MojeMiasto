@@ -16,11 +16,7 @@ namespace MojeMiasto.ViewModels
         //Create a variable to be referenced with the base
         Connection<User> conn = new Connection<User>("https://api.efox.com.pl/mycity/");
 
-        //Connection with API
-        public LoginViewModel()
-        {
-            conn.AddHeader("ApiKey", "g84@RRGA%!bP8vNzK7p&uLXz&");
-        }
+
 
         //Create a varible email
         [ObservableProperty]
@@ -41,8 +37,8 @@ namespace MojeMiasto.ViewModels
 
             if (user.password == Password)
             {
-            }
                 await Shell.Current.GoToAsync(nameof(HomePage));
+            }
 
         }
 
