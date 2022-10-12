@@ -4,25 +4,17 @@ using MojeMiasto.Views;
 using System;
 using System.Collections.Generic;
 using System.Text;
-using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace MojeMiasto.ViewModels
 {
-    internal partial class HomeViewModel : ObservableObject
+    internal partial class LoginViewModel : ObservableObject
     {
         [RelayCommand]
         public void OpenMenu()
         {
             Shell.Current.FlyoutIsPresented = true;
 
-        }
-
-
-        [RelayCommand]
-        async void ToLoginPage()
-        {
-            await Shell.Current.GoToAsync(nameof(LoginPage));
         }
     }
 }
