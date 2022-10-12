@@ -15,18 +15,6 @@
             </pancake:PancakeView>
 
 
-            <Button Command="{Binding ToLoginPageCommand}" Text="Login"></Button>
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
             
             <Label Text="Welcome to Xamarin.Forms!"
                 VerticalOptions="CenterAndExpand" 
