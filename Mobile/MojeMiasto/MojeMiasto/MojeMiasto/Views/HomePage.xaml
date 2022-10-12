@@ -14,11 +14,10 @@
                 </StackLayout>
             </pancake:PancakeView>
 
-            <Button Text="Login" Command="{Binding ToLoginPageCommand}"/>
+            <!--Login page button-->
+            <Button Text="Go To Login Page" Command="{Binding ToLoginPageCommand}" BackgroundColor="#FF4444"/>
 
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+     
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

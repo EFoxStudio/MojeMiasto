@@ -14,15 +14,16 @@
                 </StackLayout>
             </pancake:PancakeView>
 
-            
-            
+
+            <!--Input menu and button-->
             <Entry Text="{Binding Email, Mode=TwoWay}" Placeholder="Email"/>
             <Entry Text="{Binding Password, Mode=TwoWay}" Placeholder="password"/>
-            <Button Command="{Binding LoginCommand}"/>
+            <Button Command="{Binding LoginCommand}" Text="Login"/> 
+            
 
 
 
-            <Label Text="Welcome to Xamarin.Forms!"
+            <Label Text="Login Page"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
         </StackLayout>

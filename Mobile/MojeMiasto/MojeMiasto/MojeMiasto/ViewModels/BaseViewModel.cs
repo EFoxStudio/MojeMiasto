@@ -11,6 +11,8 @@ namespace MojeMiasto.ViewModels
     public partial class BaseViewModel : ObservableObject
     {
 
+        
+        
         [RelayCommand]
         public void OpenMenu()
         {

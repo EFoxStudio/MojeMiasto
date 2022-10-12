@@ -12,8 +12,6 @@ namespace MojeMiasto.ViewModels
     public partial class HomeViewModel : BaseViewModel
     {
         
-
-
         
     }
 }
