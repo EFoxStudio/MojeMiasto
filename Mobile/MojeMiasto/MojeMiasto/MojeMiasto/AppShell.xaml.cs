@@ -9,7 +9,8 @@ namespace MojeMiasto
         public AppShell()
         {
             InitializeComponent();
-
+            
+            //Page overlapping when switching to another
             Routing.RegisterRoute(nameof(LoginPage), typeof(LoginPage));
             Routing.RegisterRoute(nameof(HomePage), typeof(HomePage));
         }

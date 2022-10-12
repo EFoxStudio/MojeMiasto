@@ -8,10 +8,11 @@ using Xamarin.Forms;
 
 namespace MojeMiasto.ViewModels
 {
+    //Usable items for everything
     public partial class BaseViewModel : ObservableObject
     {
 
-        
+        //Pull out the menuu
         
         [RelayCommand]
         public void OpenMenu()
@@ -19,7 +20,7 @@ namespace MojeMiasto.ViewModels
             Shell.Current.FlyoutIsPresented = true;
 
         }
-
+        //Redirection to LoginPage
         [RelayCommand]
         public async void ToLoginPage()
         {
