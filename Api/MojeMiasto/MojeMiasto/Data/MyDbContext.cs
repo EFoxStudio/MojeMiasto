@@ -9,8 +9,12 @@ namespace MojeMiasto.Data
         {
 
         }
+
         public DbSet<User> users { get; set; }
-
-
+        public DbSet<Chat> chats { get; set; }
+        public DbSet<Message> messages { get; set; }
+        public DbSet<City> cities { get; set; }
+        public DbSet<District> districts { get; set; }
+        public DbSet<Quest> quests { get; set; }
     }
 }

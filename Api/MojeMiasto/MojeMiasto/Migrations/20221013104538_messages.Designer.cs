@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MojeMiasto.Data;
 
@@ -10,9 +11,10 @@ using MojeMiasto.Data;
 namespace MojeMiasto.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    partial class MyDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221013104538_messages")]
+    partial class messages
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -36,39 +38,6 @@ namespace MojeMiasto.Migrations
                     b.ToTable("chats");
                 });
 
-            modelBuilder.Entity("MojeMiasto.Models.City", b =>
-                {
-                    b.Property<int>("id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<string>("name")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.HasKey("id");
-
-                    b.ToTable("cities");
-                });
-
-            modelBuilder.Entity("MojeMiasto.Models.District", b =>
-                {
-                    b.Property<int>("id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<int>("city_id")
-                        .HasColumnType("int");
-
-                    b.Property<string>("name")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.HasKey("id");
-
-                    b.ToTable("districts");
-                });
-
             modelBuilder.Entity("MojeMiasto.Models.Message", b =>
                 {
                     b.Property<int>("id")
@@ -88,44 +57,6 @@ namespace MojeMiasto.Migrations
                     b.HasKey("id");
 
                     b.ToTable("messages");
-                });
-
-            modelBuilder.Entity("MojeMiasto.Models.Quest", b =>
-                {
-                    b.Property<int>("id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<int>("city_id")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("create_date")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<string>("description")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<int>("district_id")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("end_date")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<string>("name")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("reward")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<int>("user_id")
-                        .HasColumnType("int");
-
-                    b.HasKey("id");
-
-                    b.ToTable("quests");
                 });
 
             modelBuilder.Entity("MojeMiasto.Models.User", b =>
