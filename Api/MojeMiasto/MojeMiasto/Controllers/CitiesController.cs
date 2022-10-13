@@ -33,6 +33,7 @@ namespace MojeMiasto.Controllers
         [Route("name/{req_name}")]
         public City GetByName(string req_name)
         {
+            req_name = req_name.ToLower();
             var data = _context.cities.First(x => x.name.StartsWith(req_name));
             return data;
         }
@@ -41,22 +42,33 @@ namespace MojeMiasto.Controllers
         [Route("search/{req_name}")]
         public List<City> Search(string req_name)
         {
+            req_name = req_name.ToLower();
             var users = _context.cities.Where(x => x.name.StartsWith(req_name)).ToList();
             return users;
         }
 
 
         [HttpPost]
-        [Route("new")]
-        public void AddUser([FromBody] City data)
+        public void AddCity([FromBody] City data)
         {
             if (data == null)
                 return;
 
             data.id = 0;
+            data.name = data.name.ToLower();
 
             _context.cities.Add(data);
             _context.SaveChanges();
         }
+
+        [HttpDelete]
+        [Route("delete/{req_id}")]
+        public async void DeleteCity(int req_id)
+        {
+            var data = _context.cities.First(x => x.id == req_id);
+            _context.cities.Remove(data);
+            _context.SaveChanges();
+        }
+
     }
 }

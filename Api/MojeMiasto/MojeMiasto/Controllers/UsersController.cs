@@ -52,7 +52,6 @@ namespace MojeMiasto.Controllers
         }
 
         [HttpPost]
-        [Route("new")]
         public void AddUser([FromBody] User data)
         {
             if (data == null)
@@ -76,7 +75,32 @@ namespace MojeMiasto.Controllers
             return Convert.ToHexString(hashedPass);
         }
 
+        [HttpPut]
+        public async void UpdateUser([FromBody] User data)
+        {
+            if (data == null)
+                return;
 
+            User old = _context.users.First(x => x.id == data.id);
+
+            if(data.password != old.password)
+            {
+                data.password = HashPassword(data.password);
+            }
+            
+            _context.users.Update(data);
+            _context.SaveChanges();
+        }
+
+
+        [HttpDelete]
+        [Route("delete/{req_id}")]
+        public async void DeleteUser(int req_id)
+        {
+            var user = _context.users.First(x => x.id == req_id);
+            _context.users.Remove(user);
+            _context.SaveChanges();
+        }
 
     }
 }
