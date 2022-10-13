@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using MojeMiasto.Data;
 using MojeMiasto.Models;
 using System.Security.Cryptography;
@@ -84,11 +85,13 @@ namespace MojeMiasto.Controllers
             User old = _context.users.First(x => x.id == data.id);
 
             if(data.password != old.password)
-            {
                 data.password = HashPassword(data.password);
+
+            if (await _context.users.FindAsync(data.id) is User found)
+            {
+                _context.Entry(found).CurrentValues.SetValues(data);
+                await _context.SaveChangesAsync();
             }
-            
-            _context.users.Update(data);
             _context.SaveChanges();
         }
 
