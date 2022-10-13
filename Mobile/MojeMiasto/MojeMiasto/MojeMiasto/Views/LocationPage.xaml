@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             x:Class="MojeMiasto.Views.LocationPage">
+    <ContentPage.Content>
+        <StackLayout>
+
+
+            <Entry Placeholder="City" Text="{Binding City, Mode=TwoWay}">
+                <Entry.Behaviors>
+                    <xct:EventToCommandBehavior EventName="TextChanged" Command="{Binding SearchCitiesCommand}"/>
+                </Entry.Behaviors>
+            </Entry>
+
+            <CollectionView x:Name="Page" ItemsSource="{Binding Cities}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+
+
+                        <Button Text="{Binding name}" Command="{Binding 
+                            Source={x:Reference Name=Page},
+                            Path=BindingContext.GoToGroupCommand}"
+                            CommandParameter="{Binding .}"/>
+
+
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <Label Text="{Binding District}"/>
+
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
