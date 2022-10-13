@@ -75,8 +75,5 @@ namespace MojeMiasto.Controllers
 
             return Convert.ToHexString(hashedPass);
         }
-
-
-
     }
 }
