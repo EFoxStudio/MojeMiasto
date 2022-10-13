@@ -33,5 +33,17 @@ namespace MojeMiasto.Controllers
             return user;
         }
 
+        [HttpPost]
+        [Route("new")]
+        public void AddUser([FromBody] User data)
+        {
+            if (data == null)
+                return;
+
+            data.id = 0;
+            _context.users.Add(data);
+        }
+
+
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace MojeMiasto.Controllers
 {
-    public class CityController
+    public class CitiesController
     {
     }
 }
