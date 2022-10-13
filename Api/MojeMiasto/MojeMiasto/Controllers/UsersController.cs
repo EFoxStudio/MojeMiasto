@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MojeMiasto.Data;
 using MojeMiasto.Models;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace MojeMiasto.Controllers
 {
@@ -33,6 +35,22 @@ namespace MojeMiasto.Controllers
             return user;
         }
 
+        [HttpGet]
+        [Route("city_id/{req_city_id}")]
+        public List<User> GetByCity(int req_city_id)
+        {
+            var users = _context.users.Where(x => x.city_id == req_city_id).ToList();
+            return users;
+        }
+
+        [HttpGet]
+        [Route("district_id/{req_district_id}")]
+        public List<User> GetByDistricts(int req_district_id)
+        {
+            var users = _context.users.Where(x => x.city_id == req_district_id).ToList();
+            return users;
+        }
+
         [HttpPost]
         [Route("new")]
         public void AddUser([FromBody] User data)
@@ -41,8 +59,23 @@ namespace MojeMiasto.Controllers
                 return;
 
             data.id = 0;
+            data.password = HashPassword(data.password);
             _context.users.Add(data);
+            _context.SaveChanges();
         }
+
+        [HttpPost]
+        [Route("hash")]
+        public string HashPassword([FromBody] string password)
+        {
+            SHA256 hash = SHA256.Create();
+
+            var passBytes = Encoding.Default.GetBytes(password);
+            var hashedPass = hash.ComputeHash(passBytes);
+
+            return Convert.ToHexString(hashedPass);
+        }
+
 
 
     }
