@@ -5,6 +5,21 @@
     <ContentPage.Content>
         <StackLayout>
             <Entry Text="{Binding CityNr}"/>
+            <Button Command="{Binding GetUsersCommand}"/>
+
+
+            <CollectionView x:Name="Page" ItemsSource="{Binding UsersList}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+
+                        <Label Text="{Binding name}"/>
+                        
+                        
+
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

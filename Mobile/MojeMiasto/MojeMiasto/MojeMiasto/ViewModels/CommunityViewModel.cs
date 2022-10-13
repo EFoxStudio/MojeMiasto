@@ -26,7 +26,7 @@ namespace MojeMiasto.ViewModels
         string cityNr;
 
         [RelayCommand]
-        public async void AddToCollection()
+        public async void GetUsers()
         {
             List<User> users = await con.GetList($"users/city_id/{CityNr}");
 
