@@ -10,7 +10,7 @@ using Xamarin.Forms;
 
 namespace MojeMiasto.ViewModels
 {
-    internal partial class LoginViewModel : BaseViewModel
+    public partial class LoginViewModel : BaseViewModel
     {
 
         //Create a variable to be referenced with the base

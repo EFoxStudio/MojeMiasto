@@ -13,6 +13,7 @@ namespace MojeMiasto
             //Page overlapping when switching to another
             Routing.RegisterRoute(nameof(LoginPage), typeof(LoginPage));
             Routing.RegisterRoute(nameof(HomePage), typeof(HomePage));
+            Routing.RegisterRoute(nameof(LocationPage), typeof(LocationPage));
         }
     }
 }
