@@ -20,12 +20,7 @@ namespace MojeMiasto.ViewModels
             Shell.Current.FlyoutIsPresented = true;
 
         }
-        //Redirection to LoginPage
-        [RelayCommand]
-        public async void ToLoginPage()
-        {
-            await Shell.Current.GoToAsync(nameof(LoginPage));
-        }
+        
 
     }
 }
