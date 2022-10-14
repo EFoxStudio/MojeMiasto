@@ -4,6 +4,9 @@
              x:Class="MojeMiasto.Views.CommunityPage">
     <ContentPage.Content>
         <StackLayout>
+
+            <Label Text="Podaj numer miasta"/>
+
             <Entry Text="{Binding CityNr}"/>
             <Button Command="{Binding GetUsersCommand}"/>
 
