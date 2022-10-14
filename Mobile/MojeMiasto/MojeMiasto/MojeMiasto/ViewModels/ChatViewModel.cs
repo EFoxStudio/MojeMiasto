@@ -21,23 +21,5 @@ namespace MojeMiasto.ViewModels
             user_conn.AddHeader("ApiKey", "g84@RRGA%!bP8vNzK7p&uLXz&");
             chat_conn.AddHeader("ApiKey", "g84@RRGA%!bP8vNzK7p&uLXz&");
         }
-        
-        //User 1 id variable
-        [ObservableProperty]
-        string user_1_nr;
-
-        //User 2 id variable
-        [ObservableProperty]
-        string user_2_nr;
-
-        //Chat id variable
-        [ObservableProperty]
-        string chat_nr;
-        
-        [RelayCommand]
-        public async void GetUsers()
-        {
-            
-        }
     }
 }
