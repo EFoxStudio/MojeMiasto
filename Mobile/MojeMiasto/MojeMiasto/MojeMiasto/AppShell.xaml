@@ -80,6 +80,7 @@
     <FlyoutItem Title="LocationPage">
         <ShellContent Route="LocationPage" ContentTemplate="{DataTemplate local:LocationPage}" />
     </FlyoutItem>
-
+    
+    
 
 </Shell>
