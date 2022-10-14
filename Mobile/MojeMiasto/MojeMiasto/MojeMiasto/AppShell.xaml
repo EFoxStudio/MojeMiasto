@@ -77,6 +77,9 @@
         <ShellContent Route="LoginPage" ContentTemplate="{DataTemplate local:LoginPage}" />
     </FlyoutItem>
 
+    <FlyoutItem Title="CommunityPage">
+        <ShellContent Route="CommunityPage" ContentTemplate="{DataTemplate local:CommunityPage}" />
+
     <FlyoutItem Title="LocationPage">
         <ShellContent Route="LocationPage" ContentTemplate="{DataTemplate local:LocationPage}" />
     </FlyoutItem>

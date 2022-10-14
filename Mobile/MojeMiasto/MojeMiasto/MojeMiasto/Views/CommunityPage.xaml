@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MojeMiasto.Views.CommunityPage">
+    <ContentPage.Content>
+        <StackLayout>
+
+            <Label Text="Podaj numer miasta" HorizontalOptions="CenterAndExpand"/>
+
+            <Entry Text="{Binding CityNr}"/>
+            <Button Command="{Binding GetUsersCommand}" Text="Zatwierdź"/>
+
+
+            <CollectionView x:Name="Page" ItemsSource="{Binding UsersList}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+
+                        <Label Text="{Binding name}"/>
+
+
+
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
