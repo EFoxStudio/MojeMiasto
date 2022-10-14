@@ -23,8 +23,8 @@
             </CollectionView>
             <Button x:Name="add_city" Text="dodaj miasto" IsVisible="{Binding NewCityVis}" VerticalOptions="StartAndExpand" Command="{Binding NewCityCommand}"/>
 
-            
-            
+            <Picker Title="" />
+
             <Entry Placeholder="Dzielnica" Text="{Binding DistrictEntry, Mode=TwoWay}">
                 <Entry.Behaviors>
                     <xct:EventToCommandBehavior EventName="TextChanged" Command="{Binding SearchDistrictsCommand}"/>

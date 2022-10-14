@@ -29,7 +29,7 @@ namespace MojeMiasto.Controllers
         [Route("city_id/{req_city_id}")]
         public List<Quest> GetByCity(int req_city_id)
         {
-            var users = _context.quests.Where(x => x.city_id == req_city_id).ToList();
+            var users = _context.quests.Where(x => x.city_id == req_city_id && x.end_date >= DateTime.Now).ToList();
             return users;
         }
 
@@ -37,7 +37,7 @@ namespace MojeMiasto.Controllers
         [Route("district_id/{req_district_id}")]
         public List<Quest> GetByDistricts(int req_district_id)
         {
-            var users = _context.quests.Where(x => x.district_id == req_district_id).ToList();
+            var users = _context.quests.Where(x => x.district_id == req_district_id && x.end_date >= DateTime.Now).ToList();
             return users;
         }
 
