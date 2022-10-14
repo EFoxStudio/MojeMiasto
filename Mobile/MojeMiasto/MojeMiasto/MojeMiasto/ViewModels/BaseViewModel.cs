@@ -23,7 +23,14 @@ namespace MojeMiasto.ViewModels
             Shell.Current.FlyoutIsPresented = true;
 
         }
-        
+
+
+        public string FirstLetterToUpper(string str)
+        {
+            return char.ToUpper(str[0]) + str.Substring(1);
+        }
+
+
 
     }
 }
