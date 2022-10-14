@@ -101,11 +101,13 @@ namespace MojeMiasto.ViewModels
             User user = await userConn.Get($"users/id/{ user_id }");
 
             user.city_id = city.id;
+
             await userConn.Put("users", user);
+
             Preferences.Set("city_id", city.id);
 
             CityEntry = city.name;
-            Cities.Clear();
+            
 
             NewCityVis = false;
             CityCollectionVis = false;
@@ -126,7 +128,7 @@ namespace MojeMiasto.ViewModels
             Preferences.Set("district_id", district.id);
 
             DistrictEntry = district.name;
-            Districts.Clear();
+            
 
             NewDistrictsVis = false;
             DistrictCollectionVis = false;

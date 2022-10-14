@@ -17,7 +17,23 @@ namespace MojeMiasto.Controllers
             _context = context;
         }
 
-        
+        [HttpGet]
+        [Route("id/{req_id}")]
+        public Chat GetById(int req_id)
+        {
+            var data = _context.chats.First(x => x.id == req_id);
+            return data;
+        }
+
+
+        [HttpGet]
+        [Route("user_id/{req_id}")]
+        public List<Chat> Search(int req_id)
+        {
+            var users = _context.chats.Where(x => x.user1_id == req_id || x.user2_id == req_id).ToList();
+            return users;
+        }
+
 
     }
 }

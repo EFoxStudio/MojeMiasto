@@ -5,9 +5,7 @@
     <ContentPage.Content>
         <StackLayout>
 
-            <Label Text="Podaj numer miasta" HorizontalOptions="CenterAndExpand"/>
 
-            <Entry Text="{Binding CityNr}"/>
             <Button Command="{Binding GetUsersCommand}" Text="Zatwierdź"/>
 
 
@@ -17,11 +15,11 @@
 
                         <Label Text="{Binding name}"/>
 
-
-
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
+            
+            
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
+using Xamarin.Essentials;
 
 namespace MojeMiasto.ViewModels
 {
@@ -18,22 +19,25 @@ namespace MojeMiasto.ViewModels
         {
             con.AddHeader("ApiKey", "g84@RRGA%!bP8vNzK7p&uLXz&");
         }
+
+
         //List to store users
         [ObservableProperty]
-        ObservableCollection<User> usersList = new ObservableCollection<User>();
+        ObservableCollection<User> users = new ObservableCollection<User>();
 
-        [ObservableProperty]
-        string cityNr;
 
         [RelayCommand]
         public async void GetUsers()
         {
-            List<User> users = await con.GetList($"users/city_id/{CityNr}");
+            int city_id = Preferences.Get("city_id", 0);
+            if (city_id == 0)
+                return;
 
-            foreach (User cur in users)
-            {
-                UsersList.Add(cur);
-            }
+            List<User> data = await con.GetList($"users/city_id/{city_id}");
+            if(data == null)
+                return;
+            Users = new ObservableCollection<User>(data);
+
         }
 
     }
