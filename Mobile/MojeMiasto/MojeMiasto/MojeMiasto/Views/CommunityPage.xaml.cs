@@ -1,4 +1,5 @@
-﻿using MojeMiasto.ViewModels;
+﻿using MojeMiasto.Models;
+using MojeMiasto.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +17,7 @@ namespace MojeMiasto.Views
         public CommunityPage()
         {
             InitializeComponent();
+
             BindingContext = new CommunityViewModel();
         }
     }

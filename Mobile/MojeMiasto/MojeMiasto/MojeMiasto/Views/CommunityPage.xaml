@@ -5,10 +5,10 @@
     <ContentPage.Content>
         <StackLayout>
 
-            <Label Text="Podaj numer miasta"/>
+            <Label Text="Podaj numer miasta" HorizontalOptions="CenterAndExpand"/>
 
             <Entry Text="{Binding CityNr}"/>
-            <Button Command="{Binding GetUsersCommand}"/>
+            <Button Command="{Binding GetUsersCommand}" Text="Zatwierdź"/>
 
 
             <CollectionView x:Name="Page" ItemsSource="{Binding UsersList}">

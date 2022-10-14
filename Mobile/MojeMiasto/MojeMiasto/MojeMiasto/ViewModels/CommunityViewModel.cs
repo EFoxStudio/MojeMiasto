@@ -34,7 +34,6 @@ namespace MojeMiasto.ViewModels
             {
                 UsersList.Add(cur);
             }
-
         }
 
     }
