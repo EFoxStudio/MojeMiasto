@@ -13,13 +13,12 @@
                     <DataTemplate>
 
                         <Label Text="{Binding name}"/>
-                        
-                        
+
+
 
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
-
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
