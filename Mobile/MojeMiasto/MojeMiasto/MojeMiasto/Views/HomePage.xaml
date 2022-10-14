@@ -14,8 +14,12 @@
                 </StackLayout>
             </pancake:PancakeView>
 
+            <Label Text="Select a city" FontSize="Medium" TextColor="BlueViolet" />
+            <Picker Title="--Select--" ItemsSource="{Binding ListCities}" ItemDisplayBinding="{Binding Value}" SelectedItem="{Binding SelectedCity}" TextColor="Black" />
+            <Label Text="{Binding CityText}" TextColor="OrangeRed" />
 
-     
+
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
