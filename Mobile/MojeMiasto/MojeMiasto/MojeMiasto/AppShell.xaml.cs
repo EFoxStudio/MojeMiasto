@@ -15,6 +15,7 @@ namespace MojeMiasto
             Routing.RegisterRoute(nameof(HomePage), typeof(HomePage));
             Routing.RegisterRoute(nameof(CommunityPage), typeof(CommunityPage));
             Routing.RegisterRoute(nameof(LocationPage), typeof(LocationPage));
+            Routing.RegisterRoute(nameof(RegisterPage), typeof(RegisterPage));
 
         }
     }
