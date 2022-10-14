@@ -34,7 +34,7 @@ namespace MojeMiasto.Controllers
         public City GetByName(string req_name)
         {
             req_name = req_name.ToLower();
-            var data = _context.cities.First(x => x.name.StartsWith(req_name));
+            var data = _context.cities.First(x => x.name == req_name);
             return data;
         }
 
@@ -58,15 +58,6 @@ namespace MojeMiasto.Controllers
             data.name = data.name.ToLower();
 
             _context.cities.Add(data);
-            _context.SaveChanges();
-        }
-
-        [HttpDelete]
-        [Route("delete/{req_id}")]
-        public async void DeleteCity(int req_id)
-        {
-            var data = _context.cities.First(x => x.id == req_id);
-            _context.cities.Remove(data);
             _context.SaveChanges();
         }
 

@@ -6,6 +6,7 @@ using MojeMiasto.Views;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace MojeMiasto.ViewModels
@@ -46,8 +47,9 @@ namespace MojeMiasto.ViewModels
             if (user.password == hashPass)
             {
                 await Shell.Current.GoToAsync(nameof(HomePage));
+                Preferences.Set("user_id", user.id);
             }
-
+            
         }
 
      

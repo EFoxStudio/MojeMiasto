@@ -92,7 +92,6 @@ namespace MojeMiasto.Controllers
                 _context.Entry(found).CurrentValues.SetValues(data);
                 await _context.SaveChangesAsync();
             }
-            _context.SaveChanges();
         }
 
 

@@ -4,45 +4,42 @@
              xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
              x:Class="MojeMiasto.Views.LocationPage">
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout x:Name="Page" >
 
 
-            <Entry Placeholder="City" Text="{Binding CityEntry, Mode=TwoWay}">
+            <Entry Placeholder="Miasto" Text="{Binding CityEntry, Mode=TwoWay}">
                 <Entry.Behaviors>
                     <xct:EventToCommandBehavior EventName="TextChanged" Command="{Binding SearchCitiesCommand}"/>
                 </Entry.Behaviors>
             </Entry>
 
-            <CollectionView x:Name="Page" ItemsSource="{Binding Cities}">
+            <CollectionView x:Name="Cities" IsVisible="{Binding CityCollectionVis}" ItemsSource="{Binding Cities}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Button Text="{Binding name}" Command="{Binding 
-                            Source={x:Reference Name=Page},
-                            Path=BindingContext.SetCityCommand}"
-                            CommandParameter="{Binding .}"/>
+                        <Button Text="{Binding name}" 
+                                Command="{Binding Source={x:Reference Page} , Path=BindingContext.SetCityCommand}" CommandParameter="{Binding .}"/>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
+            <Button x:Name="add_city" Text="dodaj miasto" IsVisible="{Binding NewCityVis}" VerticalOptions="StartAndExpand" Command="{Binding NewCityCommand}"/>
 
             
             
-            <Entry Placeholder="City" Text="{Binding DistrictEntry, Mode=TwoWay}">
+            <Entry Placeholder="Dzielnica" Text="{Binding DistrictEntry, Mode=TwoWay}">
                 <Entry.Behaviors>
-                    <xct:EventToCommandBehavior EventName="TextChanged" Command="{Binding SearchCitiesCommand}"/>
+                    <xct:EventToCommandBehavior EventName="TextChanged" Command="{Binding SearchDistrictsCommand}"/>
                 </Entry.Behaviors>
             </Entry>
 
-            <CollectionView x:Name="Page" ItemsSource="{Binding Districts}">
+            <CollectionView x:Name="Districts" IsVisible="{Binding DistrictCollectionVis}" ItemsSource="{Binding Districts}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Button Text="{Binding name}" Command="{Binding 
-                            Source={x:Reference Name=Page},
-                            Path=BindingContext.SetDistrictCommand}"
-                            CommandParameter="{Binding .}"/>
+                        <Button Text="{Binding name}"
+                                Command="{Binding Source={x:Reference Page} , Path=BindingContext.SetDistrictCommand}" CommandParameter="{Binding .}"/>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
-
+            <Button x:Name="add_districts" Text="dodaj dzielnice" IsVisible="{Binding NewDistrictsVis}" VerticalOptions="StartAndExpand" Command="{Binding NewDistrictCommand}"/>
 
 
 
