@@ -80,7 +80,10 @@
     <FlyoutItem Title="LocationPage">
         <ShellContent Route="LocationPage" ContentTemplate="{DataTemplate local:LocationPage}" />
     </FlyoutItem>
-    
+
+    <FlyoutItem Title="ChatPage">
+        <ShellContent Route="ChatPage" ContentTemplate="{DataTemplate local:ChatPage}"/>
+    </FlyoutItem>
     
 
 </Shell>
