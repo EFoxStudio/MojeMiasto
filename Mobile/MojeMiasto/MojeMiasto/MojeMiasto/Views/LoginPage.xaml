@@ -17,7 +17,7 @@
 
             <!--Input menu and button-->
             <Entry Text="{Binding Email, Mode=TwoWay}" Placeholder="Email"/>
-            <Entry Text="{Binding Password, Mode=TwoWay}" Placeholder="password"/>
+            <Entry Text="{Binding Password, Mode=TwoWay}" Placeholder="password" IsPassword="True"/>
             <Button Command="{Binding LoginCommand}" Text="Login"/> 
             
 
