@@ -24,7 +24,6 @@ namespace MojeMiasto.ViewModels
             str_conn.AddHeader("ApiKey", "g84@RRGA%!bP8vNzK7p&uLXz&");
         }
 
-
         //Create a varible email
         [ObservableProperty]
         string email;
