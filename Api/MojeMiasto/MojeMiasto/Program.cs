@@ -14,9 +14,9 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<MyDbContext>(options => options.UseMySQL(builder.Configuration.GetConnectionString("MySql")));
 
 var app = builder.Build();
-
+#if RELEASE
 app.UseMiddleware<ApiKeyAuth>();
-
+#endif
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {

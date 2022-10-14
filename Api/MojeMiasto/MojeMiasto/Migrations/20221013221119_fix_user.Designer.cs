@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MojeMiasto.Data;
 
@@ -10,9 +11,10 @@ using MojeMiasto.Data;
 namespace MojeMiasto.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    partial class MyDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221013221119_fix_user")]
+    partial class fix_user
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -108,9 +110,6 @@ namespace MojeMiasto.Migrations
 
                     b.Property<int>("district_id")
                         .HasColumnType("int");
-
-                    b.Property<bool>("done")
-                        .HasColumnType("tinyint(1)");
 
                     b.Property<DateTime>("end_date")
                         .HasColumnType("datetime(6)");

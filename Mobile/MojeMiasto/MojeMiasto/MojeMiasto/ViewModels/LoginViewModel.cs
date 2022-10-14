@@ -6,19 +6,22 @@ using MojeMiasto.Views;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace MojeMiasto.ViewModels
 {
-    internal partial class LoginViewModel : BaseViewModel
+    public partial class LoginViewModel : BaseViewModel
     {
 
         //Create a variable to be referenced with the base
         Connection<User> conn = new Connection<User>("https://api.efox.com.pl/mycity/");
+        Connection<string> str_conn = new Connection<string>("https://api.efox.com.pl/mycity/");
 
         public LoginViewModel()
         {
             conn.AddHeader("ApiKey", "g84@RRGA%!bP8vNzK7p&uLXz&");
+            str_conn.AddHeader("ApiKey", "g84@RRGA%!bP8vNzK7p&uLXz&");
         }
 
 
@@ -39,11 +42,14 @@ namespace MojeMiasto.ViewModels
             if (user == default(User))
                 return;
 
-            if (user.password == Password)
+            string hashPass = await str_conn.PostWithReturn($"users/hash", Password);
+
+            if (user.password == hashPass)
             {
                 await Shell.Current.GoToAsync(nameof(HomePage));
+                Preferences.Set("user_id", user.id);
             }
-
+            
         }
 
      
