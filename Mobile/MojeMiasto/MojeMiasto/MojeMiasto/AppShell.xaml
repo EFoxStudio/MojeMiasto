@@ -90,5 +90,9 @@
     </FlyoutItem>
     
 
+    <FlyoutItem Title="ChatPage">
+        <ShellContent Route="ChatPage" ContentTemplate="{DataTemplate local:ChatPage}"/>
+    </FlyoutItem>
+    
 
 </Shell>
