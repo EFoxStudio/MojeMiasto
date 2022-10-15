@@ -32,6 +32,7 @@ namespace MojeMiasto.Controllers
         [Route("email/{req_email}")]
         public User GetByEmail(string req_email)
         {
+            req_email = req_email.ToLower();
             var user = _context.users.First(x => x.email == req_email);
             return user;
         }
@@ -60,6 +61,8 @@ namespace MojeMiasto.Controllers
 
             data.id = 0;
             data.password = HashPassword(data.password);
+            data.email = data.email.ToLower();
+
             _context.users.Add(data);
             _context.SaveChanges();
         }
@@ -86,6 +89,8 @@ namespace MojeMiasto.Controllers
 
             if(data.password != old.password)
                 data.password = HashPassword(data.password);
+
+            data.email = data.email.ToLower();
 
             if (await _context.users.FindAsync(data.id) is User found)
             {

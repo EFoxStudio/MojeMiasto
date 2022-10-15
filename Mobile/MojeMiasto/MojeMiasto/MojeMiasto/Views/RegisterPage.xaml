@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
-             x:Class="MojeMiasto.Views.LoginPage"
+             x:Class="MojeMiasto.Views.RegisterPage"
              Shell.NavBarIsVisible="False">
-
+    
     <ContentPage.Content>
         <StackLayout>
 
@@ -15,18 +15,21 @@
             </pancake:PancakeView>
 
 
-            <!--Input menu and button-->
+            <!--Register form and submit-->
+            <Entry Text="{Binding Name, Mode=TwoWay}" Placeholder="Name"/>
+            <Entry Text="{Binding Surname, Mode=TwoWay}" Placeholder="Surname"/>
             <Entry Text="{Binding Email, Mode=TwoWay}" Placeholder="Email"/>
-            <Entry Text="{Binding Password, Mode=TwoWay}" Placeholder="password"/>
-            <Button Command="{Binding LoginCommand}" Text="Login"/>
-            <Button Command="{Binding GoToRegisterCommand}" Text="Register"/>
+            <Entry Text="{Binding Password, Mode=TwoWay}" Placeholder="Password"/>
+            <Entry Text="{Binding RepeatPassword, Mode=TwoWay}" Placeholder="Repeat Password"/>
+            <Label Text="{Binding Error}"/>
+            <Button Command="{Binding RegisterCommand}" Text="Register"/>
 
 
 
-
-            <Label Text="Login Page"
+            <Label Text="Register Page!"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
