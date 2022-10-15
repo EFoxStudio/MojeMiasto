@@ -21,7 +21,6 @@ namespace MojeMiasto.ViewModels
         public void OpenMenu()
         {
             Shell.Current.FlyoutIsPresented = true;
-
         }
 
 
