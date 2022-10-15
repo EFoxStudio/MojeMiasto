@@ -1,5 +1,6 @@
 ﻿using MojeMiasto.Views;
 using System;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -11,7 +12,11 @@ namespace MojeMiasto
         public App()
         {
             InitializeComponent();
-            MainPage = new AppShell();
+
+            if (Preferences.Get("user_id", 0) == 0)
+                MainPage = new NavigationPage(new WelcomePage());
+            else
+                MainPage = new AppShell();
         }
 
         protected override void OnStart()

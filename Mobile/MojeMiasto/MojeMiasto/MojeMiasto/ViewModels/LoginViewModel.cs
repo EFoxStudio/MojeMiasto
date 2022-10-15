@@ -46,18 +46,13 @@ namespace MojeMiasto.ViewModels
 
             if (user.password == hashPass)
             {
-                await Shell.Current.GoToAsync(nameof(HomePage));
                 Preferences.Set("user_id", user.id);
+                Application.Current.MainPage = new AppShell();
             }
             
         }
 
-        [RelayCommand]
-        public async void GoToRegister()
-        {
-            // Here we have to fix problem with changing windows in AppShell while going to register page
-            await Shell.Current.GoToAsync(nameof(RegisterPage));
-        }
+        
 
      
     }

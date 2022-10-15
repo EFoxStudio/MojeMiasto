@@ -28,12 +28,24 @@ namespace MojeMiasto.Controllers
 
         [HttpGet]
         [Route("user_id/{req_id}")]
-        public List<Chat> Search(int req_id)
+        public List<Chat> GetByUserId(int req_id)
         {
             var users = _context.chats.Where(x => x.user1_id == req_id || x.user2_id == req_id).ToList();
             return users;
         }
 
+
+        [HttpPost]
+        public void AddCity([FromBody] Chat data)
+        {
+            if (data == null)
+                return;
+
+            data.id = 0;
+
+            _context.chats.Add(data);
+            _context.SaveChanges();
+        }
 
     }
 }

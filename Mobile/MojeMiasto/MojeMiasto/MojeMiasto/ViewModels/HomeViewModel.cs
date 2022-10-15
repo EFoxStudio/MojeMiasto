@@ -11,7 +11,10 @@ namespace MojeMiasto.ViewModels
 {
     public partial class HomeViewModel : BaseViewModel
     {
-        
-        
+        [RelayCommand]
+        async void GoLocation()
+        {
+            await Shell.Current.GoToAsync(nameof(LocationPage));
+        }
     }
 }

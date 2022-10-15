@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MojeMiasto.Views.QuestsPage"
+             BackgroundImage="Background.png"
+             Shell.NavBarIsVisible="False">
+    <ContentPage.Content>
+        <StackLayout>
+
+
+            <StackLayout Orientation="Horizontal" HeightRequest="120" Margin="0" Padding="25,25,25,0" BackgroundColor="Transparent">
+                <ImageButton Source="menu.png" 
+                             BackgroundColor="Transparent" 
+                             WidthRequest="40"
+                             HorizontalOptions="StartAndExpand"
+                             VerticalOptions="Start"
+                             Margin="0,3,0,0"
+                             Command="{Binding OpenMenuCommand}"/>
+                <Label Text="Zlecenia w okolicy"
+                           FontSize="30"
+                           Padding="0,15,0,0"
+                           WidthRequest="150" 
+                           HorizontalOptions="CenterAndExpand" TextColor="{StaticResource white}"/>
+                <ImageButton Source="https://api.efox.com.pl/treasurer/icons/i.png" 
+                                 BackgroundColor="Transparent"
+                                 WidthRequest="50"
+                                 HorizontalOptions="EndAndExpand"
+                                 CornerRadius="100"
+                                 VerticalOptions="Start"/>
+            </StackLayout >
+
+
+            <Label Text="Welcome to Xamarin.Forms!"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" 
+                FontFamily="Comfortaa"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

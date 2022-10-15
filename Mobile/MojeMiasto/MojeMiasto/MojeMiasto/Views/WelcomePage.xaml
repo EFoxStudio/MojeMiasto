@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MojeMiasto.Views.WelcomePage"
+             BackgroundImage="Background.png">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Witaj w aplikacji moje miasto"
+                HorizontalOptions="CenterAndExpand" />
+            <Button Text="Login" Command="{Binding GoLoginCommand}"/>
+            <Button Text="Register" Command="{Binding GoRegisterCommand}" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

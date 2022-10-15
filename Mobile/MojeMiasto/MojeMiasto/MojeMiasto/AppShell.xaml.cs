@@ -11,12 +11,10 @@ namespace MojeMiasto
             InitializeComponent();
             
             //Page overlapping when switching to another
-            Routing.RegisterRoute(nameof(LoginPage), typeof(LoginPage));
-            Routing.RegisterRoute(nameof(HomePage), typeof(HomePage));
+            Routing.RegisterRoute(nameof(QuestsPage), typeof(QuestsPage));
             Routing.RegisterRoute(nameof(CommunityPage), typeof(CommunityPage));
             Routing.RegisterRoute(nameof(LocationPage), typeof(LocationPage));
-            Routing.RegisterRoute(nameof(RegisterPage), typeof(RegisterPage));
-
+            Routing.RegisterRoute(nameof(SettingsPage), typeof(SettingsPage));
         }
     }
 }

@@ -2,17 +2,10 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
              x:Class="MojeMiasto.Views.RegisterPage"
-             Shell.NavBarIsVisible="False">
+             BackgroundImage="Background.png">
     
     <ContentPage.Content>
         <StackLayout>
-
-            <pancake:PancakeView BackgroundColor="#FF4444" HeightRequest="80" CornerRadius="0,0,30,30">
-                <StackLayout Orientation="Horizontal">
-                    <ImageButton Source="menu.png" Command="{Binding OpenMenuCommand}" BackgroundColor="Transparent" WidthRequest="40" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" Margin="25,0,0,0"/>
-                    <ImageButton Source="bell.png" BackgroundColor="Transparent" WidthRequest="30" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" Margin="0,0,25,0"/>
-                </StackLayout>
-            </pancake:PancakeView>
 
 
             <!--Register form and submit-->

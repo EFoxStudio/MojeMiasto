@@ -2,7 +2,9 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
-             x:Class="MojeMiasto.Views.LocationPage">
+             x:Class="MojeMiasto.Views.LocationPage"
+             BackgroundImage="Background.png"
+             Shell.NavBarIsVisible="False">
     <ContentPage.Content>
         <StackLayout x:Name="Page" >
 

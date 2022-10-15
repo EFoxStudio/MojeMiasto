@@ -7,25 +7,15 @@
     -->
     <Application.Resources>
         <ResourceDictionary>
-            <Color x:Key="Primary">#2196F3</Color>
-            <Style TargetType="Button">
-                <Setter Property="TextColor" Value="White"></Setter>
-                <Setter Property="VisualStateManager.VisualStateGroups">
-                    <VisualStateGroupList>
-                        <VisualStateGroup x:Name="CommonStates">
-                            <VisualState x:Name="Normal">
-                                <VisualState.Setters>
-                                    <Setter Property="BackgroundColor" Value="{StaticResource Primary}" />
-                                </VisualState.Setters>
-                            </VisualState>
-                            <VisualState x:Name="Disabled">
-                                <VisualState.Setters>
-                                    <Setter Property="BackgroundColor" Value="#332196F3" />
-                                </VisualState.Setters>
-                            </VisualState>
-                        </VisualStateGroup>
-                    </VisualStateGroupList>
-                </Setter>
+            <Color x:Key="purple">#7827E6</Color>
+            <Color x:Key="white">#FFFCF2</Color>
+            <Color x:Key="black">#252422</Color>
+            <Color x:Key="grey">#313131</Color>
+            <Color x:Key="lightGrey">#575656</Color>
+
+
+            <Style TargetType="Label">
+                <Setter Property="FontFamily" Value="Comfortaa"></Setter>
             </Style>
         </ResourceDictionary>        
     </Application.Resources>
