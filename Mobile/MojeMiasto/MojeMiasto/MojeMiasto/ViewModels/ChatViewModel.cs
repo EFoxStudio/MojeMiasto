@@ -11,15 +11,24 @@ using Xamarin.Forms;
 
 namespace MojeMiasto.ViewModels
 {
-    internal partial class ChatViewModel
+    internal partial class ChatViewModel : BaseViewModel
     {
         Connection<Chat> user_conn = new Connection<Chat>("https://api.efox.com.pl/mycity/");
         Connection<Chat> chat_conn = new Connection<Chat>("https://api.efox.com.pl/mycity/");
+
+        [ObservableProperty]
+        ObservableCollection<Chat> chats = new ObservableCollection<Chat>();
 
         public ChatViewModel()
         {
             user_conn.AddHeader("ApiKey", "g84@RRGA%!bP8vNzK7p&uLXz&");
             chat_conn.AddHeader("ApiKey", "g84@RRGA%!bP8vNzK7p&uLXz&");
         }
+
+        public async void ShowChat()
+        {
+
+        }
+
     }
 }
