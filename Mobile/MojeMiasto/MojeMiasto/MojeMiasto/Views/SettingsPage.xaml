@@ -6,6 +6,19 @@
              Shell.NavBarIsVisible="False">
     <ContentPage.Content>
         <StackLayout>
+            <!-- Header -->
+            <StackLayout Style="{StaticResource Header}">
+                <ImageButton Source="ArrowL.png" 
+                             Style="{StaticResource Header_Menu}"
+                             HeightRequest="40"
+                             Command="{Binding GoBackCommand}"/>
+                <Label Text="Ustawienia"
+                       FontSize="25"
+                       Style="{StaticResource Header_Label}"/>
+                <ImageButton Source="{Binding UserIcon}" 
+                             Style="{StaticResource Header_Profile}"/>
+            </StackLayout >
+            
             <Button Text="My Location" Command="{Binding GoLocationCommand}"/>
             <Button Text="wyloguj" Command="{Binding LogoutCommand}" BackgroundColor="Red"/>
         </StackLayout>

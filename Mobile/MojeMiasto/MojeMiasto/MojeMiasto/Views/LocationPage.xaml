@@ -8,6 +8,16 @@
     <ContentPage.Content>
         <StackLayout x:Name="Page" >
 
+            <!-- Header -->
+            <StackLayout Style="{StaticResource Header}">
+                <ImageButton Source="menu.png" 
+                             Style="{StaticResource Header_Menu}"
+                             Command="{Binding OpenMenuCommand}"/>
+                <Label Text="Zlecenia w okolicy"
+                       Style="{StaticResource Header_Label}"/>
+                <ImageButton Source="{Binding UserIcon}" 
+                             Style="{StaticResource Header_Profile}"/>
+            </StackLayout >
 
             <Entry Placeholder="Miasto" Text="{Binding CityEntry, Mode=TwoWay}">
                 <Entry.Behaviors>

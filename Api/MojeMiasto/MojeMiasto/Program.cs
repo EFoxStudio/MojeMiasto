@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.FileProviders;
 using MojeMiasto.Data;
 using MojeMiasto.Filters;
 
@@ -17,6 +18,12 @@ var app = builder.Build();
 #if RELEASE
 app.UseMiddleware<ApiKeyAuth>();
 #endif
+app.UseFileServer(new FileServerOptions
+{
+    FileProvider = new PhysicalFileProvider(
+        Path.Combine(Directory.GetCurrentDirectory(), "icons")),
+    RequestPath = "/icons"
+});
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {

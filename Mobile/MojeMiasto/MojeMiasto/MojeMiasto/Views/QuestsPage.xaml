@@ -7,26 +7,15 @@
     <ContentPage.Content>
         <StackLayout>
 
-
-            <StackLayout Orientation="Horizontal" HeightRequest="120" Margin="0" Padding="25,25,25,0" BackgroundColor="Transparent">
+            <!-- Header -->
+            <StackLayout Style="{StaticResource Header}">
                 <ImageButton Source="menu.png" 
-                             BackgroundColor="Transparent" 
-                             WidthRequest="40"
-                             HorizontalOptions="StartAndExpand"
-                             VerticalOptions="Start"
-                             Margin="0,3,0,0"
+                             Style="{StaticResource Header_Menu}"
                              Command="{Binding OpenMenuCommand}"/>
                 <Label Text="Zlecenia w okolicy"
-                           FontSize="30"
-                           Padding="0,15,0,0"
-                           WidthRequest="150" 
-                           HorizontalOptions="CenterAndExpand" TextColor="{StaticResource white}"/>
-                <ImageButton Source="https://api.efox.com.pl/treasurer/icons/i.png" 
-                                 BackgroundColor="Transparent"
-                                 WidthRequest="50"
-                                 HorizontalOptions="EndAndExpand"
-                                 CornerRadius="100"
-                                 VerticalOptions="Start"/>
+                       Style="{StaticResource Header_Label}"/>
+                <ImageButton Source="{Binding UserIcon}" 
+                             Style="{StaticResource Header_Profile}"/>
             </StackLayout >
 
 

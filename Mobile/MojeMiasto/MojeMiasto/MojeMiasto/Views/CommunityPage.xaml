@@ -6,7 +6,16 @@
              Shell.NavBarIsVisible="False">
     <ContentPage.Content>
         <StackLayout>
-
+            <!-- Header -->
+            <StackLayout Style="{StaticResource Header}">
+                <ImageButton Source="menu.png" 
+                             Style="{StaticResource Header_Menu}"
+                             Command="{Binding OpenMenuCommand}"/>
+                <Label Text="Osoby w okolicy"
+                       Style="{StaticResource Header_Label}"/>
+                <ImageButton Source="{Binding UserIcon}" 
+                             Style="{StaticResource Header_Profile}"/>
+            </StackLayout >
 
             <Button Command="{Binding GetUsersCommand}" Text="Zatwierdź"/>
 

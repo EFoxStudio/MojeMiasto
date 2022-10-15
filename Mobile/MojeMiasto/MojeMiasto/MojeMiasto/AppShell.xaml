@@ -3,6 +3,7 @@
        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
        xmlns:local="clr-namespace:MojeMiasto.Views"
        xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+       xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
        Title="MojeMiasto"
        x:Class="MojeMiasto.AppShell"
        FlyoutBackgroundColor="{StaticResource grey}">
@@ -29,12 +30,13 @@
             <Style Class="FlyoutItemLabelStyle" TargetType="Label">
                 <Setter Property="TextColor" Value="{StaticResource white}"></Setter>
                 <Setter Property="FontFamily" Value="Comfortaa"></Setter>
+                <Setter Property="FontSize" Value="18"></Setter>
                 <Setter Property="Margin" Value="0" />
                 
                 
             </Style>
             <Style Class="FlyoutItemLayoutStyle" TargetType="Layout" ApplyToDerivedTypes="True">
-                <Setter Property="Padding" Value="5" />
+                <Setter Property="Padding" Value="0" />
                 <Setter Property="VisualStateManager.VisualStateGroups">
                     <VisualStateGroupList>
                         <VisualStateGroup x:Name="CommonStates">
@@ -54,10 +56,6 @@
                     </VisualStateGroupList>
                 </Setter>
             </Style>
-
-
-
-
             <Style Class="MenuItemLayoutStyle" TargetType="Layout" ApplyToDerivedTypes="True">
                 <Setter Property="VisualStateManager.VisualStateGroups">
                     <VisualStateGroupList>
@@ -79,34 +77,37 @@
         <DataTemplate>
             <StackLayout Orientation="Horizontal" Padding="15" BackgroundColor="{StaticResource black}" Margin="0,0,0,25">
                 
-                <Frame HeightRequest="80" WidthRequest="80" BackgroundColor="Transparent">
-                    <ImageButton Source="https://api.efox.com.pl/treasurer/icons/i.png" HeightRequest="50" WidthRequest="50"
+                <Frame HeightRequest="60" WidthRequest="60" BackgroundColor="Transparent">
+                    <ImageButton Source="{Binding UserIcon}" HeightRequest="50" WidthRequest="50"
                                  xct:CornerRadiusEffect.CornerRadius="100" Aspect="AspectFill" BackgroundColor="Transparent"></ImageButton>
                 </Frame>
                 <StackLayout HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand">
-                    <Label Text="EFox" TextColor="{StaticResource white}" FontSize="30" Margin="0"/>
-                    <Label Text="Sosnowiec" TextColor="{StaticResource lightGrey}" FontSize="20" Margin="0"/>
+                    <Label Text="{Binding UserName}" TextColor="{StaticResource white}" FontSize="23" Margin="0"/>
+                    <Label Text="{Binding UserCity}" TextColor="{StaticResource lightGrey}" FontSize="20" Margin="0"/>
                 </StackLayout>
             </StackLayout>
         </DataTemplate>
     </Shell.FlyoutHeaderTemplate>
 
-    <FlyoutItem Title="QuestsPage">
+    <FlyoutItem Title="Zlecenia">
         <ShellContent Route="QuestsPage" ContentTemplate="{DataTemplate local:QuestsPage}" />
     </FlyoutItem>
-    <FlyoutItem Title="CommunityPage">
-        <ShellContent Route="CommunityPage" ContentTemplate="{DataTemplate local:CommunityPage}" />
+    <FlyoutItem Title="Przyjęte zlecenia">
+        <ShellContent Route="UserQuestsPage" ContentTemplate="{DataTemplate local:UserQuestsPage}" />
     </FlyoutItem>
-    <FlyoutItem Title="CommunityPage">
+    <FlyoutItem Title="Wiadomości">
+        <ShellContent Route="ChatPage" ContentTemplate="{DataTemplate local:ChatPage}" />
+    </FlyoutItem>
+    <FlyoutItem Title="Społeczność">
         <ShellContent Route="CommunityPage" ContentTemplate="{DataTemplate local:CommunityPage}" />
     </FlyoutItem>
 
 
     <Shell.FlyoutFooterTemplate>
         <DataTemplate>
-            <StackLayout Orientation="Horizontal" Padding="25,0,0,10" BackgroundColor="{StaticResource grey}">
-                <ImageButton Source="Settings.png" WidthRequest="35" BackgroundColor="Transparent" xct:IconTintColorEffect.TintColor="{StaticResource purple}"/>
-                <Button Text="Settings" TextColor="{StaticResource purple}" BackgroundColor="Transparent" FontSize="17" FontAttributes="Bold"/>
+            <StackLayout Orientation="Horizontal" Padding="25,10,10,10">
+                <ImageButton Source="Settings.png" Command="{Binding GoSettingsCommand}" WidthRequest="35" BackgroundColor="Transparent" xct:IconTintColorEffect.TintColor="{StaticResource purple}"/>
+                <Button Text="Settings" Command="{Binding GoSettingsCommand}" TextColor="{StaticResource purple}" BackgroundColor="Transparent" FontSize="17" FontAttributes="Bold"/>
             </StackLayout>
         </DataTemplate>
     </Shell.FlyoutFooterTemplate>

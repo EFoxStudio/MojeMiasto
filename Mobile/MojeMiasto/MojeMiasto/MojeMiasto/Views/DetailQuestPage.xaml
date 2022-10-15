@@ -6,6 +6,16 @@
              Shell.NavBarIsVisible="False">
     <ContentPage.Content>
         <StackLayout>
+            <!-- Header -->
+            <StackLayout Style="{StaticResource Header}">
+                <ImageButton Source="menu.png" 
+                             Style="{StaticResource Header_Menu}"
+                             Command="{Binding OpenMenuCommand}"/>
+                <Label Text="Zlecenia w okolicy"
+                       Style="{StaticResource Header_Label}"/>
+                <ImageButton Source="{Binding UserIcon}" 
+                             Style="{StaticResource Header_Profile}"/>
+            </StackLayout >
             <Label Text="Welcome to Xamarin.Forms!"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />

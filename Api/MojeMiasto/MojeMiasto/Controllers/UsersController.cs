@@ -53,6 +53,20 @@ namespace MojeMiasto.Controllers
             return users;
         }
 
+        [HttpGet]
+        [Route("icon/{req_id}")]
+        public string GetIconById(int req_id)
+        {
+            string path = Path.Combine(Directory.GetCurrentDirectory(), "icons/");
+            DirectoryInfo hdDirectoryInWhichToSearch = new DirectoryInfo(path);
+            FileInfo[] filesInDir = hdDirectoryInWhichToSearch.GetFiles(req_id + ".*");
+
+            if (filesInDir.Length <= 0)
+                return "0.png";
+
+            return filesInDir[0].Name;
+        }
+
         [HttpPost]
         public void AddUser([FromBody] User data)
         {
@@ -66,6 +80,20 @@ namespace MojeMiasto.Controllers
             _context.users.Add(data);
             _context.SaveChanges();
         }
+
+        [HttpPost]
+        [Route("icon/{user_id}")]
+        public void AddUserIcon(int user_id, [FromForm] IconUpload file)
+        {
+            using (FileStream fileStream = System.IO.File.Create(Path.Combine(Directory.GetCurrentDirectory(), "icons/") + user_id.ToString() + ".png"))
+            {
+                file.files.CopyTo(fileStream);
+                fileStream.Flush();
+            }
+        }
+
+
+
 
         [HttpPost]
         [Route("hash")]
