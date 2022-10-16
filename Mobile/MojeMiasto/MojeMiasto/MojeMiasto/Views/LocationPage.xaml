@@ -10,14 +10,21 @@
 
             <!-- Header -->
             <StackLayout Style="{StaticResource Header}">
-                <ImageButton Source="menu.png" 
+                <ImageButton Source="ArrowL.png" 
                              Style="{StaticResource Header_Menu}"
-                             Command="{Binding OpenMenuCommand}"/>
+                             HeightRequest="40"
+                             Command="{Binding GoToRootCommand}"/>
                 <Label Text="Zlecenia w okolicy"
                        Style="{StaticResource Header_Label}"/>
-                <ImageButton Source="{Binding UserIcon}" 
-                             Style="{StaticResource Header_Profile}"/>
-            </StackLayout >
+                <ImageButton Style="{StaticResource Header_Profile}" Command="{Binding GoAccountCommand}">
+                    <ImageButton.Source>
+                        <UriImageSource
+                            Uri="{Binding UserIcon}"
+                            CacheValidity="0"
+                            CachingEnabled="False"/>
+                    </ImageButton.Source>
+                </ImageButton>
+            </StackLayout>
 
             <Entry Placeholder="Miasto" Text="{Binding CityEntry, Mode=TwoWay}">
                 <Entry.Behaviors>
@@ -52,7 +59,7 @@
             </CollectionView>
             <Button x:Name="add_districts" Text="dodaj dzielnice" IsVisible="{Binding NewDistrictsVis}" VerticalOptions="StartAndExpand" Command="{Binding NewDistrictCommand}"/>
 
-
+            <Button Text="Gotowe" Command="{Binding GoToRootCommand}"/>
 
         </StackLayout>
     </ContentPage.Content>

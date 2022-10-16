@@ -85,7 +85,10 @@ namespace MojeMiasto.Controllers
         [Route("icon/{user_id}")]
         public void AddUserIcon(int user_id, [FromForm] IconUpload file)
         {
-            using (FileStream fileStream = System.IO.File.Create(Path.Combine(Directory.GetCurrentDirectory(), "icons/") + user_id.ToString() + ".png"))
+            using (FileStream fileStream
+                = System.IO.File.Create(
+                    Path.Combine(Directory.GetCurrentDirectory(),
+                    "icons/") + user_id.ToString() + ".png"))
             {
                 file.files.CopyTo(fileStream);
                 fileStream.Flush();

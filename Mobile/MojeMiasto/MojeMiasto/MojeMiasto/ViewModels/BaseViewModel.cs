@@ -15,7 +15,13 @@ namespace MojeMiasto.ViewModels
     //Usable items for everything
     public partial class BaseViewModel : ObservableObject
     {
-        int user_id;
+        public bool selectedCity;
+
+        [ObservableProperty]
+        string districtColor;
+
+        [ObservableProperty]
+        string cityColor;
 
 
         [ObservableProperty]
@@ -28,7 +34,9 @@ namespace MojeMiasto.ViewModels
             conn.AddHeader("ApiKey", "g84@RRGA%!bP8vNzK7p&uLXz&");
             GetUserIcon();
 
-            user_id = Preferences.Get("user_id", 0);
+            DistrictColor = "#8537f0";
+            CityColor = "#FFFCF2";
+            selectedCity = false;
         }
 
         //Pull out the menuu
@@ -41,7 +49,7 @@ namespace MojeMiasto.ViewModels
         [RelayCommand]
         public void GoBack()
         {
-            Shell.Current.Navigation.PopAsync();
+            Shell.Current.GoToAsync("..");
         }
 
         public async void GetUserIcon()
@@ -60,8 +68,28 @@ namespace MojeMiasto.ViewModels
             return char.ToUpper(str[0]) + str.Substring(1);
         }
 
-        
+        [RelayCommand]
+        public void GoAccount()
+        {
+            Shell.Current.GoToAsync(nameof(SettingsPage));
+        }
 
+        [RelayCommand]
+        public async void ChoseCity()
+        {
+            DistrictColor = "#FFFCF2";
+            CityColor = "#8537f0";
+            selectedCity = true;
+        }
+
+        [RelayCommand]
+        public async void ChoseDistrict()
+        {
+            DistrictColor = "#8537f0";
+            CityColor = "#FFFCF2";
+            selectedCity = false;
+
+        }
 
 
     }

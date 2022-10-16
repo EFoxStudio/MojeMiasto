@@ -49,11 +49,26 @@
             <Style x:Key="Header_Profile" TargetType="ImageButton">
                 <Setter Property="BackgroundColor" Value="Transparent"></Setter>
                 <Setter Property="WidthRequest" Value="50"></Setter>
+                <Setter Property="HeightRequest" Value="50"></Setter>
                 <Setter Property="HorizontalOptions" Value="EndAndExpand"></Setter>
                 <Setter Property="CornerRadius" Value="100"></Setter>
                 <Setter Property="VerticalOptions" Value="Start"></Setter>
             </Style>
-            
+
+            <Style x:Key="Top_Button" TargetType="StackLayout">
+                <Setter Property="Margin" Value="0,0,0,0"></Setter>
+                <Setter Property="BackgroundColor" Value="Transparent"></Setter>
+                <Setter Property="HeightRequest" Value="38"></Setter>
+            </Style>
+            <Style x:Key="Top_Image" TargetType="StackLayout">
+                <Setter Property="WidthRequest" Value="90"></Setter>
+                <Setter Property="Margin" Value="0,0,0,0"></Setter>
+                <Setter Property="HorizontalOptions" Value="FillAndExpand"></Setter>
+                <Setter Property="VerticalOptions" Value="StartAndExpand"></Setter>
+            </Style>
+
+
+
         </ResourceDictionary>        
     </Application.Resources>
 </Application>

@@ -13,8 +13,14 @@
                              Command="{Binding OpenMenuCommand}"/>
                 <Label Text="Zlecenia w okolicy"
                        Style="{StaticResource Header_Label}"/>
-                <ImageButton Source="{Binding UserIcon}" 
-                             Style="{StaticResource Header_Profile}"/>
+                <ImageButton Style="{StaticResource Header_Profile}" Command="{Binding GoAccountCommand}">
+                    <ImageButton.Source>
+                        <UriImageSource
+                            Uri="{Binding UserIcon}"
+                            CacheValidity="0"
+                            CachingEnabled="False"/>
+                    </ImageButton.Source>
+                </ImageButton>
             </StackLayout >
             <Label Text="Welcome to Xamarin.Forms!"
                 VerticalOptions="CenterAndExpand" 

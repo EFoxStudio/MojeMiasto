@@ -12,12 +12,20 @@ namespace MojeMiasto.ViewModels
 {
     internal partial class CommunityViewModel : BaseViewModel
     {
+
+        
+
+
+
+
+
         //Variable to get info from database
         Connection<User> con = new Connection<User>("https://api.efox.com.pl/mycity/");
 
         public CommunityViewModel()
         {
             con.AddHeader("ApiKey", "g84@RRGA%!bP8vNzK7p&uLXz&");
+            
         }
 
 
@@ -39,6 +47,7 @@ namespace MojeMiasto.ViewModels
             Users = new ObservableCollection<User>(data);
 
         }
+
 
     }
 }

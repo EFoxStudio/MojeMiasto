@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MojeMiasto.Views.CommunityPage"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
              BackgroundImage="Background.png"
              Shell.NavBarIsVisible="False">
     <ContentPage.Content>
@@ -13,9 +14,40 @@
                              Command="{Binding OpenMenuCommand}"/>
                 <Label Text="Osoby w okolicy"
                        Style="{StaticResource Header_Label}"/>
-                <ImageButton Source="{Binding UserIcon}" 
-                             Style="{StaticResource Header_Profile}"/>
+                <ImageButton Style="{StaticResource Header_Profile}" Command="{Binding GoAccountCommand}">
+                    <ImageButton.Source>
+                        <UriImageSource
+                            Uri="{Binding UserIcon}"
+                            CacheValidity="0"
+                            CachingEnabled="False"/>
+                    </ImageButton.Source>
+                </ImageButton>
             </StackLayout >
+            <!-- Top_Buttons -->
+            <StackLayout Orientation="Horizontal">
+                
+                <StackLayout HorizontalOptions="StartAndExpand" Margin="50,0,0,0">
+                    <Button Text="Dzielnica"
+                            TextColor="{Binding DistrictColor}"
+                            Style="{StaticResource Top_Button}"
+                            Command="{Binding ChoseDistrictCommand}"/>
+                    <Image Source="Line.png" 
+                           Style="{StaticResource Top_Image}"
+                           xct:IconTintColorEffect.TintColor="{Binding DistrictColor}"/>
+                </StackLayout>
+
+
+                <StackLayout HorizontalOptions="EndAndExpand" Margin="0,0,70,0">
+                    <Button Text="Miasto" 
+                            Style="{StaticResource Top_Button}"
+                            TextColor="{Binding CityColor}"
+                            Command="{Binding ChoseCityCommand}"/>
+                    <Image Source="Line.png" 
+                           Style="{StaticResource Top_Image}"
+                           xct:IconTintColorEffect.TintColor="{Binding CityColor}"/>     
+                </StackLayout>
+            </StackLayout>
+
 
             <Button Command="{Binding GetUsersCommand}" Text="Zatwierdź"/>
 

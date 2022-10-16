@@ -37,8 +37,22 @@ namespace MojeMiasto.ViewModels
                 return;
 
             User user = await userConn.Get($"users/id/{ user_id }");
-            City city = await cityConn.Get($"cities/id/{user.city_id}");
+
+            if (user == null)
+                return;
+
             UserName = user.name;
+
+            if (user.city_id == 0)
+                UserCity = "niewybrane";
+
+
+
+            City city = await cityConn.Get($"cities/id/{user.city_id}");
+            if (city == null)
+                return;
+
+
             UserCity = city.name;
         }
 
@@ -46,7 +60,7 @@ namespace MojeMiasto.ViewModels
         public void GoSettings()
         {
             Shell.Current.FlyoutIsPresented = false;
-            Shell.Current.Navigation.PushAsync(new SettingsPage());
+            Shell.Current.GoToAsync(nameof(SettingsPage));
         }
 
     }

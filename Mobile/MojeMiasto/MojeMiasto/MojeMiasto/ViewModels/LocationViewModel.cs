@@ -2,6 +2,7 @@
 using CommunityToolkit.Mvvm.Input;
 using EFox.ApiConnection.Toolkit;
 using MojeMiasto.Models;
+using MojeMiasto.Views;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -48,7 +49,11 @@ namespace MojeMiasto.ViewModels
             districtsConn.AddHeader("ApiKey", "g84@RRGA%!bP8vNzK7p&uLXz&");
         }
 
-
+        [RelayCommand]
+        public void GoToRoot()
+        {
+            Shell.Current.Navigation.PopToRootAsync();
+        }
 
         [RelayCommand]
         public async void SearchCities()
@@ -105,9 +110,11 @@ namespace MojeMiasto.ViewModels
             await userConn.Put("users", user);
 
             Preferences.Set("city_id", city.id);
+            Preferences.Set("district_id", 0);
+            Shell.Current.BindingContext = new AppShellViewModel();
 
-            CityEntry = city.name;
-            
+            CityEntry = FirstLetterToUpper(city.name);
+            DistrictEntry = "";
 
             NewCityVis = false;
             CityCollectionVis = false;
@@ -122,12 +129,12 @@ namespace MojeMiasto.ViewModels
                 return;
 
             User user = await userConn.Get($"users/id/{ user_id }");
-
             user.district_id = district.id;
             await userConn.Put("users", user);
             Preferences.Set("district_id", district.id);
+            Shell.Current.BindingContext = new AppShellViewModel();
 
-            DistrictEntry = district.name;
+            DistrictEntry = FirstLetterToUpper(district.name);
             
 
             NewDistrictsVis = false;

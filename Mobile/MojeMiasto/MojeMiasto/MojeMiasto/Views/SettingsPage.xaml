@@ -15,10 +15,26 @@
                 <Label Text="Ustawienia"
                        FontSize="25"
                        Style="{StaticResource Header_Label}"/>
-                <ImageButton Source="{Binding UserIcon}" 
-                             Style="{StaticResource Header_Profile}"/>
+                <ImageButton Style="{StaticResource Header_Profile}">
+                    <ImageButton.Source>
+                        <UriImageSource
+                            Uri="{Binding UserIcon}"
+                            CacheValidity="0"
+                            CachingEnabled="False"/>        
+                    </ImageButton.Source>
+                </ImageButton>
             </StackLayout >
-            
+
+            <Image Style="{StaticResource Header_Profile}">
+                <Image.Source>
+                    <UriImageSource
+                            Uri="{Binding UserIcon}"
+                            CacheValidity="0"
+                            CachingEnabled="False"/>
+                </Image.Source>
+            </Image>
+            <Button Text="image" Command="{Binding GetImageCommand}"/>
+
             <Button Text="My Location" Command="{Binding GoLocationCommand}"/>
             <Button Text="wyloguj" Command="{Binding LogoutCommand}" BackgroundColor="Red"/>
         </StackLayout>
