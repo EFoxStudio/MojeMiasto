@@ -81,12 +81,12 @@
                     <ImageButton HeightRequest="50" WidthRequest="50"
                                  xct:CornerRadiusEffect.CornerRadius="100" Aspect="AspectFill" BackgroundColor="Transparent">
                         
-                            <ImageButton.Source>
-                                <UriImageSource
-                            Uri="{Binding UserIcon}"
-                            CacheValidity="0"
-                            CachingEnabled="False"/>
-                            </ImageButton.Source>
+                        <ImageButton.Source>
+                            <UriImageSource
+                                Uri="{Binding UserIcon}"
+                                CacheValidity="0"
+                                CachingEnabled="False"/>
+                        </ImageButton.Source>
                         
                     </ImageButton>
                 </Frame>

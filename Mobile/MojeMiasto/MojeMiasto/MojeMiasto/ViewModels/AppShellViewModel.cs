@@ -53,7 +53,7 @@ namespace MojeMiasto.ViewModels
                 return;
 
 
-            UserCity = city.name;
+            UserCity = FirstLetterToUpper(city.name);
         }
 
         [RelayCommand]

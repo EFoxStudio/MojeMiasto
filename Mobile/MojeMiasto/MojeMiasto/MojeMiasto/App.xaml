@@ -53,6 +53,7 @@
                 <Setter Property="HorizontalOptions" Value="EndAndExpand"></Setter>
                 <Setter Property="CornerRadius" Value="100"></Setter>
                 <Setter Property="VerticalOptions" Value="Start"></Setter>
+                <Setter Property="Aspect" Value="AspectFill"></Setter>
             </Style>
 
             <Style x:Key="Top_Button" TargetType="StackLayout">

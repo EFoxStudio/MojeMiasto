@@ -114,10 +114,13 @@ namespace MojeMiasto.ViewModels
             Shell.Current.BindingContext = new AppShellViewModel();
 
             CityEntry = FirstLetterToUpper(city.name);
-            DistrictEntry = "";
 
             NewCityVis = false;
             CityCollectionVis = false;
+
+            if (string.IsNullOrEmpty(DistrictEntry))
+                return;
+            DistrictEntry = null;
         }
 
         [RelayCommand]

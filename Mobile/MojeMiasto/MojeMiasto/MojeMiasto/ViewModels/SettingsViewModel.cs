@@ -51,7 +51,7 @@ namespace MojeMiasto.ViewModels
                 var response = await client.PostAsync($"https://api.efox.com.pl/mycity/users/icon/{user_id}", multipartFormContent);
             }
 
-            GetUserIcon();
+            Application.Current.MainPage = new AppShell();
         }
 
         

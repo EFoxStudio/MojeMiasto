@@ -13,7 +13,6 @@ namespace MojeMiasto.Controllers
     {
         private ILogger<UsersController> _logger;
         private readonly MyDbContext _context;
-
         public UsersController(ILogger<UsersController> logger, MyDbContext context)
         {
             _logger = logger;
@@ -49,7 +48,7 @@ namespace MojeMiasto.Controllers
         [Route("district_id/{req_district_id}")]
         public List<User> GetByDistricts(int req_district_id)
         {
-            var users = _context.users.Where(x => x.city_id == req_district_id).ToList();
+            var users = _context.users.Where(x => x.district_id == req_district_id).ToList();
             return users;
         }
 
@@ -95,9 +94,6 @@ namespace MojeMiasto.Controllers
             }
         }
 
-
-
-
         [HttpPost]
         [Route("hash")]
         public string HashPassword([FromBody] string password)
@@ -129,7 +125,6 @@ namespace MojeMiasto.Controllers
                 await _context.SaveChangesAsync();
             }
         }
-
 
         [HttpDelete]
         [Route("delete/{req_id}")]

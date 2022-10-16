@@ -50,13 +50,21 @@
 
 
             <Button Command="{Binding GetUsersCommand}" Text="Zatwierdź"/>
-
+            <Label Text="{Binding str}"/>
 
             <CollectionView x:Name="Page" ItemsSource="{Binding Users}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
 
-                        <Label Text="{Binding name}"/>
+                        <Frame Margin="0" BackgroundColor="red" >
+                            <Frame CornerRadius="15" BackgroundColor="{StaticResource purple}">
+                                <StackLayout>
+
+                                    <Label Text="{Binding name}" FontSize="20" Padding="0" Margin="0"  TextColor="{StaticResource white}"/>
+                                    <Label Text="{Binding GetProfilePic}" FontSize="20" Padding="0" Margin="0"  TextColor="{StaticResource white}"/>
+                                </StackLayout>
+                            </Frame>
+                        </Frame>
 
                     </DataTemplate>
                 </CollectionView.ItemTemplate>

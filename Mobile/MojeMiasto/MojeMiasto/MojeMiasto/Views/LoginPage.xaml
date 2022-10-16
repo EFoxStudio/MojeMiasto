@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
              x:Class="MojeMiasto.Views.LoginPage"
-             BackgroundImage="Background.png">
+             BackgroundImage="Background.png"
+             NavigationPage.HasNavigationBar="False">
 
     <ContentPage.Content>
         <StackLayout>
@@ -12,8 +13,8 @@
 
 
             <!--Input menu and button-->
-            <Entry Text="{Binding Email, Mode=TwoWay}" Placeholder="Email"/>
-            <Entry Text="{Binding Password, Mode=TwoWay}" Placeholder="password" IsPassword="True"/>
+            <Entry Text="{Binding Email, Mode=TwoWay}" Placeholder="Email" ClearButtonVisibility="WhileEditing"/>
+            <Entry Text="{Binding Password, Mode=TwoWay}" Placeholder="password" IsPassword="True" ClearButtonVisibility="WhileEditing"/>
             <Button Command="{Binding LoginCommand}" Text="Login"/>
 
 

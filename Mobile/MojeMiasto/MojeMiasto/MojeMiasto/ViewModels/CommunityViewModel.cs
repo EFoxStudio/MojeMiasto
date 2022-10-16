@@ -13,12 +13,6 @@ namespace MojeMiasto.ViewModels
     internal partial class CommunityViewModel : BaseViewModel
     {
 
-        
-
-
-
-
-
         //Variable to get info from database
         Connection<User> con = new Connection<User>("https://api.efox.com.pl/mycity/");
 
@@ -41,11 +35,28 @@ namespace MojeMiasto.ViewModels
             if (city_id == 0)
                 return;
 
-            List<User> data = await con.GetList($"users/city_id/{city_id}");
-            if(data == null)
+            int district_id = Preferences.Get("city_id", 0);
+            if (district_id == 0)
                 return;
-            Users = new ObservableCollection<User>(data);
 
+            List<User> data;
+
+            if (selectedCity == true)
+                data = await con.GetList($"users/city_id/{city_id}");
+            else
+                data = await con.GetList($"users/district_id/{district_id}");
+
+            if (data == null)
+                return;
+
+            Users.Clear();
+            Users = new ObservableCollection<User>(data);
+        }
+
+
+        public string str()
+        {
+            return "asdfdasfa";
         }
 
 
