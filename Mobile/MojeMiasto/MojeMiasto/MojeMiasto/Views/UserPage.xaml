@@ -6,9 +6,87 @@
              Shell.NavBarIsVisible="False">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            
+            <!-- Header -->
+            <StackLayout Style="{StaticResource Header}">
+                <ImageButton Source="ArrowL.png" 
+                             Style="{StaticResource Header_Menu}"
+                             HeightRequest="40"
+                             Command="{Binding GoToRootCommand}"/>
+                <Label Text="Zlecenia w okolicy"
+                       Style="{StaticResource Header_Label}"/>
+                <ImageButton Style="{StaticResource Header_Profile}" Command="{Binding GoAccountCommand}">
+                    <ImageButton.Source>
+                        <UriImageSource
+                            Uri="{Binding UserIcon}"
+                            CacheValidity="0"
+                            CachingEnabled="False"/>
+                    </ImageButton.Source>
+                </ImageButton>
+            </StackLayout>
+
+            <Image>
+                <Image.Source>
+                    <UriImageSource
+                        Uri="{Binding User.iconUrl}"
+                        CacheValidity="0"
+                        CachingEnabled="False"/>
+                </Image.Source>
+            </Image>
+
+            <Frame>
+                <Label Text="{Binding User.name}" TextColor="{StaticResource black}"/>
+            </Frame>
+
+            <Frame>
+                <StackLayout>
+                    <Label Text="{Binding User.location}" TextColor="{StaticResource black}"/>
+                </StackLayout>
+            </Frame>
+
+            <Frame>
+                <StackLayout>
+                    <Label Text="Zrobione zlecenia" TextColor="{StaticResource black}"/>
+                    <Label Text="{Binding User.points}" TextColor="{StaticResource black}"/>
+                </StackLayout>
+            </Frame>
+
+            <Frame>
+                <StackLayout>
+                    <Label Text="Ogłoszone zlecenia" TextColor="{StaticResource black}"/>
+                    
+                        <CollectionView x:Name="Page" ItemsSource="{Binding User.quests}">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+
+                                    <Frame Margin="0" BackgroundColor="Transparent" >
+                                        <Frame CornerRadius="15" BackgroundColor="{StaticResource purple}">
+
+
+                                            <StackLayout>
+                                                <Label Text="{Binding name}" FontSize="25" Padding="0" Margin="0"  TextColor="{StaticResource white}"/>
+
+                                                    <Label Text="Utworzony: " FontSize="18" Padding="0" Margin="0"  TextColor="{StaticResource black}"/>
+                                                    <Label Text="{Binding end_date}" FontSize="18" Padding="0" Margin="0"  TextColor="{StaticResource black}"/>
+
+                                            </StackLayout>
+
+                                        <Frame.GestureRecognizers>
+                                                <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding 
+                                            Source={x:Reference Name=Page},
+                                            Path=BindingContext.GoToQuestCommand}"
+                                            CommandParameter="{Binding .}"/>
+                                            </Frame.GestureRecognizers>
+                                        </Frame>
+                                    </Frame>
+
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+
+                </StackLayout>
+            </Frame>
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

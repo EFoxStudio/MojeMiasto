@@ -23,8 +23,7 @@
 
             <Style x:Key="Header" TargetType="StackLayout">
                 <Setter Property="Orientation" Value="Horizontal"></Setter>
-                <Setter Property="HeightRequest" Value="120"></Setter>
-                <Setter Property="Margin" Value="0"></Setter>
+                <Setter Property="Margin" Value="0,0,0,10"></Setter>
                 <Setter Property="Padding" Value="25,25,25,0"></Setter>
                 <Setter Property="BackgroundColor" Value="Transparent"></Setter>
             </Style>
@@ -39,7 +38,7 @@
 
             <Style x:Key="Header_Label" TargetType="Label">
                 <Setter Property="TextColor" Value="{StaticResource white}"></Setter>
-                <Setter Property="FontSize" Value="30"></Setter>
+                <Setter Property="FontSize" Value="22"></Setter>
                 <Setter Property="Padding" Value="0,15,0,0"></Setter>
                 <Setter Property="WidthRequest" Value="150"></Setter>
                 <Setter Property="HorizontalTextAlignment" Value="Center"></Setter>
@@ -57,18 +56,30 @@
             </Style>
 
             <Style x:Key="Top_Button" TargetType="StackLayout">
-                <Setter Property="Margin" Value="0,0,0,0"></Setter>
+                <Setter Property="Margin" Value="0,0,0,10"></Setter>
+                <Setter Property="Padding" Value="0"></Setter>
+                <Setter Property="HeightRequest" Value="32"></Setter>
                 <Setter Property="BackgroundColor" Value="Transparent"></Setter>
-                <Setter Property="HeightRequest" Value="38"></Setter>
+                <Setter Property="VerticalOptions" Value="Start"></Setter>
             </Style>
             <Style x:Key="Top_Image" TargetType="StackLayout">
                 <Setter Property="WidthRequest" Value="90"></Setter>
-                <Setter Property="Margin" Value="0,0,0,0"></Setter>
+                <Setter Property="Margin" Value="0"></Setter>
+                <Setter Property="HeightRequest" Value="5"></Setter>
                 <Setter Property="HorizontalOptions" Value="FillAndExpand"></Setter>
-                <Setter Property="VerticalOptions" Value="StartAndExpand"></Setter>
+                <Setter Property="VerticalOptions" Value="EndAndExpand"></Setter>
             </Style>
 
-
+            <Style x:Key="Collection_Profile" TargetType="ImageButton">
+                <Setter Property="BackgroundColor" Value="Transparent"></Setter>
+                <Setter Property="WidthRequest" Value="60"></Setter>
+                <Setter Property="HeightRequest" Value="60"></Setter>
+                <Setter Property="HorizontalOptions" Value="Start"></Setter>
+                <Setter Property="CornerRadius" Value="100"></Setter>
+                <Setter Property="VerticalOptions" Value="CenterAndExpand"></Setter>
+                <Setter Property="Aspect" Value="AspectFill"></Setter>
+                <Setter Property="Margin" Value="0,0,10,0"></Setter>
+            </Style>
 
         </ResourceDictionary>        
     </Application.Resources>

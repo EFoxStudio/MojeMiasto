@@ -46,6 +46,8 @@ namespace MojeMiasto.ViewModels
             if (user.password == hashPass)
             {
                 Preferences.Set("user_id", user.id);
+                Preferences.Set("city_id", user.city_id);
+                Preferences.Set("district_id", user.district_id);
                 Application.Current.MainPage = new AppShell();
             }
             

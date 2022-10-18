@@ -1,6 +1,4 @@
-﻿using MojeMiasto.Models;
-using MojeMiasto.ViewModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,12 +10,11 @@ using Xamarin.Forms.Xaml;
 namespace MojeMiasto.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class UserPage : ContentPage
+    public partial class TakenQuestsPage : ContentPage
     {
-        public UserPage(UI_User user)
+        public TakenQuestsPage()
         {
             InitializeComponent();
-            BindingContext = new UserViewModel(user);
         }
     }
 }

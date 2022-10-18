@@ -6,7 +6,7 @@
        xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
        Title="MojeMiasto"
        x:Class="MojeMiasto.AppShell"
-       FlyoutBackgroundColor="{StaticResource grey}">
+       FlyoutBackgroundColor="{StaticResource black}">
 
 
 
@@ -25,18 +25,17 @@
             </Style>
             <Style TargetType="TabBar" BasedOn="{StaticResource BaseStyle}" />
             <Style TargetType="FlyoutItem" BasedOn="{StaticResource BaseStyle}" />
-            
-            
+
+
             <Style Class="FlyoutItemLabelStyle" TargetType="Label">
                 <Setter Property="TextColor" Value="{StaticResource white}"></Setter>
                 <Setter Property="FontFamily" Value="Comfortaa"></Setter>
                 <Setter Property="FontSize" Value="18"></Setter>
                 <Setter Property="Margin" Value="0" />
-                
-                
             </Style>
+            
             <Style Class="FlyoutItemLayoutStyle" TargetType="Layout" ApplyToDerivedTypes="True">
-                <Setter Property="Padding" Value="0" />
+                <Setter Property="IsClippedToBounds"  Value="True" />
                 <Setter Property="VisualStateManager.VisualStateGroups">
                     <VisualStateGroupList>
                         <VisualStateGroup x:Name="CommonStates">
@@ -56,6 +55,7 @@
                     </VisualStateGroupList>
                 </Setter>
             </Style>
+
             <Style Class="MenuItemLayoutStyle" TargetType="Layout" ApplyToDerivedTypes="True">
                 <Setter Property="VisualStateManager.VisualStateGroups">
                     <VisualStateGroupList>
@@ -75,7 +75,7 @@
 
     <Shell.FlyoutHeaderTemplate>
         <DataTemplate>
-            <StackLayout Orientation="Horizontal" Padding="15" BackgroundColor="{StaticResource black}" Margin="0,0,0,25">
+            <StackLayout Orientation="Horizontal" Padding="15" BackgroundColor="{StaticResource black}">
                 
                 <Frame HeightRequest="60" WidthRequest="60" BackgroundColor="Transparent">
                     <ImageButton HeightRequest="50" WidthRequest="50"
@@ -104,7 +104,7 @@
     <FlyoutItem Title="Przyjęte zlecenia">
         <ShellContent Route="UserQuestsPage" ContentTemplate="{DataTemplate local:UserQuestsPage}" />
     </FlyoutItem>
-    <FlyoutItem Title="Wiadomości">
+    <FlyoutItem Title="Twoje zlecenia">
         <ShellContent Route="ChatPage" ContentTemplate="{DataTemplate local:ChatPage}" />
     </FlyoutItem>
     <FlyoutItem Title="Społeczność">

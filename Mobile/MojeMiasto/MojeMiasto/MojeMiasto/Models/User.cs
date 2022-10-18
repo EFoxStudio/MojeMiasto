@@ -15,13 +15,5 @@ namespace MojeMiasto.Models
         public int district_id { get; set; }
         public int points { get; set; }
 
-
-        public async Task<string> GetProfilePic()
-        {
-            Connection<string> conn = new Connection<string>();
-            conn.AddHeader("ApiKey", "g84@RRGA%!bP8vNzK7p&uLXz&");
-
-            return await conn.Get($"users/icon/{ id }");
-        }
     }
 }

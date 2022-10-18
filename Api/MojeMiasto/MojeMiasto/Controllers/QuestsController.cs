@@ -26,6 +26,14 @@ namespace MojeMiasto.Controllers
         }
 
         [HttpGet]
+        [Route("user_id/{req_id}")]
+        public List<Quest> GetByUserId(int req_id)
+        {
+            var users = _context.quests.Where(x => x.user_id == req_id).ToList();
+            return users;
+        }
+
+        [HttpGet]
         [Route("city_id/{req_city_id}")]
         public List<Quest> GetByCity(int req_city_id)
         {

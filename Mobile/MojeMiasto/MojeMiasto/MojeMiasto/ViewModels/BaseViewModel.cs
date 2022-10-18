@@ -15,6 +15,9 @@ namespace MojeMiasto.ViewModels
     //Usable items for everything
     public partial class BaseViewModel : ObservableObject
     {
+        [ObservableProperty]
+        public bool isBusy;
+
         public bool selectedCity;
 
         [ObservableProperty]
@@ -80,6 +83,8 @@ namespace MojeMiasto.ViewModels
             DistrictColor = "#FFFCF2";
             CityColor = "#8537f0";
             selectedCity = true;
+            IsBusy = false;
+            IsBusy = true;
         }
 
         [RelayCommand]
@@ -88,7 +93,8 @@ namespace MojeMiasto.ViewModels
             DistrictColor = "#8537f0";
             CityColor = "#FFFCF2";
             selectedCity = false;
-
+            IsBusy = false;
+            IsBusy = true;
         }
 
 
