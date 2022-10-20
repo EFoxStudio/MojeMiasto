@@ -16,7 +16,7 @@ namespace MojeMiasto.Views
         public UserQuestsPage()
         {
             InitializeComponent();
-            BindingContext = new QuestsViewModel();
+            BindingContext = new QuestViewModel();
         }
     }
 }

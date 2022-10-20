@@ -6,6 +6,8 @@ namespace MojeMiasto.Models
 {
     public class User
     {
+        internal string user;
+
         [Key]
         public int id { get; set; }
         public string name { get; set; }
