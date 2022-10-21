@@ -14,9 +14,6 @@ namespace MojeMiasto.ViewModels
 {
     public partial class LocationViewModel : BaseViewModel
     {
-        Connection<City> citiesConn = new Connection<City>("https://api.efox.com.pl/mycity/");
-        Connection<District> districtsConn = new Connection<District>("https://api.efox.com.pl/mycity/");
-        Connection<User> userConn = new Connection<User>("https://api.efox.com.pl/mycity/");
 
         [ObservableProperty]
         string cityEntry;
@@ -42,13 +39,6 @@ namespace MojeMiasto.ViewModels
         [ObservableProperty]
         ObservableCollection<District> districts;
 
-        public LocationViewModel()
-        {
-            citiesConn.AddHeader("ApiKey", "g84@RRGA%!bP8vNzK7p&uLXz&");
-            userConn.AddHeader("ApiKey", "g84@RRGA%!bP8vNzK7p&uLXz&");
-            districtsConn.AddHeader("ApiKey", "g84@RRGA%!bP8vNzK7p&uLXz&");
-        }
-
         [RelayCommand]
         public void GoToRoot()
         {
@@ -61,7 +51,7 @@ namespace MojeMiasto.ViewModels
             NewCityVis = false;
             CityCollectionVis = true;
 
-            List<City> citiesList = await citiesConn.GetList($"cities/search/{ CityEntry }");
+            List<City> citiesList = await cityConn.GetList($"cities/search/{ CityEntry }");
             if(citiesList == null || citiesList.Count == 0)
             {
                 NewCityVis = true;
@@ -83,7 +73,7 @@ namespace MojeMiasto.ViewModels
             if (city_id == 0)
                 return;
 
-            List<District> districtsList = await districtsConn.GetList($"districts/city_id/{ city_id }/search/{ DistrictEntry }");
+            List<District> districtsList = await districtConn.GetList($"districts/city_id/{ city_id }/search/{ DistrictEntry }");
 
             if (districtsList == null || districtsList.Count == 0)
             {
@@ -156,7 +146,7 @@ namespace MojeMiasto.ViewModels
                 name = CityEntry
             };
 
-            citiesConn.Post("cities", city);
+            cityConn.Post("cities", city);
             SetCity(city);
         }
 
@@ -178,7 +168,7 @@ namespace MojeMiasto.ViewModels
                 city_id = city_id
             };
 
-            districtsConn.Post("districts", district);
+            districtConn.Post("districts", district);
 
             SetDistrict(district);
 

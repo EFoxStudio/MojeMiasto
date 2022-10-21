@@ -14,15 +14,6 @@ namespace MojeMiasto.ViewModels
     public partial class LoginViewModel : BaseViewModel
     {
 
-        //Create a variable to be referenced with the base
-        Connection<User> conn = new Connection<User>("https://api.efox.com.pl/mycity/");
-        Connection<string> str_conn = new Connection<string>("https://api.efox.com.pl/mycity/");
-
-        public LoginViewModel()
-        {
-            conn.AddHeader("ApiKey", "g84@RRGA%!bP8vNzK7p&uLXz&");
-            str_conn.AddHeader("ApiKey", "g84@RRGA%!bP8vNzK7p&uLXz&");
-        }
 
         //Create a varible email
         [ObservableProperty]
@@ -35,13 +26,13 @@ namespace MojeMiasto.ViewModels
         [RelayCommand]
         public async void Login()
         {
-            User user = await conn.Get($"users/email/{ Email }");
+            User user = await userConn.Get($"users/email/{ Email }");
 
             //Function for not receiving data
             if (user == default(User))
                 return;
 
-            string hashPass = await str_conn.PostWithReturn($"users/hash", Password);
+            string hashPass = await stringConn.PostWithReturn($"users/hash", Password);
 
             if (user.password == hashPass)
             {

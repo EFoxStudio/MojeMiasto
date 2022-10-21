@@ -8,10 +8,11 @@
         <StackLayout>
             <!-- Header -->
             <StackLayout Style="{StaticResource Header}">
-                <ImageButton Source="menu.png" 
+                <ImageButton Source="ArrowL.png" 
                              Style="{StaticResource Header_Menu}"
-                             Command="{Binding OpenMenuCommand}"/>
-                <Label Text="Zlecenia w okolicy"
+                             HeightRequest="40"
+                             Command="{Binding GoBackCommand}"/>
+                <Label Text="Zlecenie"
                        Style="{StaticResource Header_Label}"/>
                 <ImageButton Style="{StaticResource Header_Profile}" Command="{Binding GoAccountCommand}">
                     <ImageButton.Source>
@@ -21,10 +22,62 @@
                             CachingEnabled="False"/>
                     </ImageButton.Source>
                 </ImageButton>
-            </StackLayout >
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            </StackLayout>
+
+            <StackLayout>
+                <RefreshView Command="{Binding RefreshCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
+                    <StackLayout>
+
+                        <Frame>
+                            <StackLayout>
+                                <Label Text="{Binding Quest.name}"/>
+
+                                <Label Text="opis"/>
+                                <Label Text="{Binding Quest.description}"/>
+
+                                <Label Text="{Binding Quest.location}"/>
+
+                                <Label Text="data zlecenia"/>
+                                <Label Text="{Binding Quest.create_date}"/>
+
+                                <Label Text="data wygaśnięcia"/>
+                                <Label Text="{Binding Quest.end_date}"/>
+                            </StackLayout>
+                        </Frame>
+
+                        <Frame>
+                            <StackLayout>
+
+                                <Label Text="zatrudniony"/>
+                                <Label Text="{Binding Quest.hired.name}"/>
+                            </StackLayout>
+                            <Frame.Triggers>
+                                <DataTrigger TargetType="Frame"
+                                             Binding="{Binding Quest.hired_id}" Value="0">
+                                    <Setter Property="IsVisible" Value="false" />
+                                </DataTrigger>
+                            </Frame.Triggers>
+                        </Frame>
+
+
+
+                        <Frame>
+                            <StackLayout>
+                                <Button Text="przyjmij zlecenie" Command="{Binding HireCommand}"/>
+                            </StackLayout>
+                            <Frame.Triggers>
+                                <DataTrigger TargetType="Frame"
+                                             Binding="{Binding Quest.isHired}" Value="true">
+                                    <Setter Property="IsVisible" Value="false"/>
+                                </DataTrigger>
+                            </Frame.Triggers>
+                        </Frame>
+
+
+
+                    </StackLayout>
+                </RefreshView>
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -1,12 +1,81 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MojeMiasto.Views.TakenQuestsPage">
+             x:Class="MojeMiasto.Views.TakenQuestsPage"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             BackgroundImage="Background.png"
+             Shell.NavBarIsVisible="False">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <!-- Header -->
+            <StackLayout Style="{StaticResource Header}">
+                <ImageButton Source="menu.png" 
+                             Style="{StaticResource Header_Menu}"
+                             Command="{Binding OpenMenuCommand}"/>
+                <Label Text="Przyjęte zlecenia"
+                       Style="{StaticResource Header_Label}"/>
+                <ImageButton Style="{StaticResource Header_Profile}" Command="{Binding GoAccountCommand}">
+                    <ImageButton.Source>
+                        <UriImageSource
+                            Uri="{Binding UserIcon}"
+                            CacheValidity="0"
+                            CachingEnabled="False"/>
+                    </ImageButton.Source>
+                </ImageButton>
+            </StackLayout >
+            <!-- Top_Buttons -->
+            <StackLayout Orientation="Horizontal" Margin="0,0,0,20">
+
+                <StackLayout HorizontalOptions="StartAndExpand" Margin="50,0,0,0">
+                    <Button Text="Dzielnica"
+                            TextColor="{Binding DistrictColor}"
+                            Style="{StaticResource Top_Button}"
+                            Command="{Binding ChoseDistrictCommand}"/>
+                    <Image Source="Line.png"
+                           Style="{StaticResource Top_Image}"
+                           xct:IconTintColorEffect.TintColor="{Binding DistrictColor}"/>
+                </StackLayout>
+
+
+                <StackLayout HorizontalOptions="EndAndExpand" Margin="0,0,70,0">
+                    <Button Text="Miasto" 
+                            Style="{StaticResource Top_Button}"
+                            TextColor="{Binding CityColor}"
+                            Command="{Binding ChoseCityCommand}"/>
+                    <Image Source="Line.png" 
+                           Style="{StaticResource Top_Image}"
+                           xct:IconTintColorEffect.TintColor="{Binding CityColor}"/>
+                </StackLayout>
+            </StackLayout>
+
+            <RefreshView Command="{Binding GetQuestsCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
+                <CollectionView x:Name="Page" ItemsSource="{Binding Quests}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+
+                            <Frame Margin="0" BackgroundColor="Transparent" >
+                                <Frame CornerRadius="15" BackgroundColor="{StaticResource purple}">
+                                    <StackLayout Orientation="Horizontal">
+
+                                        <StackLayout>
+                                            <Label Text="{Binding name}" FontSize="25" Padding="0" Margin="0"  TextColor="{StaticResource white}"/>
+                                            <Label Text="{Binding user.name}" FontSize="18" Padding="0" Margin="0"  TextColor="{StaticResource black}"/>
+                                        </StackLayout>
+                                    </StackLayout>
+                                    <Frame.GestureRecognizers>
+                                        <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding 
+                                            Source={x:Reference Name=Page},
+                                            Path=BindingContext.GoToQuestCommand}"
+                                            CommandParameter="{Binding .}"/>
+                                    </Frame.GestureRecognizers>
+                                </Frame>
+                            </Frame>
+
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </RefreshView>
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

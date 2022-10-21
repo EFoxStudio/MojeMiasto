@@ -1,21 +1,19 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using System;
+using System.Collections.Generic;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using EFox.ApiConnection.Toolkit;
 using MojeMiasto.Models;
 using MojeMiasto.Views;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
 using Xamarin.Essentials;
 using Xamarin.Forms;
-
 namespace MojeMiasto.ViewModels
 {
-    internal partial class QuestViewModel : BaseViewModel
+    public partial class TakenQuestsViewModel : BaseViewModel
     {
-
-        public QuestViewModel()
+        public TakenQuestsViewModel()
         {
             IsBusy = true;
         }
@@ -29,6 +27,13 @@ namespace MojeMiasto.ViewModels
         {
             IsBusy = true;
             Quests.Clear();
+
+            int user_id = Preferences.Get("user_id", 0);
+            if (user_id == 0)
+            {
+                IsBusy = false;
+                return;
+            }
 
             int city_id = Preferences.Get("city_id", 0);
             if (city_id == 0)
@@ -47,9 +52,9 @@ namespace MojeMiasto.ViewModels
             List<Quest> data;
 
             if (selectedCity == true)
-                data = await questConn.GetList($"quests/city_id/{city_id}");
+                data = await questConn.GetList($"quests/city_id/{city_id}/hired_id/{user_id}");
             else
-                data = await questConn.GetList($"quests/district_id/{district_id}");
+                data = await questConn.GetList($"quests/district_id/{district_id}/hired_id/{user_id}");
 
             if (data == null || data.Count == 0)
             {
@@ -65,7 +70,5 @@ namespace MojeMiasto.ViewModels
             IsBusy = false;
 
         }
-
     }
-
 }

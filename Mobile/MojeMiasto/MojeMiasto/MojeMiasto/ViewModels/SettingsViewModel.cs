@@ -18,12 +18,6 @@ namespace MojeMiasto.ViewModels
 {
     internal partial class SettingsViewModel : BaseViewModel
     {
-        
-        public SettingsViewModel()
-        {
-            //conn.AddHeader("ApiKey", "g84@RRGA%!bP8vNzK7p&uLXz&");
-        }
-
 
         [RelayCommand]
         async void GetImage()
@@ -36,7 +30,6 @@ namespace MojeMiasto.ViewModels
             if(result == null)
                 return;
 
-            //var stream = await result.OpenReadAsync();
 
             int user_id = Preferences.Get("user_id", 0);
             if (user_id == 0)
@@ -60,7 +53,7 @@ namespace MojeMiasto.ViewModels
         [RelayCommand]
         void GoLocation()
         {
-            Shell.Current.GoToAsync(nameof(LocationPage));
+            Shell.Current.Navigation.PushAsync(new LocationPage());
         }
 
         [RelayCommand]

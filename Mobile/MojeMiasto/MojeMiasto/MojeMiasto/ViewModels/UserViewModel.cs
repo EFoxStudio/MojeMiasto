@@ -22,12 +22,5 @@ namespace MojeMiasto.ViewModels
         {
             Shell.Current.Navigation.PopToRootAsync();
         }
-
-        [RelayCommand]
-        public void GoToQuest(Quest data)
-        {
-            //Shell.Current.Navigation.PushAsync(new DetailQuestPage(data));
-        }
-
     }
 }

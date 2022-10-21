@@ -102,10 +102,10 @@
         <ShellContent Route="QuestsPage" ContentTemplate="{DataTemplate local:QuestsPage}" />
     </FlyoutItem>
     <FlyoutItem Title="Przyjęte zlecenia">
-        <ShellContent Route="UserQuestsPage" ContentTemplate="{DataTemplate local:UserQuestsPage}" />
+        <ShellContent Route="TakenQuestsPage" ContentTemplate="{DataTemplate local:TakenQuestsPage}" />
     </FlyoutItem>
     <FlyoutItem Title="Twoje zlecenia">
-        <ShellContent Route="ChatPage" ContentTemplate="{DataTemplate local:ChatPage}" />
+        <ShellContent Route="UserQuestsPage" ContentTemplate="{DataTemplate local:UserQuestsPage}" />
     </FlyoutItem>
     <FlyoutItem Title="Społeczność">
         <ShellContent Route="CommunityPage" ContentTemplate="{DataTemplate local:CommunityPage}" />

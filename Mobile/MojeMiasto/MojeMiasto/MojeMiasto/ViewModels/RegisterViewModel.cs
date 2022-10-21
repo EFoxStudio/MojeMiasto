@@ -13,15 +13,7 @@ namespace MojeMiasto.ViewModels
 {
     public partial class RegisterViewModel : BaseViewModel
     {
-        //Create a variable to be referenced with the base
-        Connection<User> conn = new Connection<User>("https://api.efox.com.pl/mycity/");
-        Connection<string> str_conn = new Connection<string>("https://api.efox.com.pl/mycity/");
-
-        public RegisterViewModel()
-        {
-            conn.AddHeader("ApiKey", "g84@RRGA%!bP8vNzK7p&uLXz&");
-            str_conn.AddHeader("ApiKey", "g84@RRGA%!bP8vNzK7p&uLXz&");
-        }
+        
 
 
         [ObservableProperty]
@@ -95,7 +87,7 @@ namespace MojeMiasto.ViewModels
 
             // Connecting with database to validate the data
 
-            User user = await conn.Get($"users/email/{Email}");
+            User user = await userConn.Get($"users/email/{Email}");
 
             //Function for not receiving data
             if (user != default(User))
@@ -112,9 +104,9 @@ namespace MojeMiasto.ViewModels
                 password = Password
             };
 
-            if (await conn.Post("users", data))
+            if (await userConn.Post("users", data))
             {
-                Application.Current.MainPage.Navigation.PopAsync();
+                await Application.Current.MainPage.Navigation.PopAsync();
             }
 
 

@@ -25,14 +25,14 @@
                 </ImageButton>
             </StackLayout >
             <!-- Top_Buttons -->
-            <StackLayout Orientation="Horizontal">
+            <StackLayout Orientation="Horizontal" Margin="0,0,0,20">
 
                 <StackLayout HorizontalOptions="StartAndExpand" Margin="50,0,0,0">
                     <Button Text="Dzielnica"
                             TextColor="{Binding DistrictColor}"
                             Style="{StaticResource Top_Button}"
                             Command="{Binding ChoseDistrictCommand}"/>
-                    <Image Source="Line.png" 
+                    <Image Source="Line.png"
                            Style="{StaticResource Top_Image}"
                            xct:IconTintColorEffect.TintColor="{Binding DistrictColor}"/>
                 </StackLayout>
@@ -49,11 +49,34 @@
                 </StackLayout>
             </StackLayout>
 
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" 
-                FontFamily="Comfortaa"/>
-            
+            <RefreshView Command="{Binding GetQuestsCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
+                <CollectionView x:Name="Page" ItemsSource="{Binding Quests}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+
+                            <Frame Margin="0" BackgroundColor="Transparent" Padding="20,10,20,10">
+                                <Frame CornerRadius="10" BackgroundColor="{StaticResource purple}">
+                                    <StackLayout Orientation="Horizontal">
+
+                                        <StackLayout>
+                                            <Label Text="{Binding name}" FontSize="25" Padding="0" Margin="0"  TextColor="{StaticResource white}"/>
+                                            <Label Text="{Binding user.name}" FontSize="18" Padding="0" Margin="0"  TextColor="{StaticResource black}"/>
+                                        </StackLayout>
+                                    </StackLayout>
+                                    <Frame.GestureRecognizers>
+                                        <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding 
+                                            Source={x:Reference Name=Page},
+                                            Path=BindingContext.GoToQuestCommand}"
+                                            CommandParameter="{Binding .}"/>
+                                    </Frame.GestureRecognizers>
+                                </Frame>
+                            </Frame>
+
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </RefreshView>
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

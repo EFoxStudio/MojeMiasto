@@ -12,23 +12,33 @@ using Xamarin.Forms;
 
 namespace MojeMiasto.ViewModels
 {
-    internal partial class QuestViewModel : BaseViewModel
+    public partial class UserQuestsViewModel : BaseViewModel
     {
+       
 
-        public QuestViewModel()
+        public UserQuestsViewModel()
         {
             IsBusy = true;
         }
 
 
+
+        //List to store users
         [ObservableProperty]
-        ObservableCollection<UI_Quest> quests = new ObservableCollection<UI_Quest>();
+        ObservableCollection<UI_Quest> userQuests = new ObservableCollection<UI_Quest>();
 
         [RelayCommand]
         public async void GetQuests()
         {
             IsBusy = true;
-            Quests.Clear();
+            UserQuests.Clear();
+
+            int user_id = Preferences.Get("user_id", 0);
+            if (user_id == 0)
+            {
+                IsBusy = false;
+                return;
+            }
 
             int city_id = Preferences.Get("city_id", 0);
             if (city_id == 0)
@@ -47,9 +57,9 @@ namespace MojeMiasto.ViewModels
             List<Quest> data;
 
             if (selectedCity == true)
-                data = await questConn.GetList($"quests/city_id/{city_id}");
+                data = await questConn.GetList($"quests/city_id/{city_id}/user_id/{user_id}");
             else
-                data = await questConn.GetList($"quests/district_id/{district_id}");
+                data = await questConn.GetList($"quests/district_id/{district_id}/user_id/{user_id}");
 
             if (data == null || data.Count == 0)
             {
@@ -59,13 +69,11 @@ namespace MojeMiasto.ViewModels
 
             foreach (Quest current in data)
             {
-                Quests.Add(await QuestToUI(current));
+                UserQuests.Add(await QuestToUI(current));
             }
 
             IsBusy = false;
 
         }
-
     }
-
 }

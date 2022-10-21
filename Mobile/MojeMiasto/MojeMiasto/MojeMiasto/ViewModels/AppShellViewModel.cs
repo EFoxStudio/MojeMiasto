@@ -13,10 +13,6 @@ namespace MojeMiasto.ViewModels
 {
     internal partial class AppShellViewModel : BaseViewModel
     {
-
-        Connection<User> userConn = new Connection<User>("https://api.efox.com.pl/mycity/");
-        Connection<City> cityConn = new Connection<City>("https://api.efox.com.pl/mycity/");
-
         [ObservableProperty]
         string userCity;
 
@@ -25,8 +21,6 @@ namespace MojeMiasto.ViewModels
 
         public AppShellViewModel()
         {
-            userConn.AddHeader("ApiKey", "g84@RRGA%!bP8vNzK7p&uLXz&");
-            cityConn.AddHeader("ApiKey", "g84@RRGA%!bP8vNzK7p&uLXz&");
             OnAppearing();
         }
         
@@ -60,7 +54,7 @@ namespace MojeMiasto.ViewModels
         public void GoSettings()
         {
             Shell.Current.FlyoutIsPresented = false;
-            Shell.Current.GoToAsync(nameof(SettingsPage));
+            GoAccount();
         }
 
     }

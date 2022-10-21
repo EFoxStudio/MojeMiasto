@@ -13,13 +13,13 @@ namespace MojeMiasto.ViewModels
         [RelayCommand]
         public async void GoRegister()
         {
-            Application.Current.MainPage.Navigation.PushAsync(new RegisterPage(), false);
+            await Application.Current.MainPage.Navigation.PushAsync(new RegisterPage(), false);
         }
 
         [RelayCommand]
         public async void GoLogin()
         {
-            Application.Current.MainPage.Navigation.PushAsync(new LoginPage(), false);
+            await Application.Current.MainPage.Navigation.PushAsync(new LoginPage(), false);
         }
     }
 }
