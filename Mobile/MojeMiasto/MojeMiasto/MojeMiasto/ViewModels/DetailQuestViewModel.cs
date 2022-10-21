@@ -36,7 +36,14 @@ namespace MojeMiasto.ViewModels
         }
 
 
-
+        [RelayCommand]
+        public async void Done()
+        {
+            Quest quest = UIToQuest(Quest);
+            quest.done = true;
+            await questConn.Put("quests", quest);
+            Refresh();
+        }
 
 
 

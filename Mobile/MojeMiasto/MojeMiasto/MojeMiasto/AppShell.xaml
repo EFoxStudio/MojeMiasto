@@ -110,6 +110,9 @@
     <FlyoutItem Title="Społeczność">
         <ShellContent Route="CommunityPage" ContentTemplate="{DataTemplate local:CommunityPage}" />
     </FlyoutItem>
+    <FlyoutItem Title="NewQuestPage">
+        <ShellContent Route="NewQuestPage" ContentTemplate="{DataTemplate local:NewQuestPage}" />
+    </FlyoutItem>
 
 
     <Shell.FlyoutFooterTemplate>

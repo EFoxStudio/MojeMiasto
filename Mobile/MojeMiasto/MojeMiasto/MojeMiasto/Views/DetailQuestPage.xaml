@@ -73,6 +73,18 @@
                             </Frame.Triggers>
                         </Frame>
 
+                        <Frame>
+                            <StackLayout>
+                                <Button Text="Zrobione" Command="{Binding DoneCommand}"/>
+                            </StackLayout>
+                            <Frame.Triggers>
+                                <DataTrigger TargetType="Frame"
+                                             Binding="{Binding Quest.hired_id}" Value="{Binding User_id}">
+                                    <Setter Property="IsVisible" Value="false"/>
+                                </DataTrigger>
+                            </Frame.Triggers>
+                        </Frame>
+
 
 
                     </StackLayout>
