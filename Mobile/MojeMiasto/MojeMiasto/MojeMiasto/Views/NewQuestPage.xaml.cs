@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MojeMiasto.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,20 @@ namespace MojeMiasto.Views
         public NewQuestPage()
         {
             InitializeComponent();
+            BindingContext = new NewQuestViewModel();
         }
+
+        public void OnCheck(object sender, CheckedChangedEventArgs e)
+        {
+            bool check = false;
+            check = e.Value;
+        }
+
+        void OnDateSelected(object sender, DateChangedEventArgs args)
+        {
+            string startDate = startDatePicker.Date.ToString();
+            string endDate = endDatePicker.Date.ToString();
+        }
+
     }
 }
