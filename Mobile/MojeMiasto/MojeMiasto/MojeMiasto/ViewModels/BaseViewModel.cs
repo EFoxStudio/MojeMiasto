@@ -141,7 +141,8 @@ namespace MojeMiasto.ViewModels
             else
                 hiredData = await userConn.Get($"users/id/{data.hired_id}");
 
-
+            UI_User uiUserData = await UserToUI(userData);
+            UI_User uiHiredData = await UserToUI(hiredData);
 
 
             return new UI_Quest
@@ -150,14 +151,14 @@ namespace MojeMiasto.ViewModels
                 name = data.name,
                 description = data.description,
                 user_id = data.user_id,
-                user = userData,
+                user = uiUserData,
                 city_id = data.city_id,
                 city = cityData.name,
                 district_id = data.district_id,
                 district = districtData.name,
                 isHired = IsHired,
                 hired_id = data.hired_id,
-                hired = hiredData,
+                hired = uiHiredData,
                 create_date = data.create_date,
                 end_date = data.end_date,
                 location = $"{FirstLetterToUpper(cityData.name)}, {FirstLetterToUpper(districtData.name)}"
