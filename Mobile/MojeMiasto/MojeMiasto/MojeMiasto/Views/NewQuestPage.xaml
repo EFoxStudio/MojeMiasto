@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:system="clr-namespace:System;assembly=mscorlib"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MojeMiasto.Views.NewQuestPage">
     <ContentPage.Content>
@@ -7,15 +8,15 @@
 
             <Entry Text="{Binding Name, Mode=TwoWay}" Placeholder="Nazwa" ClearButtonVisibility="WhileEditing"/>
             <Entry Text="{Binding Description, Mode=TwoWay}" Placeholder="Opis" ClearButtonVisibility="WhileEditing"/>
-            <Label Text="Czy miasto?"/>
-            <CheckBox CheckedChanged="OnCheck" IsChecked="false"/>
+            <Label Text="Czy pokazać w całym mieście?"/>
+            <CheckBox IsChecked="{Binding IsChecked}"/>
             <Label x:Name="resultLabel"/>
 
             <Label Text="Data rozpoczęcia:" />
-            <DatePicker x:Name="startDatePicker" Format="D" DateSelected="OnDateSelected" />
+            <DatePicker x:Name="MyDatePicker" Format="D" Date="{Binding StartDate}" MinimumDate="{x:Static system:DateTime.Today}" />
 
             <Label Text="End Date:" />
-            <DatePicker x:Name="endDatePicker" MinimumDate="{Binding Source={x:Reference startDatePicker},Path=Date}" Format="D" DateSelected="OnDateSelected" />
+            <DatePicker x:Name="endDatePicker" Date="{Binding EndDate}" MinimumDate="{Binding StartDate}" Format="D" />
 
             <Label Text="{Binding Error}"/>
             <Button Command="{Binding SubmitCommand}" Text="Dodaj"/>

@@ -19,17 +19,8 @@ namespace MojeMiasto.Views
             BindingContext = new NewQuestViewModel();
         }
 
-        public void OnCheck(object sender, CheckedChangedEventArgs e)
-        {
-            bool check = false;
-            check = e.Value;
-        }
 
-        void OnDateSelected(object sender, DateChangedEventArgs args)
-        {
-            string startDate = startDatePicker.Date.ToString();
-            string endDate = endDatePicker.Date.ToString();
-        }
+        
 
     }
 }
