@@ -22,6 +22,7 @@ namespace MojeMiasto.ViewModels
         [ObservableProperty]
         DateTime startDate;
 
+        // w pliku xaml trzeba zmienic bo wyswitla na poczatku w End Date 01.01.1990a dopiero po wybraniu Start Date wyswitla minimalna date 
         [ObservableProperty]
         DateTime endDate;
 

@@ -13,10 +13,10 @@
             <Label x:Name="resultLabel"/>
 
             <Label Text="Data rozpoczęcia:" />
-            <DatePicker x:Name="MyDatePicker" Format="D" Date="{Binding StartDate}" MinimumDate="{x:Static system:DateTime.Today}" />
+            <DatePicker x:Name="MyDatePicker" Format="D" MinimumDate="{x:Static system:DateTime.Today}" Date="{Binding StartDate}" />
 
             <Label Text="End Date:" />
-            <DatePicker x:Name="endDatePicker" Date="{Binding EndDate}" MinimumDate="{Binding StartDate}" Format="D" />
+            <DatePicker x:Name="endDatePicker" MinimumDate="{Binding StartDate}" Date="{Binding EndDate}" Format="D" />
 
             <Label Text="{Binding Error}"/>
             <Button Command="{Binding SubmitCommand}" Text="Dodaj"/>
