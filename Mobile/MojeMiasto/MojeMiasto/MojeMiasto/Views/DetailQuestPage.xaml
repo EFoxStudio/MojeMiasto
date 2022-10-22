@@ -23,41 +23,109 @@
                     </ImageButton.Source>
                 </ImageButton>
             </StackLayout>
+            <ScrollView>
+                <StackLayout>
 
-            <StackLayout>
-                <RefreshView Command="{Binding RefreshCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
                     <StackLayout>
+                        <Label Text="{Binding Quest.name}" Margin="0,30,0,0" TextColor="{StaticResource white}" FontSize="28" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center"/>
+                        <Frame BackgroundColor="{StaticResource purple}" CornerRadius="15" Padding="350,7,0,0" VerticalOptions="Start" HorizontalOptions="CenterAndExpand" ></Frame>
+                        <Label FontSize="18" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" TextColor="{StaticResource white}">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="wygaśnie: " />
+                                    <Span Text="{Binding Quest.end_date}" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
 
-                        <Frame>
-                            <StackLayout>
-                                <Label Text="{Binding Quest.name}"/>
 
-                                <Label Text="opis"/>
-                                <Label Text="{Binding Quest.description}"/>
-
-                                <Label Text="{Binding Quest.location}"/>
-
-                                <Label Text="data zlecenia"/>
-                                <Label Text="{Binding Quest.create_date}"/>
-
-                                <Label Text="data wygaśnięcia"/>
-                                <Label Text="{Binding Quest.end_date}"/>
-                            </StackLayout>
+                        <Frame BackgroundColor="Transparent">
+                            <Frame BackgroundColor="{StaticResource purple}" CornerRadius="10" WidthRequest="250" HorizontalOptions="CenterAndExpand">
+                                <StackLayout>
+                                    <Label Text="Opis" TextColor="{StaticResource white}" HorizontalOptions="CenterAndExpand" FontSize="25"/>
+                                    <Label Text="{Binding Quest.description}" TextColor="{StaticResource black}" HorizontalOptions="CenterAndExpand" FontSize="18"/>
+                                </StackLayout>
+                            </Frame>
                         </Frame>
 
-                        <Frame>
-                            <StackLayout>
+                        <Frame BackgroundColor="Transparent">
+                            <Frame BackgroundColor="{StaticResource purple}" CornerRadius="10" WidthRequest="250" HorizontalOptions="CenterAndExpand">
+                                <StackLayout>
+                                    <Label Text="Lokalizacja" TextColor="{StaticResource white}" HorizontalOptions="CenterAndExpand" FontSize="25"/>
+                                    <Label Text="{Binding Quest.location}" TextColor="{StaticResource black}" HorizontalOptions="CenterAndExpand" FontSize="18"/>
+                                </StackLayout>
+                            </Frame>
+                        </Frame>
 
-                                <Label Text="zatrudniony"/>
-                                <Label Text="{Binding Quest.hired.name}"/>
-                            </StackLayout>
+
+                        <Frame Margin="0" BackgroundColor="Transparent" Padding="20,10,20,10">
+                            <Frame CornerRadius="10" BackgroundColor="{StaticResource purple}">
+                                <StackLayout>
+                                
+                                    <Label Text="Zleceniodawca" TextColor="{StaticResource black}" HorizontalOptions="CenterAndExpand" FontSize="25"/>
+                                    <StackLayout Orientation="Horizontal">
+                            
+                                        <ImageButton Style="{StaticResource Collection_Profile}"
+                                                             Command="{Binding GoToUserCommand}"
+                                                             CommandParameter="{Binding Quest.user}">
+                                            <ImageButton.Source>
+                                                <UriImageSource
+                                                                Uri="{Binding Quest.user.iconUrl}"
+                                                                CacheValidity="0"
+                                                                CachingEnabled="False"/>
+                                            </ImageButton.Source>
+                                        </ImageButton>
+
+                                        <StackLayout>
+                                            <Label Text="{Binding Quest.user.name}" FontSize="25" Padding="0" Margin="0"  TextColor="{StaticResource white}"/>
+                                            <Label Text="{Binding Quest.user.location}" FontSize="18" Padding="0" Margin="0"  TextColor="{StaticResource black}"/>
+                                        </StackLayout>
+                                    </StackLayout>
+                                </StackLayout>
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding GoToUserCommand}"
+                                                         CommandParameter="{Binding Quest.user}"/>
+                                </Frame.GestureRecognizers>
+                            </Frame>
+                        </Frame>
+
+                        <Frame Margin="0" BackgroundColor="Transparent" Padding="20,10,20,10">
+                            <Frame CornerRadius="10" BackgroundColor="{StaticResource purple}">
+                                <StackLayout>
+
+                                    <Label Text="Zlecenie wykonuje" TextColor="{StaticResource black}" HorizontalOptions="CenterAndExpand" FontSize="25"/>
+                                    <StackLayout Orientation="Horizontal">
+
+                                        <ImageButton Style="{StaticResource Collection_Profile}"
+                                                             Command="{Binding GoToUserCommand}"
+                                                             CommandParameter="{Binding Quest.hired}">
+                                            <ImageButton.Source>
+                                                <UriImageSource
+                                                                Uri="{Binding Quest.hired.iconUrl}"
+                                                                CacheValidity="0"
+                                                                CachingEnabled="False"/>
+                                            </ImageButton.Source>
+                                        </ImageButton>
+
+                                        <StackLayout>
+                                            <Label Text="{Binding Quest.hired.name}" FontSize="25" Padding="0" Margin="0"  TextColor="{StaticResource white}"/>
+                                            <Label Text="{Binding Quest.hired.location}" FontSize="18" Padding="0" Margin="0"  TextColor="{StaticResource black}"/>
+                                        </StackLayout>
+                                    </StackLayout>
+                                </StackLayout>
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding GoToUserCommand}"
+                                                         CommandParameter="{Binding Quest.user}"/>
+                                </Frame.GestureRecognizers>
+                            </Frame>
                             <Frame.Triggers>
                                 <DataTrigger TargetType="Frame"
-                                             Binding="{Binding Quest.hired_id}" Value="0">
+                                                 Binding="{Binding Quest.hired_id}" Value="0">
                                     <Setter Property="IsVisible" Value="false" />
                                 </DataTrigger>
                             </Frame.Triggers>
                         </Frame>
+
 
 
 
@@ -67,29 +135,61 @@
                             </StackLayout>
                             <Frame.Triggers>
                                 <DataTrigger TargetType="Frame"
-                                             Binding="{Binding Quest.isHired}" Value="true">
+                                                 Binding="{Binding Quest.isHired}" Value="true">
                                     <Setter Property="IsVisible" Value="false"/>
                                 </DataTrigger>
                             </Frame.Triggers>
                         </Frame>
 
-                        <Frame>
-                            <StackLayout>
-                                <Button Text="Zrobione" Command="{Binding DoneCommand}"/>
-                            </StackLayout>
+                        <Frame BackgroundColor="Transparent">
+                            <Frame BackgroundColor="{StaticResource black}" CornerRadius="100" Padding="15">
+                                <Frame BackgroundColor="{StaticResource grey}" CornerRadius="100" Padding="0">
+                                    <StackLayout>
+                                        <Button Text="Zrobione" Command="{Binding DoneCommand}" BackgroundColor="{StaticResource grey}" TextColor="{StaticResource white}"/>
+                                    </StackLayout>
+                                </Frame>
+                            </Frame>
                             <Frame.Triggers>
-                                <DataTrigger TargetType="Frame"
-                                             Binding="{Binding Quest.hired_id}" Value="{Binding User_id}">
+                                <MultiTrigger TargetType="Frame">
+                                    <MultiTrigger.Conditions>
+                                        <BindingCondition 
+                                              Binding="{Binding Quest.hired_id}" Value="{Binding User_id}" />
+                                        <BindingCondition 
+                                              Binding="{Binding Quest.done}" Value="false"/>
+                                    </MultiTrigger.Conditions>
+
                                     <Setter Property="IsVisible" Value="false"/>
-                                </DataTrigger>
+                                </MultiTrigger>
                             </Frame.Triggers>
                         </Frame>
 
+                        <Button>
+                            <Button.Triggers>
+                                <MultiTrigger TargetType="Button">
+                                    <MultiTrigger.Conditions>
+                                        <BindingCondition Binding="{Binding Quest.hired_id}" Value="{Binding User_id}" />
 
+                                    </MultiTrigger.Conditions>
+                                    <Setter Property="BackgroundColor" Value="red"/>
+                                </MultiTrigger>
+                            </Button.Triggers>
+                        </Button>
+
+                        <Button>
+                            <Button.Triggers>
+                                <MultiTrigger TargetType="Button">
+                                    <MultiTrigger.Conditions>
+                                        <BindingCondition Binding="{Binding Quest.isHired}" Value="false" />
+
+                                    </MultiTrigger.Conditions>
+                                    <Setter Property="BackgroundColor" Value="green"/>
+                                </MultiTrigger>
+                            </Button.Triggers>
+                        </Button>
 
                     </StackLayout>
-                </RefreshView>
-            </StackLayout>
+                </StackLayout>
+            </ScrollView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

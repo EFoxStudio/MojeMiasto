@@ -80,6 +80,8 @@
                 <Setter Property="Aspect" Value="AspectFill"></Setter>
                 <Setter Property="Margin" Value="0,0,10,0"></Setter>
             </Style>
+            
+            
 
         </ResourceDictionary>        
     </Application.Resources>

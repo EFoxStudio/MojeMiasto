@@ -24,69 +24,86 @@
                     </ImageButton.Source>
                 </ImageButton>
             </StackLayout>
-
-            <Image>
-                <Image.Source>
-                    <UriImageSource
-                        Uri="{Binding User.iconUrl}"
-                        CacheValidity="0"
-                        CachingEnabled="False"/>
-                </Image.Source>
-            </Image>
-
-            <Frame>
-                <Label Text="{Binding User.name}" TextColor="{StaticResource black}"/>
-            </Frame>
-
-            <Frame>
+            <ScrollView>
                 <StackLayout>
-                    <Label Text="{Binding User.location}" TextColor="{StaticResource black}"/>
-                </StackLayout>
-            </Frame>
-
-            <Frame>
-                <StackLayout>
-                    <Label Text="Zrobione zlecenia" TextColor="{StaticResource black}"/>
-                    <Label Text="{Binding User.points}" TextColor="{StaticResource black}"/>
-                </StackLayout>
-            </Frame>
-
-            <Frame>
-                <StackLayout>
-                    <Label Text="Ogłoszone zlecenia" TextColor="{StaticResource black}"/>
                     
-                        <CollectionView x:Name="Page" ItemsSource="{Binding User.quests}">
-                            <CollectionView.ItemTemplate>
-                                <DataTemplate>
+                
+                <ImageButton 
+                    HorizontalOptions="CenterAndExpand" 
+                    VerticalOptions="CenterAndExpand" 
+                    Margin="0,40,0,0" 
+                    Aspect="AspectFill"
+                    WidthRequest="200"
+                    HeightRequest="200"
+                    CornerRadius="100">
+                    <ImageButton.Source>
+                        <UriImageSource
+                            Uri="{Binding User.iconUrl}"
+                            CacheValidity="0"
+                            CachingEnabled="False"/>
+                    </ImageButton.Source>
+                </ImageButton>
 
-                                    <Frame Margin="0" BackgroundColor="Transparent" >
-                                        <Frame CornerRadius="15" BackgroundColor="{StaticResource purple}">
 
-
-                                            <StackLayout>
-                                                <Label Text="{Binding name}" FontSize="25" Padding="0" Margin="0"  TextColor="{StaticResource white}"/>
-
-                                                    <Label Text="Utworzony: " FontSize="18" Padding="0" Margin="0"  TextColor="{StaticResource black}"/>
-                                                    <Label Text="{Binding end_date}" FontSize="18" Padding="0" Margin="0"  TextColor="{StaticResource black}"/>
-
-                                            </StackLayout>
-
-                                        <Frame.GestureRecognizers>
-                                                <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding 
-                                            Source={x:Reference Name=Page},
-                                            Path=BindingContext.GoToQuestCommand}"
-                                            CommandParameter="{Binding .}"/>
-                                            </Frame.GestureRecognizers>
-                                        </Frame>
-                                    </Frame>
-
-                                </DataTemplate>
-                            </CollectionView.ItemTemplate>
-                        </CollectionView>
-
-                </StackLayout>
+            <Frame BackgroundColor="Transparent">
+                <Frame BackgroundColor="{StaticResource purple}" CornerRadius="10" WidthRequest="250" HorizontalOptions="CenterAndExpand">
+                    <StackLayout>
+                        <Label Text="{Binding User.name}" TextColor="{StaticResource white}" HorizontalOptions="CenterAndExpand" FontSize="25"/>
+                        <Label Text="{Binding User.location}" TextColor="{StaticResource black}" HorizontalOptions="CenterAndExpand" FontSize="20"/>
+                    </StackLayout>
+                </Frame>
             </Frame>
 
+            <Frame BackgroundColor="Transparent">
+                <Frame BackgroundColor="{StaticResource purple}" CornerRadius="10" WidthRequest="250" HorizontalOptions="CenterAndExpand">
+                    <StackLayout>
+                        <Label Text="Zrobione zlecenia"  TextColor="{StaticResource white}" HorizontalOptions="CenterAndExpand" FontSize="20"/>
+                        <Label Text="{Binding User.points}"  TextColor="{StaticResource black}" HorizontalOptions="CenterAndExpand" FontSize="20"/>
+                    </StackLayout>
+                </Frame>
+            </Frame>
+
+
+
+            <Frame BackgroundColor="Transparent">
+                <Frame BackgroundColor="{StaticResource black}" CornerRadius="10">
+                    <StackLayout>
+                        <Label Text="Ogłoszone zlecenia" TextColor="{StaticResource white}" FontSize="20" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand"/>
+                    
+                            <CollectionView x:Name="Page" ItemsSource="{Binding User.quests}">
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate>
+
+                                        <Frame Margin="0" BackgroundColor="Transparent" >
+                                            <Frame CornerRadius="15" BackgroundColor="{StaticResource purple}">
+
+
+                                                <StackLayout>
+                                                    <Label Text="{Binding name}" FontSize="25" Padding="0" Margin="0"  TextColor="{StaticResource white}"/>
+
+                                                        <Label Text="Utworzony: " FontSize="18" Padding="0" Margin="0"  TextColor="{StaticResource black}"/>
+                                                        <Label Text="{Binding end_date}" FontSize="18" Padding="0" Margin="0"  TextColor="{StaticResource black}"/>
+
+                                                </StackLayout>
+
+                                            <Frame.GestureRecognizers>
+                                                    <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding 
+                                                Source={x:Reference Name=Page},
+                                                Path=BindingContext.GoToQuestCommand}"
+                                                CommandParameter="{Binding .}"/>
+                                                </Frame.GestureRecognizers>
+                                            </Frame>
+                                        </Frame>
+
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+                            </CollectionView>
+
+                    </StackLayout>
+                </Frame>
+            </Frame>
+            </StackLayout>
+                </ScrollView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

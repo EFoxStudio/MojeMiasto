@@ -53,8 +53,8 @@
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
 
-                            <Frame Margin="0" BackgroundColor="Transparent" >
-                                <Frame CornerRadius="15" BackgroundColor="{StaticResource purple}">
+                            <Frame Margin="0" BackgroundColor="Transparent" Padding="20,10,20,10">
+                                <Frame CornerRadius="10" BackgroundColor="{StaticResource purple}">
                                     <StackLayout Orientation="Horizontal">
 
                                         <StackLayout>
