@@ -25,7 +25,6 @@ namespace MojeMiasto.ViewModels
         [ObservableProperty]
         DateTime endDate;
 
-
         [ObservableProperty]
         TimeSpan startTime;
 
@@ -100,6 +99,18 @@ namespace MojeMiasto.ViewModels
                 return;
             }
 
+            if (StartDate.Day == EndDate.Day && StartDate.Month == StartDate.Month)
+            {
+                Error = "Nie można ustawić takiego terminu!";
+                return;
+            }
+
+            if(startTime.Hours == 0 || endTime.Hours == 0)
+            {
+                Error = "Nie można ustawić takiego czasu terminu!";
+                return;
+            }
+
             StartDate += startTime;
             EndDate += endTime;
 
@@ -118,6 +129,7 @@ namespace MojeMiasto.ViewModels
             };
 
             await questConn.Post("quests", quest);
+            Error = "";
 
         }
 
