@@ -109,7 +109,7 @@ namespace MojeMiasto.ViewModels
                 return;
             }
 
-            // Checking time
+            // Chec
             if(startTime.Hours == 0 || endTime.Hours == 0)
             {
                 Error = "Nie można ustawić takiego czasu terminu!";
