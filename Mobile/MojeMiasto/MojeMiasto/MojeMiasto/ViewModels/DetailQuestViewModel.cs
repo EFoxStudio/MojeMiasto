@@ -24,9 +24,10 @@ namespace MojeMiasto.ViewModels
         public DetailQuestViewModel(UI_Quest data)
         {
             quest = data;
+            Refresh();
             User_id = Preferences.Get("user_id", 0);
 
-            if (Quest.user_id == User_id && Quest.done == false)
+            if (Quest.user_id == User_id && Quest.done == false && Quest.hired_id != 0)
                 IsDoneVis = true;
             else
                 IsDoneVis = false;
@@ -40,7 +41,7 @@ namespace MojeMiasto.ViewModels
             Quest data = await questConn.Get($"quests/id/{ Quest.id }");
             UI_Quest ui_data = await QuestToUI(data);
             Quest = ui_data;
-            if (Quest.user_id == User_id && Quest.done == false)
+            if (Quest.user_id == User_id && Quest.done == false && Quest.hired_id != 0)
                 IsDoneVis = true;
             else
                 IsDoneVis = false;
@@ -51,6 +52,7 @@ namespace MojeMiasto.ViewModels
         [RelayCommand]
         public async void Done()
         {
+            
             Quest quest = UIToQuest(Quest);
             quest.done = true;
             await questConn.Put("quests", quest);
@@ -66,6 +68,10 @@ namespace MojeMiasto.ViewModels
         [RelayCommand]
         public async void Hire()
         {
+            Refresh();
+            if (Quest.hired_id != 0)
+                return;
+
             Quest quest = UIToQuest(Quest);
             quest.hired_id = user_id;
             await questConn.Put("quests", quest);
