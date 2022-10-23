@@ -25,7 +25,7 @@
                 <Frame BackgroundColor="{StaticResource black}" CornerRadius="10" Padding="10">
                     <Frame BackgroundColor="{StaticResource grey}" CornerRadius="10" Padding="0">
                         <StackLayout>
-                            <Entry Text="{Binding Name, Mode=TwoWay}" Placeholder="Name" ClearButtonVisibility="WhileEditing"  TextColor="{StaticResource white}" PlaceholderColor="{StaticResource white}"/>
+                            <Entry Text="{Binding Name, Mode=TwoWay}" Placeholder="Imię" ClearButtonVisibility="WhileEditing"  TextColor="{StaticResource white}" PlaceholderColor="{StaticResource white}"/>
                         </StackLayout>
                     </Frame>
                 </Frame>
@@ -35,7 +35,7 @@
                 <Frame BackgroundColor="{StaticResource black}" CornerRadius="10" Padding="10">
                     <Frame BackgroundColor="{StaticResource grey}" CornerRadius="10" Padding="0">
                         <StackLayout>
-                            <Entry Text="{Binding Surname, Mode=TwoWay}" Placeholder="Surname" ClearButtonVisibility="WhileEditing"  TextColor="{StaticResource white}" PlaceholderColor="{StaticResource white}"/>
+                            <Entry Text="{Binding Surname, Mode=TwoWay}" Placeholder="Nazwisko" ClearButtonVisibility="WhileEditing"  TextColor="{StaticResource white}" PlaceholderColor="{StaticResource white}"/>
                         </StackLayout>
                     </Frame>
                 </Frame>
@@ -55,7 +55,7 @@
                 <Frame BackgroundColor="{StaticResource black}" CornerRadius="10" Padding="10">
                     <Frame BackgroundColor="{StaticResource grey}" CornerRadius="10" Padding="0">
                         <StackLayout>
-                            <Entry Text="{Binding Password, Mode=TwoWay}" Placeholder="Password" ClearButtonVisibility="WhileEditing"  TextColor="{StaticResource white}" PlaceholderColor="{StaticResource white}" IsPassword="True"/>
+                            <Entry Text="{Binding Password, Mode=TwoWay}" Placeholder="Hasło" ClearButtonVisibility="WhileEditing"  TextColor="{StaticResource white}" PlaceholderColor="{StaticResource white}" IsPassword="True"/>
                         </StackLayout>
                     </Frame>
                 </Frame>
@@ -65,7 +65,7 @@
                 <Frame BackgroundColor="{StaticResource black}" CornerRadius="10" Padding="10">
                     <Frame BackgroundColor="{StaticResource grey}" CornerRadius="10" Padding="0">
                         <StackLayout>
-                            <Entry Text="{Binding RepeatPassword, Mode=TwoWay}" Placeholder="Repeat Password" ClearButtonVisibility="WhileEditing"  TextColor="{StaticResource white}" PlaceholderColor="{StaticResource white}" IsPassword="True"/>
+                            <Entry Text="{Binding RepeatPassword, Mode=TwoWay}" Placeholder="Powtórz hasło" ClearButtonVisibility="WhileEditing"  TextColor="{StaticResource white}" PlaceholderColor="{StaticResource white}" IsPassword="True"/>
                         </StackLayout>
                     </Frame>
                 </Frame>

@@ -37,7 +37,7 @@
                 <Frame BackgroundColor="{StaticResource black}" CornerRadius="10" Padding="10">
                     <Frame BackgroundColor="{StaticResource grey}" CornerRadius="10" Padding="0">
                         <StackLayout>
-                            <Entry Text="{Binding Password, Mode=TwoWay}" Placeholder="password" IsPassword="True" ClearButtonVisibility="WhileEditing" TextColor="{StaticResource white}" PlaceholderColor="{StaticResource white}"/>
+                            <Entry Text="{Binding Password, Mode=TwoWay}" Placeholder="Hasło" IsPassword="True" ClearButtonVisibility="WhileEditing" TextColor="{StaticResource white}" PlaceholderColor="{StaticResource white}"/>
                         </StackLayout>
                     </Frame>
                 </Frame>
