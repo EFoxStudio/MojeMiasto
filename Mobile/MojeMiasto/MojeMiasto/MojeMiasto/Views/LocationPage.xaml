@@ -26,40 +26,84 @@
                 </ImageButton>
             </StackLayout>
 
-            <Entry Placeholder="Miasto" Text="{Binding CityEntry, Mode=TwoWay}" ClearButtonVisibility="WhileEditing">
-                <Entry.Behaviors>
-                    <xct:EventToCommandBehavior EventName="TextChanged" Command="{Binding SearchCitiesCommand}"/>
-                </Entry.Behaviors>
-            </Entry>
-
-            <CollectionView x:Name="Cities" IsVisible="{Binding CityCollectionVis}" ItemsSource="{Binding Cities}">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <Button Text="{Binding name}" 
-                                Command="{Binding Source={x:Reference Page} , Path=BindingContext.SetCityCommand}" CommandParameter="{Binding .}"/>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-            <Button x:Name="add_city" Text="dodaj miasto" IsVisible="{Binding NewCityVis}" VerticalOptions="StartAndExpand" Command="{Binding NewCityCommand}"/>
 
 
-            <Entry Placeholder="Dzielnica" Text="{Binding DistrictEntry, Mode=TwoWay}" ClearButtonVisibility="WhileEditing">
-                <Entry.Behaviors>
-                    <xct:EventToCommandBehavior EventName="TextChanged" Command="{Binding SearchDistrictsCommand}"/>
-                </Entry.Behaviors>
-            </Entry>
+            <Frame BackgroundColor="Transparent" Padding="20,5,20,5">
+                <Frame BackgroundColor="{StaticResource black}" CornerRadius="10" Padding="10">
+                    <Frame BackgroundColor="{StaticResource grey}" CornerRadius="10" Padding="0">
+                        <StackLayout>
+                            <Entry Placeholder="Miasto" Text="{Binding CityEntry, Mode=TwoWay}" ClearButtonVisibility="WhileEditing" TextColor="{StaticResource white}" PlaceholderColor="{StaticResource white}">
+                                <Entry.Behaviors>
+                                    <xct:EventToCommandBehavior EventName="TextChanged" Command="{Binding SearchCitiesCommand}"/>
+                                </Entry.Behaviors>
+                            </Entry>
 
-            <CollectionView x:Name="Districts" IsVisible="{Binding DistrictCollectionVis}" ItemsSource="{Binding Districts}">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <Button Text="{Binding name}"
-                                Command="{Binding Source={x:Reference Page} , Path=BindingContext.SetDistrictCommand}" CommandParameter="{Binding .}"/>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-            <Button x:Name="add_districts" Text="dodaj dzielnice" IsVisible="{Binding NewDistrictsVis}" VerticalOptions="StartAndExpand" Command="{Binding NewDistrictCommand}"/>
+                            <CollectionView x:Name="Cities" IsVisible="{Binding CityCollectionVis}" ItemsSource="{Binding Cities}">
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Frame Padding="5" BackgroundColor="Transparent">
+                                            <Button Text="{Binding name}"  
+                                                    Command="{Binding Source={x:Reference Page} , Path=BindingContext.SetCityCommand}" 
+                                                    CommandParameter="{Binding .}"
+                                                    BackgroundColor="{StaticResource purple}"
+                                                    TextColor="{StaticResource black}"/>
+                                        </Frame>
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+                            </CollectionView>
+                            <Button Text="dodaj miasto" 
+                                    IsVisible="{Binding NewCityVis}" 
+                                    VerticalOptions="StartAndExpand" 
+                                    Command="{Binding NewCityCommand}"
+                                    BackgroundColor="{StaticResource purple}"
+                                    TextColor="{StaticResource black}"/>
+                        </StackLayout>
+                    </Frame>
+                </Frame>
+            </Frame>
 
-            <Button Text="Gotowe" Command="{Binding GoToRootCommand}"/>
+            <Frame BackgroundColor="Transparent" Padding="20,5,20,5">
+                <Frame BackgroundColor="{StaticResource black}" CornerRadius="10" Padding="10">
+                    <Frame BackgroundColor="{StaticResource grey}" CornerRadius="10" Padding="0">
+                        <StackLayout>
+
+                            <Entry Placeholder="Dzielnica" Text="{Binding DistrictEntry, Mode=TwoWay}" ClearButtonVisibility="WhileEditing"  TextColor="{StaticResource white}" PlaceholderColor="{StaticResource white}">
+                                <Entry.Behaviors>
+                                    <xct:EventToCommandBehavior EventName="TextChanged" Command="{Binding SearchDistrictsCommand}"/>
+                                </Entry.Behaviors>
+                            </Entry>
+
+                            <CollectionView x:Name="Districts" IsVisible="{Binding DistrictCollectionVis}" ItemsSource="{Binding Districts}">
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Button Text="{Binding name}" 
+                                                Command="{Binding Source={x:Reference Page} , Path=BindingContext.SetDistrictCommand}" 
+                                                CommandParameter="{Binding .}"
+                                                BackgroundColor="{StaticResource purple}"
+                                                TextColor="{StaticResource black}"/>
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+                            </CollectionView>
+                            <Button x:Name="add_districts" Text="dodaj dzielnice" 
+                                    IsVisible="{Binding NewDistrictsVis}" 
+                                    VerticalOptions="StartAndExpand" 
+                                    Command="{Binding NewDistrictCommand}"
+                                    BackgroundColor="{StaticResource purple}"
+                                    TextColor="{StaticResource black}"/>
+
+                        </StackLayout>
+                    </Frame>
+                </Frame>
+            </Frame>
+            <Frame BackgroundColor="Transparent" Padding="20,5,20,5">
+                <Frame BackgroundColor="{StaticResource black}" CornerRadius="100" Padding="10">
+                    <Frame BackgroundColor="{StaticResource grey}" CornerRadius="100" Padding="0">
+                        <StackLayout>
+                            <Button Text="Gotowe" Command="{Binding GoToRootCommand}" TextColor="{StaticResource white}" BackgroundColor="{StaticResource grey}"/> 
+                        </StackLayout>
+                    </Frame>
+                </Frame>
+            </Frame>
 
         </StackLayout>
     </ContentPage.Content>

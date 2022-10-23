@@ -9,20 +9,52 @@
     <ContentPage.Content>
         <StackLayout>
 
-           
 
+            <!-- Header -->
+            <StackLayout Style="{StaticResource Header}">
+                <ImageButton Source="ArrowL.png" 
+                             Style="{StaticResource Header_Menu}"
+                             HeightRequest="40"
+                             Command="{Binding BackCommand}"/>
+            </StackLayout>
+                <Label Text="Logowanie"
+                       FontSize="25"
+                       TextColor="{StaticResource white}"
+                       HorizontalOptions="CenterAndExpand"
+                       Margin="0,0,0,50"/>
 
-            <!--Input menu and button-->
-            <Entry Text="{Binding Email, Mode=TwoWay}" Placeholder="Email" ClearButtonVisibility="WhileEditing"/>
-            <Entry Text="{Binding Password, Mode=TwoWay}" Placeholder="password" IsPassword="True" ClearButtonVisibility="WhileEditing"/>
-            <Button Command="{Binding LoginCommand}" Text="Login"/>
+            <Frame BackgroundColor="Transparent" Padding="20,5,20,5">
+                <Frame BackgroundColor="{StaticResource black}" CornerRadius="10" Padding="10">
+                    <Frame BackgroundColor="{StaticResource grey}" CornerRadius="10" Padding="0">
+                        <StackLayout>
+                            <Entry Text="{Binding Email, Mode=TwoWay}" Placeholder="Email" ClearButtonVisibility="WhileEditing" TextColor="{StaticResource white}" PlaceholderColor="{StaticResource white}"/>
+                        </StackLayout>
+                    </Frame>
+                </Frame>
+            </Frame>
 
+            <Frame BackgroundColor="Transparent" Padding="20,5,20,5">
+                <Frame BackgroundColor="{StaticResource black}" CornerRadius="10" Padding="10">
+                    <Frame BackgroundColor="{StaticResource grey}" CornerRadius="10" Padding="0">
+                        <StackLayout>
+                            <Entry Text="{Binding Password, Mode=TwoWay}" Placeholder="password" IsPassword="True" ClearButtonVisibility="WhileEditing" TextColor="{StaticResource white}" PlaceholderColor="{StaticResource white}"/>
+                        </StackLayout>
+                    </Frame>
+                </Frame>
+            </Frame>
 
+            <Frame BackgroundColor="Transparent" Padding="20,5,20,5">
+                <Frame BackgroundColor="{StaticResource black}" CornerRadius="100" Padding="10">
+                    <Frame BackgroundColor="{StaticResource grey}" CornerRadius="100" Padding="0">
+                        <StackLayout>
+                            <Button Command="{Binding LoginCommand}" Text="Login" BackgroundColor="{StaticResource purple}" TextColor="{StaticResource white}"/>
+                        </StackLayout>
+                    </Frame>
+                </Frame>
+            </Frame>
 
-
-            <Label Text="Login Page"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            
+            
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

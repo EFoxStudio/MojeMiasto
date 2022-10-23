@@ -80,8 +80,14 @@
                 <Setter Property="Aspect" Value="AspectFill"></Setter>
                 <Setter Property="Margin" Value="0,0,10,0"></Setter>
             </Style>
-            
-            
+
+
+            <Style x:Key="Entry_default" TargetType="Entry">
+                <Setter Property="ClearButtonVisibility" Value="WhileEditing"></Setter>
+                <Setter Property="TextColor" Value="{StaticResource white}"></Setter>
+                <Setter Property="PlaceholderColor" Value="{StaticResource white}"></Setter>
+            </Style>
+
 
         </ResourceDictionary>        
     </Application.Resources>
