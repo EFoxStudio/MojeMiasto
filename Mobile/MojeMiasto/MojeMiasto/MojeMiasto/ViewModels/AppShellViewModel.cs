@@ -13,10 +13,10 @@ namespace MojeMiasto.ViewModels
 {
     internal partial class AppShellViewModel : BaseViewModel
     {
-        //creating variables
+        //creating a variable for city
         [ObservableProperty]
         string userCity;
-
+        //creating a variable for user
         [ObservableProperty]
         string userName;
 
