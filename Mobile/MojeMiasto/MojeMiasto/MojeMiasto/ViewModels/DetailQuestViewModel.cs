@@ -18,6 +18,9 @@ namespace MojeMiasto.ViewModels
         [ObservableProperty]
         public bool isDoneVis;
 
+        [ObservableProperty]
+        public bool hireVis;
+
         public DetailQuestViewModel(UI_Quest data)
         {
             quest = data;
@@ -28,6 +31,11 @@ namespace MojeMiasto.ViewModels
                 IsDoneVis = true;
             else
                 IsDoneVis = false;
+
+            if (Quest.user_id != User_id && Quest.done == false && Quest.hired_id == 0)
+                HireVis = true;
+            else
+                HireVis = false;
         }
 
         //Function to refresh quests
@@ -42,6 +50,12 @@ namespace MojeMiasto.ViewModels
                 IsDoneVis = true;
             else
                 IsDoneVis = false;
+
+            if (Quest.user_id != User_id && Quest.done == false && Quest.hired_id == 0)
+                HireVis = true;
+            else
+                HireVis = false;
+
             IsBusy = false;
         }
 

@@ -38,10 +38,11 @@
                     </Frame>
 
                     <Frame BackgroundColor="Transparent" Padding="20,5,20,5">
-                        <Frame BackgroundColor="{StaticResource black}" CornerRadius="10" Padding="10">
+                        <Frame BackgroundColor="{StaticResource black}" CornerRadius="10" Padding="10" HeightRequest="250">
                             <Frame BackgroundColor="{StaticResource grey}" CornerRadius="10" Padding="0">
                                 <StackLayout>
-                                    <Entry Text="{Binding Description, Mode=TwoWay}" Placeholder="Opis" Style="{StaticResource Entry_default}"/>
+
+                                    <Editor Text="{Binding Description, Mode=TwoWay}" Placeholder="Opis" HeightRequest="250" MaxLength="280" TextColor="{StaticResource white}" PlaceholderColor="{StaticResource white}"/>
                                 </StackLayout>
                             </Frame>
                         </Frame>
@@ -59,12 +60,12 @@
                     </Frame>
 
                     <Frame BackgroundColor="Transparent" Padding="20,5,20,5">
-                        <Frame BackgroundColor="{StaticResource black}" CornerRadius="10" Padding="10" HeightRequest="100">
+                        <Frame BackgroundColor="{StaticResource black}" CornerRadius="10" Padding="10">
                             <Frame BackgroundColor="{StaticResource grey}" CornerRadius="10" Padding="0">
                                 <StackLayout >
 
                                     <Label Text="Data rozpoczęcia:" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" FontSize="20" TextColor="{StaticResource purple}"/>
-                                    <StackLayout Orientation="Horizontal" VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand">
+                                    <StackLayout VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand">
                                         <DatePicker Format="D" MinimumDate="{x:Static system:DateTime.Today}" Date="{Binding StartDate}" TextColor="{StaticResource white}"/>
                                         <TimePicker Format="HH:mm" Time="{Binding StartTime}" TextColor="{StaticResource white}"/>
 
@@ -75,12 +76,12 @@
                     </Frame>
 
                     <Frame BackgroundColor="Transparent" Padding="20,5,20,5">
-                        <Frame BackgroundColor="{StaticResource black}" CornerRadius="10" Padding="10" HeightRequest="100">
+                        <Frame BackgroundColor="{StaticResource black}" CornerRadius="10" Padding="10">
                             <Frame BackgroundColor="{StaticResource grey}" CornerRadius="10" Padding="0">
                                 <StackLayout>
 
                                     <Label Text="Data zakończenia:" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" FontSize="20" TextColor="{StaticResource purple}"/>
-                                    <StackLayout Orientation="Horizontal" VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand">
+                                    <StackLayout VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand">
                                         <DatePicker MinimumDate="{Binding StartDate}" Date="{Binding EndDate}" Format="D" TextColor="{StaticResource white}"/>
                                         <TimePicker Format="HH:mm" Time="{Binding EndTime}" TextColor="{StaticResource white}"/>
 
