@@ -37,7 +37,10 @@ namespace MojeMiasto.Controllers
         [Route("city_id/{req_city_id}")]
         public List<Quest> GetByCity(int req_city_id)
         {
-            var users = _context.quests.Where(x => x.city_id == req_city_id && x.end_date >= DateTime.Now).ToList();
+            var users = _context.quests.Where(x => x.city_id == req_city_id &&
+                                                x.end_date >= DateTime.Now &&
+                                                x.create_date <= DateTime.Now &&
+                                                x.done == false).ToList();
             return users;
         }
 
@@ -45,7 +48,10 @@ namespace MojeMiasto.Controllers
         [Route("district_id/{req_district_id}")]
         public List<Quest> GetByDistricts(int req_district_id)
         {
-            var users = _context.quests.Where(x => x.district_id == req_district_id && x.end_date >= DateTime.Now).ToList();
+            var users = _context.quests.Where(x => x.district_id == req_district_id &&
+                                                x.end_date >= DateTime.Now &&
+                                                x.create_date <= DateTime.Now &&
+                                                x.done == false).ToList();
             return users;
         }
 
@@ -53,7 +59,10 @@ namespace MojeMiasto.Controllers
         [Route("city_id/{req_city_id}/user_id/{req_user_id}")]
         public List<Quest> GetByCityAndUser(int req_city_id, int req_user_id)
         {
-            var users = _context.quests.Where(x => x.city_id == req_city_id && x.end_date >= DateTime.Now && x.user_id == req_user_id).ToList();
+            var users = _context.quests.Where(x => x.city_id == req_city_id &&
+                                                x.end_date >= DateTime.Now &&
+                                                x.create_date <= DateTime.Now &&
+                                                x.user_id == req_user_id).ToList();
             return users;
         }
 
@@ -61,7 +70,10 @@ namespace MojeMiasto.Controllers
         [Route("district_id/{req_district_id}/user_id/{req_user_id}")]
         public List<Quest> GetByDistrictsAndUser(int req_district_id, int req_user_id)
         {
-            var users = _context.quests.Where(x => x.district_id == req_district_id && x.end_date >= DateTime.Now && x.user_id == req_user_id).ToList();
+            var users = _context.quests.Where(x => x.district_id == req_district_id &&
+                                                x.end_date >= DateTime.Now &&
+                                                x.create_date <= DateTime.Now &&
+                                                x.user_id == req_user_id).ToList();
             return users;
         }
 
@@ -69,7 +81,10 @@ namespace MojeMiasto.Controllers
         [Route("city_id/{req_city_id}/hired_id/{req_hired_id}")]
         public List<Quest> GetByCityAndHired(int req_city_id, int req_hired_id)
         {
-            var users = _context.quests.Where(x => x.city_id == req_city_id && x.end_date >= DateTime.Now && x.hired_id == req_hired_id).ToList();
+            var users = _context.quests.Where(x => x.city_id == req_city_id &&
+                                                x.end_date >= DateTime.Now &&
+                                                x.create_date <= DateTime.Now &&
+                                                x.hired_id == req_hired_id).ToList();
             return users;
         }
 
@@ -77,7 +92,10 @@ namespace MojeMiasto.Controllers
         [Route("district_id/{req_district_id}/hired_id/{req_hired_id}")]
         public List<Quest> GetByDistrictsAndHired(int req_district_id, int req_hired_id)
         {
-            var users = _context.quests.Where(x => x.district_id == req_district_id && x.end_date >= DateTime.Now && x.hired_id == req_hired_id).ToList();
+            var users = _context.quests.Where(x => x.district_id == req_district_id &&
+                                                x.end_date >= DateTime.Now 
+                                                && x.create_date <= DateTime.Now 
+                                                && x.hired_id == req_hired_id).ToList();
             return users;
         }
 

@@ -130,9 +130,13 @@
 
 
                         <Frame>
-                            <StackLayout>
-                                <Button Text="przyjmij zlecenie" Command="{Binding HireCommand}"/>
-                            </StackLayout>
+                            <Frame BackgroundColor="{StaticResource black}" CornerRadius="100" Padding="15">
+                                <Frame BackgroundColor="{StaticResource grey}" CornerRadius="100" Padding="0">
+                                    <StackLayout>
+                                        <Button Text="Przyjmij zlecenie" Command="{Binding HireCommand}" BackgroundColor="{StaticResource grey}" TextColor="{StaticResource white}"/>
+                                    </StackLayout>
+                                </Frame>
+                            </Frame>
                             <Frame.Triggers>
                                 <DataTrigger TargetType="Frame"
                                                  Binding="{Binding Quest.isHired}" Value="true">
@@ -150,42 +154,30 @@
                                 </Frame>
                             </Frame>
                             <Frame.Triggers>
-                                <MultiTrigger TargetType="Frame">
-                                    <MultiTrigger.Conditions>
-                                        <BindingCondition 
-                                              Binding="{Binding Quest.hired_id}" Value="{Binding User_id}" />
-                                        <BindingCondition 
-                                              Binding="{Binding Quest.done}" Value="false"/>
-                                    </MultiTrigger.Conditions>
-
+                                <DataTrigger TargetType="Frame"
+                                                 Binding="{Binding IsDoneVis}" Value="false">
                                     <Setter Property="IsVisible" Value="false"/>
-                                </MultiTrigger>
+                                </DataTrigger>
                             </Frame.Triggers>
                         </Frame>
 
-                        <Button>
-                            <Button.Triggers>
-                                <MultiTrigger TargetType="Button">
-                                    <MultiTrigger.Conditions>
-                                        <BindingCondition Binding="{Binding Quest.hired_id}" Value="{Binding User_id}" />
+                        
+                        <Frame BackgroundColor="Transparent" IsVisible="false">
+                            <Frame BackgroundColor="{StaticResource purple}" CornerRadius="10" WidthRequest="250" HorizontalOptions="CenterAndExpand">
+                                <StackLayout>
+                                    <Label Text="Zlecenie wykonane" TextColor="{StaticResource white}" HorizontalOptions="CenterAndExpand" FontSize="25"/>
+                                </StackLayout>
+                            </Frame>
+                            <Frame.Triggers>
+                                <DataTrigger TargetType="Frame"
+                                                 Binding="{Binding Quest.done}" Value="true">
+                                    <Setter Property="IsVisible" Value="true"/>
+                                </DataTrigger>
+                            </Frame.Triggers>
+                        </Frame>
 
-                                    </MultiTrigger.Conditions>
-                                    <Setter Property="BackgroundColor" Value="red"/>
-                                </MultiTrigger>
-                            </Button.Triggers>
-                        </Button>
 
-                        <Button>
-                            <Button.Triggers>
-                                <MultiTrigger TargetType="Button">
-                                    <MultiTrigger.Conditions>
-                                        <BindingCondition Binding="{Binding Quest.isHired}" Value="false" />
 
-                                    </MultiTrigger.Conditions>
-                                    <Setter Property="BackgroundColor" Value="green"/>
-                                </MultiTrigger>
-                            </Button.Triggers>
-                        </Button>
 
                     </StackLayout>
                 </StackLayout>

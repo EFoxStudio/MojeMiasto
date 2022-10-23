@@ -159,6 +159,7 @@ namespace MojeMiasto.ViewModels
                 isHired = IsHired,
                 hired_id = data.hired_id,
                 hired = uiHiredData,
+                done = data.done,
                 create_date = data.create_date,
                 end_date = data.end_date,
                 location = $"{FirstLetterToUpper(cityData.name)}, {FirstLetterToUpper(districtData.name)}"

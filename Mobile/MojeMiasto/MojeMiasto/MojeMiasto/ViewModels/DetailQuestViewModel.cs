@@ -18,10 +18,18 @@ namespace MojeMiasto.ViewModels
         [ObservableProperty]
         UI_Quest quest;
 
+        [ObservableProperty]
+        public bool isDoneVis;
+
         public DetailQuestViewModel(UI_Quest data)
         {
             quest = data;
             User_id = Preferences.Get("user_id", 0);
+
+            if (Quest.user_id == User_id && Quest.done == false)
+                IsDoneVis = true;
+            else
+                IsDoneVis = false;
         }
 
 
@@ -32,6 +40,10 @@ namespace MojeMiasto.ViewModels
             Quest data = await questConn.Get($"quests/id/{ Quest.id }");
             UI_Quest ui_data = await QuestToUI(data);
             Quest = ui_data;
+            if (Quest.user_id == User_id && Quest.done == false)
+                IsDoneVis = true;
+            else
+                IsDoneVis = false;
             IsBusy = false;
         }
 
@@ -42,6 +54,10 @@ namespace MojeMiasto.ViewModels
             Quest quest = UIToQuest(Quest);
             quest.done = true;
             await questConn.Put("quests", quest);
+
+            User user = await userConn.Get($"users/id/{ User_id }");
+            user.points++;
+            await userConn.Put("users", user);
             Refresh();
         }
 
