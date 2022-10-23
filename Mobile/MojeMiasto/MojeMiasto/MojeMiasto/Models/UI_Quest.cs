@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
+
+//Structure of the base UI_Quest
+
 namespace MojeMiasto.Models
 {
     public class UI_Quest

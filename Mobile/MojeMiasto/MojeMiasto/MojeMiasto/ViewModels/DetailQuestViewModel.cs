@@ -1,9 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using MojeMiasto.Models;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
@@ -11,13 +8,13 @@ namespace MojeMiasto.ViewModels
 {
     public partial class DetailQuestViewModel : BaseViewModel
     {
-
+        // Create a variable user_id
         [ObservableProperty]
         public int user_id;
-
+        // Create a variable quest
         [ObservableProperty]
         UI_Quest quest;
-
+        // Create a variable isDoneVis
         [ObservableProperty]
         public bool isDoneVis;
 
@@ -33,7 +30,7 @@ namespace MojeMiasto.ViewModels
                 IsDoneVis = false;
         }
 
-        //function to refresh quests
+        //Function to refresh quests
         [RelayCommand]
         public async void Refresh()
         {

@@ -18,66 +18,70 @@ namespace MojeMiasto.ViewModels
 {
     public partial class NewQuestViewModel : BaseViewModel
     {
-        // Getting data from form
+
+        // Create a variable startDate
         [ObservableProperty]
         DateTime startDate;
-
+        // Create a variable endDate
         [ObservableProperty]
         DateTime endDate;
 
+        // Create a variable startTime
         [ObservableProperty]
         TimeSpan startTime;
-
+        // Create a variable endTime
         [ObservableProperty]
         TimeSpan endTime;
 
-        [ObservableProperty]
-        bool isChecked;
 
-        [ObservableProperty]
-        string name;
-
-        [ObservableProperty]
-        string description;
-
-        [ObservableProperty]
-        string error;
-
-        // Today's date
         public NewQuestViewModel()
         {
+
+            // Sign the time variable until today
             StartDate = DateTime.Today;
             EndDate = DateTime.Today;
         }
 
-        // Event after clicked button
+        // Create a variable isChecked
+        [ObservableProperty]
+        bool isChecked;
+        // Create a variable name
+        [ObservableProperty]
+        string name;
+        // Create a variable description
+        [ObservableProperty]
+        string description;
+        // Create a variable error
+        [ObservableProperty]
+        string error;
+
+
+
+
         [RelayCommand]
         public async void Submit()
         {
-            // Completing the correctness of data
-            
-            // Checking name
+
+            int cityId;
+            // checking
             if (string.IsNullOrEmpty(Name) == true || Name.Length < 2 || Name.Length > 20)
             {
-                Error = "Imię musi zawierać od 2 do 20 znaków!";
+                Error = "Name must be 2 to 20 words!";
                 return;
             }
 
-            // Checking description
             if (string.IsNullOrEmpty(Description) == true || Description.Length < 2 || Description.Length > 100)
             {
-                Error = "Opis musi zawierać od 2 do 100 znaków!";
+                Error = "Description must be 2 to 100 words!";
                 return;
             }
 
-            // Checking checkbox
-            int cityId;
             if (isChecked)
             {
                 cityId = Preferences.Get("city_id", 0);
                 if (cityId == 0)
                 {
-                    Error = "Najpierw wybierz swoje miasto!";
+                    Error = "Najpierw wybierz swoje miasto";
                     return;
                 }
             }
@@ -86,43 +90,26 @@ namespace MojeMiasto.ViewModels
                 cityId = 0;
             }
 
-            // Checking district from API
             int districId = Preferences.Get("district_id", 0);
             if(districId==0)
             {
-                Error = "Najpierw wybierz swoją dzielnice!";
+                Error = "Najpierw wybierz swoją dzielnice";
                 return;
             }
-            
-            // Checking user_id from API
             int userId = Preferences.Get("user_id", 0);
             if (userId == 0)
             {
-                Error = "Błąd związany z pobieraniem danych!";
+                Error = "Błąd związany z pobieraniem user_id";
                 return;
             }
 
-            // Checking date
-            if (StartDate.Day == EndDate.Day && StartDate.Month == StartDate.Month)
-            {
-                Error = "Nie można ustawić takiego terminu!";
-                return;
-            }
-
-            // Chec
-            if(startTime.Hours == 0 || endTime.Hours == 0)
-            {
-                Error = "Nie można ustawić takiego czasu terminu!";
-                return;
-            }
-
-            // Connecting date and time to one variable
             StartDate += startTime;
             EndDate += endTime;
 
-            // Creating new quest with parameters from form
             Quest quest = new Quest
             {
+
+                // Assign values ​​to variables
                 id = 0,
                 name = Name,
                 description = Description,
@@ -136,7 +123,8 @@ namespace MojeMiasto.ViewModels
             };
 
             await questConn.Post("quests", quest);
-            Error = "";
+
         }
+
     }
 }

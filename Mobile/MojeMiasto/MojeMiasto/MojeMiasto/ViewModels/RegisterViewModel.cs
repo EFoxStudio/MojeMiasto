@@ -1,42 +1,39 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using EFox.ApiConnection.Toolkit;
 using MojeMiasto.Models;
-using MojeMiasto.Views;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace MojeMiasto.ViewModels
 {
     public partial class RegisterViewModel : BaseViewModel
     {
-        // Getting data from form
+
+
+        // Create a variable name
         [ObservableProperty]
         string name;
-
+        // Create a variable surname
         [ObservableProperty]
         string surname;
-
+        // Create a variable email
         [ObservableProperty]
         string email;
-  
+        // Create a variable password
         [ObservableProperty]
         string password;
-
+        // Create a variable repeatPassword
         [ObservableProperty]
         string repeatPassword;
-
+        // Create a variable error
         [ObservableProperty]
         string error;
 
-        // Event after clicked button
+        //Function for checking data from API
         [RelayCommand]
         public async void Register()
         {
-            // Completing the correctness of data
+
+            // Check if the field is not empty
             if (string.IsNullOrEmpty(Name))
                 return;
             if (string.IsNullOrEmpty(Surname))
@@ -52,49 +49,49 @@ namespace MojeMiasto.ViewModels
             bool validEmail = IsValidEmail(Email);
             if (validEmail != true)
             {
-                Error = "Nieprawidłowy adres email!";
+                Error = "Incorrect email address!";
                 return;
             }
 
             // Checking name
-            if (Name.Length < 2 || Name.Length > 20)
+            if (Name.Length < 3 || Name.Length > 20)
             {
-                Error = "Imię musi zawierać od 2 do 20 znaków!";
+                Error = "Name must be 3 to 20 words!";
                 return;
             }
 
             // Checking Surname
-            if (Surname.Length < 2 || Surname.Length > 30)
+            if (Surname.Length < 1 || Surname.Length > 30)
             {
-                Error = "Nazwisko musi zawierać od 2 do 30 znaków!";
+                Error = "Surname must be 1 to 30 words!";
                 return;
             }
 
             // Checking password
             if (Password.Length < 8 || Surname.Length > 20)
             {
-                Error = "Hasło musi zawierać od 8 do 20 znaków!";
+                Error = "Password must be 8 to 20 words!";
                 return;
             }
 
             // Checking repeated password
             if (RepeatPassword != Password)
             {
-                Error = "Hasła nie są identyczne!";
+                Error = "Password isn't the same!";
                 return;
             }
 
             // Connecting with database to validate the data
+
             User user = await userConn.Get($"users/email/{Email}");
 
             //Function for not receiving data
             if (user != default(User))
             {
-                Error = "Podany adres email już istnieje!";
+                Error = "This email address is already exist!";
                 return;
             }
 
-            // Creating new user with parameters from form
             User data = new User
             {
                 id = 0,
@@ -103,14 +100,16 @@ namespace MojeMiasto.ViewModels
                 password = Password
             };
 
-            Error = "";
             if (await userConn.Post("users", data))
             {
                 await Application.Current.MainPage.Navigation.PopAsync();
             }
+
+
+
+
         }
 
-        // Function to validate the email address
         bool IsValidEmail(string email)
         {
             var trimmedEmail = email.Trim();
@@ -129,5 +128,14 @@ namespace MojeMiasto.ViewModels
                 return false;
             }
         }
+
+
+        [RelayCommand]
+        void Back()
+        {
+            Application.Current.MainPage.Navigation.PopAsync(false);
+        }
+
+
     }
 }

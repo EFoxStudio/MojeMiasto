@@ -1,6 +1,8 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
+//Structure of the base Quest
+
 namespace MojeMiasto.Models
 {
     public class Quest
