@@ -13,9 +13,7 @@ namespace MojeMiasto.ViewModels
 {
     public partial class RegisterViewModel : BaseViewModel
     {
-        
-
-
+        // Getting data from form
         [ObservableProperty]
         string name;
 
@@ -34,10 +32,11 @@ namespace MojeMiasto.ViewModels
         [ObservableProperty]
         string error;
 
-        //Function for checking data from API
+        // Event after clicked button
         [RelayCommand]
         public async void Register()
         {
+            // Completing the correctness of data
             if (string.IsNullOrEmpty(Name))
                 return;
             if (string.IsNullOrEmpty(Surname))
@@ -53,49 +52,49 @@ namespace MojeMiasto.ViewModels
             bool validEmail = IsValidEmail(Email);
             if (validEmail != true)
             {
-                Error = "Incorrect email address!";
+                Error = "Nieprawidłowy adres email!";
                 return;
             }
 
             // Checking name
-            if (Name.Length < 3 || Name.Length > 20)
+            if (Name.Length < 2 || Name.Length > 20)
             {
-                Error = "Name must be 3 to 20 words!";
+                Error = "Imię musi zawierać od 2 do 20 znaków!";
                 return;
             }
 
             // Checking Surname
-            if (Surname.Length < 1 || Surname.Length > 30)
+            if (Surname.Length < 2 || Surname.Length > 30)
             {
-                Error = "Surname must be 1 to 30 words!";
+                Error = "Nazwisko musi zawierać od 2 do 30 znaków!";
                 return;
             }
 
             // Checking password
             if (Password.Length < 8 || Surname.Length > 20)
             {
-                Error = "Password must be 8 to 20 words!";
+                Error = "Hasło musi zawierać od 8 do 20 znaków!";
                 return;
             }
 
             // Checking repeated password
             if (RepeatPassword != Password)
             {
-                Error = "Password isn't the same!";
+                Error = "Hasła nie są identyczne!";
                 return;
             }
 
             // Connecting with database to validate the data
-
             User user = await userConn.Get($"users/email/{Email}");
 
             //Function for not receiving data
             if (user != default(User))
             {
-                Error = "This email address is already exist!";
+                Error = "Podany adres email już istnieje!";
                 return;
             }
 
+            // Creating new user with parameters from form
             User data = new User
             {
                 id = 0,
@@ -109,12 +108,9 @@ namespace MojeMiasto.ViewModels
             {
                 await Application.Current.MainPage.Navigation.PopAsync();
             }
-
-
-
-
         }
 
+        // Function to validate the email address
         bool IsValidEmail(string email)
         {
             var trimmedEmail = email.Trim();
@@ -133,7 +129,5 @@ namespace MojeMiasto.ViewModels
                 return false;
             }
         }
-
-
     }
 }

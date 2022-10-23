@@ -54,21 +54,24 @@ namespace MojeMiasto.ViewModels
         [RelayCommand]
         public async void Submit()
         {
-
-            int cityId;
             // Completing the correctness of data
+            
+            // Checking name
             if (string.IsNullOrEmpty(Name) == true || Name.Length < 2 || Name.Length > 20)
             {
                 Error = "Imię musi zawierać od 2 do 20 znaków!";
                 return;
             }
 
+            // Checking description
             if (string.IsNullOrEmpty(Description) == true || Description.Length < 2 || Description.Length > 100)
             {
                 Error = "Opis musi zawierać od 2 do 100 znaków!";
                 return;
             }
 
+            // Checking checkbox
+            int cityId;
             if (isChecked)
             {
                 cityId = Preferences.Get("city_id", 0);
@@ -83,12 +86,15 @@ namespace MojeMiasto.ViewModels
                 cityId = 0;
             }
 
+            // Checking district from API
             int districId = Preferences.Get("district_id", 0);
             if(districId==0)
             {
                 Error = "Najpierw wybierz swoją dzielnice!";
                 return;
             }
+            
+            // Checking user_id from API
             int userId = Preferences.Get("user_id", 0);
             if (userId == 0)
             {
@@ -96,15 +102,17 @@ namespace MojeMiasto.ViewModels
                 return;
             }
 
+            // Checking date
             if (StartDate.Day == EndDate.Day && StartDate.Month == StartDate.Month)
             {
                 Error = "Nie można ustawić takiego terminu!";
                 return;
             }
 
+            // Checking time
             if(startTime.Hours == 0 || endTime.Hours == 0)
             {
-                Error = "Nie można ustawić czasu takiego  terminu!";
+                Error = "Nie można ustawić takiego czasu terminu!";
                 return;
             }
 
@@ -129,8 +137,6 @@ namespace MojeMiasto.ViewModels
 
             await questConn.Post("quests", quest);
             Error = "";
-
         }
-
     }
 }

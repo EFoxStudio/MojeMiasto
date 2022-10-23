@@ -13,12 +13,10 @@ namespace MojeMiasto.ViewModels
 {
     public partial class LoginViewModel : BaseViewModel
     {
-
-
-        //Create a varible email
+        // Getting data from form
         [ObservableProperty]
         string email;
-        //Create a varible password
+        
         [ObservableProperty]
         string password;
 
