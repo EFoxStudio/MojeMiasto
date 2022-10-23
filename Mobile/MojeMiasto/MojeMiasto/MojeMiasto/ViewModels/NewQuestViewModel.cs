@@ -18,7 +18,7 @@ namespace MojeMiasto.ViewModels
 {
     public partial class NewQuestViewModel : BaseViewModel
     {
-
+        // Getting data from form
         [ObservableProperty]
         DateTime startDate;
 
@@ -30,14 +30,6 @@ namespace MojeMiasto.ViewModels
 
         [ObservableProperty]
         TimeSpan endTime;
-
-
-        public NewQuestViewModel()
-        {
-            StartDate = DateTime.Today;
-            EndDate = DateTime.Today;
-        }
-
 
         [ObservableProperty]
         bool isChecked;
@@ -51,24 +43,29 @@ namespace MojeMiasto.ViewModels
         [ObservableProperty]
         string error;
 
+        // Today's date
+        public NewQuestViewModel()
+        {
+            StartDate = DateTime.Today;
+            EndDate = DateTime.Today;
+        }
 
-
-
+        // Event after clicked button
         [RelayCommand]
         public async void Submit()
         {
 
             int cityId;
-            // checking
+            // Completing the correctness of data
             if (string.IsNullOrEmpty(Name) == true || Name.Length < 2 || Name.Length > 20)
             {
-                Error = "Name must be 2 to 20 words!";
+                Error = "Imię musi zawierać od 2 do 20 znaków!";
                 return;
             }
 
             if (string.IsNullOrEmpty(Description) == true || Description.Length < 2 || Description.Length > 100)
             {
-                Error = "Description must be 2 to 100 words!";
+                Error = "Opis musi zawierać od 2 do 100 znaków!";
                 return;
             }
 
@@ -77,7 +74,7 @@ namespace MojeMiasto.ViewModels
                 cityId = Preferences.Get("city_id", 0);
                 if (cityId == 0)
                 {
-                    Error = "Najpierw wybierz swoje miasto";
+                    Error = "Najpierw wybierz swoje miasto!";
                     return;
                 }
             }
@@ -89,13 +86,13 @@ namespace MojeMiasto.ViewModels
             int districId = Preferences.Get("district_id", 0);
             if(districId==0)
             {
-                Error = "Najpierw wybierz swoją dzielnice";
+                Error = "Najpierw wybierz swoją dzielnice!";
                 return;
             }
             int userId = Preferences.Get("user_id", 0);
             if (userId == 0)
             {
-                Error = "Błąd związany z pobieraniem user_id";
+                Error = "Błąd związany z pobieraniem danych!";
                 return;
             }
 
@@ -107,13 +104,15 @@ namespace MojeMiasto.ViewModels
 
             if(startTime.Hours == 0 || endTime.Hours == 0)
             {
-                Error = "Nie można ustawić takiego czasu terminu!";
+                Error = "Nie można ustawić czasu takiego  terminu!";
                 return;
             }
 
+            // Connecting date and time to one variable
             StartDate += startTime;
             EndDate += endTime;
 
+            // Creating new quest with parameters from form
             Quest quest = new Quest
             {
                 id = 0,
