@@ -25,18 +25,55 @@
                 </ImageButton>
             </StackLayout >
 
-            <Image Style="{StaticResource Header_Profile}">
-                <Image.Source>
+
+            <ImageButton 
+                    HorizontalOptions="CenterAndExpand" 
+                    VerticalOptions="CenterAndExpand" 
+                    BackgroundColor="Transparent"
+                    Margin="0,40,0,0" 
+                    Aspect="AspectFill"
+                    WidthRequest="200"
+                    HeightRequest="200"
+                    CornerRadius="100"
+                    Command="{Binding GetImageCommand}">
+                <ImageButton.Source>
                     <UriImageSource
                             Uri="{Binding UserIcon}"
                             CacheValidity="0"
                             CachingEnabled="False"/>
-                </Image.Source>
-            </Image>
-            <Button Text="image" Command="{Binding GetImageCommand}"/>
+                </ImageButton.Source>
+            </ImageButton>
 
-            <Button Text="My Location" Command="{Binding GoLocationCommand}"/>
-            <Button Text="wyloguj" Command="{Binding LogoutCommand}" BackgroundColor="Red"/>
+            <Frame BackgroundColor="Transparent">
+                <Frame BackgroundColor="{StaticResource black}" CornerRadius="100" Padding="15">
+                    <Frame BackgroundColor="{StaticResource grey}" CornerRadius="100" Padding="0">
+                        <StackLayout>
+                            <Button Text="Zmień lokazlizacje" Command="{Binding GoLocationCommand}" BackgroundColor="{StaticResource grey}" TextColor="{StaticResource white}"/>
+                        </StackLayout>
+                    </Frame>
+                </Frame>
+            </Frame>
+
+            <Frame BackgroundColor="Transparent">
+                <Frame BackgroundColor="{StaticResource black}" CornerRadius="100" Padding="15">
+                    <Frame BackgroundColor="#610c0c" CornerRadius="100" Padding="0">
+                        <StackLayout>
+                            <Button Text="Wyloguj" Command="{Binding LogoutCommand}" BackgroundColor="#610c0c" TextColor="{StaticResource white}"/>
+                        </StackLayout>
+                    </Frame>
+                </Frame>
+            </Frame>
+
+            <Frame BackgroundColor="Transparent">
+                <Frame BackgroundColor="{StaticResource black}" CornerRadius="100" Padding="15">
+                    <Frame BackgroundColor="#610c0c" CornerRadius="100" Padding="0">
+                        <StackLayout>
+                            <Button Text="{Binding DeleteText}" Command="{Binding DeleteCommand}" BackgroundColor="#610c0c" TextColor="{StaticResource white}"/>
+                        </StackLayout>
+                    </Frame>
+                </Frame>
+            </Frame>
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

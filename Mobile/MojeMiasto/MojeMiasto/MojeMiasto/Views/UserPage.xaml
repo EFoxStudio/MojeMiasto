@@ -12,7 +12,7 @@
                 <ImageButton Source="ArrowL.png" 
                              Style="{StaticResource Header_Menu}"
                              HeightRequest="40"
-                             Command="{Binding GoToRootCommand}"/>
+                             Command="{Binding GoBackCommand}"/>
                 <Label Text="Zlecenia w okolicy"
                        Style="{StaticResource Header_Label}"/>
                 <ImageButton Style="{StaticResource Header_Profile}" Command="{Binding GoAccountCommand}">
@@ -31,6 +31,7 @@
                 <ImageButton 
                     HorizontalOptions="CenterAndExpand" 
                     VerticalOptions="CenterAndExpand" 
+                    BackgroundColor="Transparent"
                     Margin="0,40,0,0" 
                     Aspect="AspectFill"
                     WidthRequest="200"
@@ -89,7 +90,7 @@
                                             <Frame.GestureRecognizers>
                                                     <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding 
                                                 Source={x:Reference Name=Page},
-                                                Path=BindingContext.GoToQuestCommand}"
+                                                Path=BindingContext.ToUIQuestCommand}"
                                                 CommandParameter="{Binding .}"/>
                                                 </Frame.GestureRecognizers>
                                             </Frame>

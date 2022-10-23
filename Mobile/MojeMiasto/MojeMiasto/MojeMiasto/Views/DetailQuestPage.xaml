@@ -115,7 +115,7 @@
                                 </StackLayout>
                                 <Frame.GestureRecognizers>
                                     <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding GoToUserCommand}"
-                                                         CommandParameter="{Binding Quest.user}"/>
+                                                         CommandParameter="{Binding Quest.hired}"/>
                                 </Frame.GestureRecognizers>
                             </Frame>
                             <Frame.Triggers>

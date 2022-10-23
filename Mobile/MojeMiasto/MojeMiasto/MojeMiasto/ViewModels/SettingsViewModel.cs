@@ -18,6 +18,15 @@ namespace MojeMiasto.ViewModels
 {
     internal partial class SettingsViewModel : BaseViewModel
     {
+        [ObservableProperty]
+        public string deleteText;
+
+
+        public SettingsViewModel()
+        {
+            DeleteText = "usuń konto";
+        }
+
 
         [RelayCommand]
         async void GetImage()
@@ -63,6 +72,19 @@ namespace MojeMiasto.ViewModels
             Preferences.Set("city_id", 0);
             Preferences.Set("district_id", 0);
             Application.Current.MainPage = new NavigationPage(new WelcomePage());
+        }
+
+        [RelayCommand]
+        void Delete()
+        {
+            if (DeleteText == "usuń konto")
+            {
+                DeleteText = "kiliknij ponownie";
+                return;
+            }
+
+            userConn.Delete($"users/delete/{ Preferences.Get("user_id",0) }");
+            Logout();
         }
     }
 }

@@ -18,9 +18,10 @@ namespace MojeMiasto.ViewModels
         }
 
         [RelayCommand]
-        public void GoToRoot()
+        public async void ToUIQuest(Quest data)
         {
-            Shell.Current.Navigation.PopToRootAsync();
+            UI_Quest quest = await QuestToUI(data);
+            GoToQuest(quest);
         }
     }
 }

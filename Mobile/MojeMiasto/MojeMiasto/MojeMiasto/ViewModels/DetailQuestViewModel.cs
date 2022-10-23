@@ -57,7 +57,7 @@ namespace MojeMiasto.ViewModels
             quest.done = true;
             await questConn.Put("quests", quest);
 
-            User user = await userConn.Get($"users/id/{ User_id }");
+            User user = await userConn.Get($"users/id/{ Quest.hired_id }");
             user.points++;
             await userConn.Put("users", user);
             Refresh();

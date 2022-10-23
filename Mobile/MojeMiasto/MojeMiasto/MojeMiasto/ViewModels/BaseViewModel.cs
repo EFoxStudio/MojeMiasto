@@ -229,6 +229,12 @@ namespace MojeMiasto.ViewModels
         }
 
         [RelayCommand]
+        public async void GoToNewQuest()
+        {
+            await Shell.Current.Navigation.PushAsync(new NewQuestPage());
+        }
+
+        [RelayCommand]
         public void ChoseCity()
         {
             if (IsBusy)
