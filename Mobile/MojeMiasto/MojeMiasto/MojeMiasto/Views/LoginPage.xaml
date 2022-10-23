@@ -15,9 +15,8 @@
             <!--Input menu and button-->
             <Entry Text="{Binding Email, Mode=TwoWay}" Placeholder="Email" ClearButtonVisibility="WhileEditing"/>
             <Entry Text="{Binding Password, Mode=TwoWay}" Placeholder="password" IsPassword="True" ClearButtonVisibility="WhileEditing"/>
+            <Label Text="{Binding Error}"/>
             <Button Command="{Binding LoginCommand}" Text="Login"/>
-
-
 
 
             <Label Text="Login Page"

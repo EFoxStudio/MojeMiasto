@@ -104,6 +104,7 @@ namespace MojeMiasto.ViewModels
                 password = Password
             };
 
+            Error = "";
             if (await userConn.Post("users", data))
             {
                 await Application.Current.MainPage.Navigation.PopAsync();
