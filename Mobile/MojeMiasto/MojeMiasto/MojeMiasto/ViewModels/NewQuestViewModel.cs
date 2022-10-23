@@ -22,7 +22,6 @@ namespace MojeMiasto.ViewModels
         [ObservableProperty]
         DateTime startDate;
 
-        // w pliku xaml trzeba zmienic bo wyswitla na poczatku w End Date 01.01.1990a dopiero po wybraniu Start Date wyswitla minimalna date 
         [ObservableProperty]
         DateTime endDate;
 
@@ -38,7 +37,13 @@ namespace MojeMiasto.ViewModels
         [ObservableProperty]
         string error;
 
-        
+        public NewQuestViewModel()
+        {
+            StartDate = DateTime.Now;
+            EndDate = DateTime.Now;
+        }
+
+
 
         [RelayCommand]
         public async void Submit()
@@ -101,7 +106,6 @@ namespace MojeMiasto.ViewModels
 
             await questConn.Post("quests", quest);
             
-            Error = Name + " " + Description+" "+isChecked;
 
         }
 

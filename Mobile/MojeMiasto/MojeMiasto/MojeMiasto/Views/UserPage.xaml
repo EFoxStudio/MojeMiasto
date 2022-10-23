@@ -66,7 +66,7 @@
 
 
             <Frame BackgroundColor="Transparent">
-                <Frame BackgroundColor="{StaticResource black}" CornerRadius="10">
+                <Frame BackgroundColor="{StaticResource black}" CornerRadius="10" HeightRequest="400">
                     <StackLayout>
                         <Label Text="Ogłoszone zlecenia" TextColor="{StaticResource white}" FontSize="20" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand"/>
                     
