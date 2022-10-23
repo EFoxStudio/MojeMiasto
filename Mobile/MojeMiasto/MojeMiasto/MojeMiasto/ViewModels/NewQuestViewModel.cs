@@ -124,6 +124,8 @@ namespace MojeMiasto.ViewModels
 
             await questConn.Post("quests", quest);
 
+            GoBack();
+
         }
 
     }
