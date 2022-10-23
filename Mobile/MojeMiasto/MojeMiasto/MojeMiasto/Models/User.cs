@@ -1,6 +1,6 @@
-﻿using EFox.ApiConnection.Toolkit;
-using System.ComponentModel.DataAnnotations;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
+
+//Structure of the base User
 
 namespace MojeMiasto.Models
 {

@@ -1,36 +1,30 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using EFox.ApiConnection.Toolkit;
 using MojeMiasto.Models;
-using MojeMiasto.Views;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace MojeMiasto.ViewModels
 {
     public partial class RegisterViewModel : BaseViewModel
     {
-        
 
 
+        // Create a variable name
         [ObservableProperty]
         string name;
-
+        // Create a variable surname
         [ObservableProperty]
         string surname;
-
+        // Create a variable email
         [ObservableProperty]
         string email;
-  
+        // Create a variable password
         [ObservableProperty]
         string password;
-
+        // Create a variable repeatPassword
         [ObservableProperty]
         string repeatPassword;
-
+        // Create a variable error
         [ObservableProperty]
         string error;
 
@@ -38,6 +32,8 @@ namespace MojeMiasto.ViewModels
         [RelayCommand]
         public async void Register()
         {
+
+            // Check if the field is not empty
             if (string.IsNullOrEmpty(Name))
                 return;
             if (string.IsNullOrEmpty(Surname))

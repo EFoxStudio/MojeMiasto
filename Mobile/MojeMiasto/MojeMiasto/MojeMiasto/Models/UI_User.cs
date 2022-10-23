@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Text;
 
+//Structure of the base UI_User
+
 namespace MojeMiasto.Models
 {
     public class UI_User
