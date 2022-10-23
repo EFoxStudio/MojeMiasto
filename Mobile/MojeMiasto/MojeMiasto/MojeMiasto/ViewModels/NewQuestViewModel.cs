@@ -25,6 +25,21 @@ namespace MojeMiasto.ViewModels
         [ObservableProperty]
         DateTime endDate;
 
+
+        [ObservableProperty]
+        TimeSpan startTime;
+
+        [ObservableProperty]
+        TimeSpan endTime;
+
+
+        public NewQuestViewModel()
+        {
+            StartDate = DateTime.Today;
+            EndDate = DateTime.Today;
+        }
+
+
         [ObservableProperty]
         bool isChecked;
 
@@ -37,11 +52,6 @@ namespace MojeMiasto.ViewModels
         [ObservableProperty]
         string error;
 
-        public NewQuestViewModel()
-        {
-            StartDate = DateTime.Now;
-            EndDate = DateTime.Now;
-        }
 
 
 
@@ -90,6 +100,9 @@ namespace MojeMiasto.ViewModels
                 return;
             }
 
+            StartDate += startTime;
+            EndDate += endTime;
+
             Quest quest = new Quest
             {
                 id = 0,
@@ -98,14 +111,15 @@ namespace MojeMiasto.ViewModels
                 user_id = Preferences.Get("user_id", 0),
                 city_id = cityId,
                 district_id = Preferences.Get("district_id", 0),
-                create_date = startDate,
-                end_date = endDate,
+                create_date = StartDate,
+                end_date = EndDate,
                 hired_id = 0,
                 done = false
             };
+            Error = $"start: {StartDate}, end: { EndDate}";
+            return;
 
             await questConn.Post("quests", quest);
-            
 
         }
 
