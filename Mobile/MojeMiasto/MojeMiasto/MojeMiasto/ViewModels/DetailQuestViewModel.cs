@@ -33,7 +33,7 @@ namespace MojeMiasto.ViewModels
                 IsDoneVis = false;
         }
 
-
+        //function to refresh quests
         [RelayCommand]
         public async void Refresh()
         {

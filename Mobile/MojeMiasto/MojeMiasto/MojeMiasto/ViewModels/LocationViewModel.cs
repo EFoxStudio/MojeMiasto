@@ -32,10 +32,11 @@ namespace MojeMiasto.ViewModels
         [ObservableProperty]
         bool newDistrictsVis = false;
 
-
+        //list to store cities
         [ObservableProperty]
         ObservableCollection<City> cities;
 
+        //list to store districts
         [ObservableProperty]
         ObservableCollection<District> districts;
 
