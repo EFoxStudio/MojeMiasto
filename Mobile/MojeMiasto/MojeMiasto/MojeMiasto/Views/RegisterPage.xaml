@@ -8,21 +8,82 @@
     <ContentPage.Content>
         <StackLayout>
 
+            <!-- Header -->
+            <StackLayout Style="{StaticResource Header}">
+                <ImageButton Source="ArrowL.png" 
+                             Style="{StaticResource Header_Menu}"
+                             HeightRequest="40"
+                             Command="{Binding BackCommand}"/>
+            </StackLayout>
+            <Label Text="Rejestrowanie"
+                       FontSize="25"
+                       TextColor="{StaticResource white}"
+                       HorizontalOptions="CenterAndExpand"
+                       Margin="0,0,0,50"/>
 
-            <!--Register form and submit-->
-            <Entry Text="{Binding Name, Mode=TwoWay}" Placeholder="Name" ClearButtonVisibility="WhileEditing"/>
-            <Entry Text="{Binding Surname, Mode=TwoWay}" Placeholder="Surname" ClearButtonVisibility="WhileEditing"/>
-            <Entry Text="{Binding Email, Mode=TwoWay}" Placeholder="Email" ClearButtonVisibility="WhileEditing"/>
-            <Entry Text="{Binding Password, Mode=TwoWay}" Placeholder="Password" ClearButtonVisibility="WhileEditing"/>
-            <Entry Text="{Binding RepeatPassword, Mode=TwoWay}" Placeholder="Repeat Password" ClearButtonVisibility="WhileEditing"/>
-            <Label Text="{Binding Error}"/>
-            <Button Command="{Binding RegisterCommand}" Text="Register"/>
+            <Frame BackgroundColor="Transparent" Padding="20,5,20,5">
+                <Frame BackgroundColor="{StaticResource black}" CornerRadius="10" Padding="10">
+                    <Frame BackgroundColor="{StaticResource grey}" CornerRadius="10" Padding="0">
+                        <StackLayout>
+                            <Entry Text="{Binding Name, Mode=TwoWay}" Placeholder="Name" ClearButtonVisibility="WhileEditing"  TextColor="{StaticResource white}" PlaceholderColor="{StaticResource white}"/>
+                        </StackLayout>
+                    </Frame>
+                </Frame>
+            </Frame>
 
+            <Frame BackgroundColor="Transparent" Padding="20,5,20,5">
+                <Frame BackgroundColor="{StaticResource black}" CornerRadius="10" Padding="10">
+                    <Frame BackgroundColor="{StaticResource grey}" CornerRadius="10" Padding="0">
+                        <StackLayout>
+                            <Entry Text="{Binding Surname, Mode=TwoWay}" Placeholder="Surname" ClearButtonVisibility="WhileEditing"  TextColor="{StaticResource white}" PlaceholderColor="{StaticResource white}"/>
+                        </StackLayout>
+                    </Frame>
+                </Frame>
+            </Frame>
 
+            <Frame BackgroundColor="Transparent" Padding="20,5,20,5">
+                <Frame BackgroundColor="{StaticResource black}" CornerRadius="10" Padding="10">
+                    <Frame BackgroundColor="{StaticResource grey}" CornerRadius="10" Padding="0">
+                        <StackLayout>
+                            <Entry Text="{Binding Email, Mode=TwoWay}" Placeholder="Email" ClearButtonVisibility="WhileEditing"  TextColor="{StaticResource white}" PlaceholderColor="{StaticResource white}"/>
+                        </StackLayout>
+                    </Frame>
+                </Frame>
+            </Frame>
 
-            <Label Text="Register Page!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <Frame BackgroundColor="Transparent" Padding="20,5,20,5">
+                <Frame BackgroundColor="{StaticResource black}" CornerRadius="10" Padding="10">
+                    <Frame BackgroundColor="{StaticResource grey}" CornerRadius="10" Padding="0">
+                        <StackLayout>
+                            <Entry Text="{Binding Password, Mode=TwoWay}" Placeholder="Password" ClearButtonVisibility="WhileEditing"  TextColor="{StaticResource white}" PlaceholderColor="{StaticResource white}" IsPassword="True"/>
+                        </StackLayout>
+                    </Frame>
+                </Frame>
+            </Frame>
+
+            <Frame BackgroundColor="Transparent" Padding="20,5,20,5">
+                <Frame BackgroundColor="{StaticResource black}" CornerRadius="10" Padding="10">
+                    <Frame BackgroundColor="{StaticResource grey}" CornerRadius="10" Padding="0">
+                        <StackLayout>
+                            <Entry Text="{Binding RepeatPassword, Mode=TwoWay}" Placeholder="Repeat Password" ClearButtonVisibility="WhileEditing"  TextColor="{StaticResource white}" PlaceholderColor="{StaticResource white}" IsPassword="True"/>
+                        </StackLayout>
+                    </Frame>
+                </Frame>
+            </Frame>
+
+            <Label Text="{Binding Error}"  TextColor="#a10000" FontSize="20" HorizontalOptions="Center"/>
+            
+
+            <Frame BackgroundColor="Transparent" Padding="20,5,20,5">
+                <Frame BackgroundColor="{StaticResource black}" CornerRadius="100" Padding="10">
+                    <Frame BackgroundColor="{StaticResource grey}" CornerRadius="100" Padding="0">
+                        <StackLayout>
+                            <Button Command="{Binding RegisterCommand}" Text="Register" BackgroundColor="{StaticResource purple}" TextColor="{StaticResource white}"/>   
+                        </StackLayout>
+                    </Frame>
+                </Frame>
+            </Frame>
+            
 
         </StackLayout>
     </ContentPage.Content>

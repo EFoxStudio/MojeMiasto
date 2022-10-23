@@ -2,13 +2,37 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MojeMiasto.Views.WelcomePage"
-             BackgroundImage="Background.png">
+             BackgroundImage="Background.png"
+             NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Witaj w aplikacji moje miasto"
-                HorizontalOptions="CenterAndExpand" />
-            <Button Text="Login" Command="{Binding GoLoginCommand}"/>
-            <Button Text="Register" Command="{Binding GoRegisterCommand}" />
+            <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                <Image Source="Logo.png" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Aspect="AspectFit" WidthRequest="200" HeightRequest="200"/>
+                <Label Text="MyCity" FontSize="35" Margin="0,30,0,0" TextColor="{StaticResource purple}" HorizontalOptions="CenterAndExpand"/>
+            </StackLayout>
+            <StackLayout VerticalOptions="CenterAndExpand">
+
+                <Frame BackgroundColor="Transparent" Padding="20,5,20,5">
+                    <Frame BackgroundColor="{StaticResource black}" CornerRadius="100" Padding="10">
+                        <Frame BackgroundColor="{StaticResource grey}" CornerRadius="100" Padding="0">
+                            <StackLayout>
+                                <Button Text="Login" Command="{Binding GoLoginCommand}" BackgroundColor="{StaticResource purple}" TextColor="{StaticResource white}"/>
+                            </StackLayout>
+                        </Frame>
+                    </Frame>
+                </Frame>
+
+                <Frame BackgroundColor="Transparent" Padding="20,5,20,5">
+                    <Frame BackgroundColor="{StaticResource black}" CornerRadius="100" Padding="10">
+                        <Frame BackgroundColor="{StaticResource grey}" CornerRadius="100" Padding="0">
+                            <StackLayout>
+
+                                <Button Text="Register" Command="{Binding GoRegisterCommand}"  BackgroundColor="{StaticResource purple}" TextColor="{StaticResource white}"/>
+                            </StackLayout>
+                        </Frame>
+                    </Frame>
+                </Frame>
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

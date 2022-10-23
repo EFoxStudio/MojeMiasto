@@ -33,7 +33,7 @@ namespace MojeMiasto.ViewModels
                 IsDoneVis = false;
         }
 
-
+        //function to refresh quests
         [RelayCommand]
         public async void Refresh()
         {
@@ -47,7 +47,6 @@ namespace MojeMiasto.ViewModels
                 IsDoneVis = false;
             IsBusy = false;
         }
-
 
         [RelayCommand]
         public async void Done()

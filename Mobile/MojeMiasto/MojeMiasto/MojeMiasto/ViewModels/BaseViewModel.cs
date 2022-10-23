@@ -15,6 +15,7 @@ namespace MojeMiasto.ViewModels
     //Usable items for everything
     public partial class BaseViewModel : ObservableObject
     {
+        //creating variables
         [ObservableProperty]
         public bool isBusy;
 
@@ -29,7 +30,7 @@ namespace MojeMiasto.ViewModels
 
         [ObservableProperty]
         string userIcon;
-
+        //creating connections to api
         private string baseAdress = "https://api.efox.com.pl/mycity/";
         private Header header = new Header("ApiKey", "g84@RRGA%!bP8vNzK7p&uLXz&");
         public Connection<string> stringConn;
@@ -38,6 +39,7 @@ namespace MojeMiasto.ViewModels
         public Connection<Quest> questConn;
         public Connection<User> userConn;
 
+        //constructor to define headers for connections
         public BaseViewModel()
         {
             stringConn = new Connection<string>(baseAdress, header);
@@ -53,7 +55,7 @@ namespace MojeMiasto.ViewModels
             CityColor = "#FFFCF2";
             selectedCity = false;
         }
-
+        //function to get icons from users
         public async void GetUserIcon()
         {
             int user_id = Preferences.Get("user_id",0);
@@ -257,8 +259,5 @@ namespace MojeMiasto.ViewModels
             selectedCity = false;
             IsBusy = true;
         }
-
-        
-
     }
 }

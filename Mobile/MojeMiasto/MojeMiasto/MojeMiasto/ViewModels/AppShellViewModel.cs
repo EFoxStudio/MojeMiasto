@@ -13,9 +13,10 @@ namespace MojeMiasto.ViewModels
 {
     internal partial class AppShellViewModel : BaseViewModel
     {
+        //creating a variable for city
         [ObservableProperty]
         string userCity;
-
+        //creating a variable for user
         [ObservableProperty]
         string userName;
 
@@ -23,7 +24,7 @@ namespace MojeMiasto.ViewModels
         {
             OnAppearing();
         }
-        
+        //function which 'creates' the default view of the app
         public async void OnAppearing()
         {
             int user_id = Preferences.Get("user_id", 0);
@@ -50,6 +51,7 @@ namespace MojeMiasto.ViewModels
             UserCity = FirstLetterToUpper(city.name);
         }
 
+        
         [RelayCommand]
         public void GoSettings()
         {
