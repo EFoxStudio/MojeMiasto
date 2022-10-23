@@ -18,12 +18,15 @@ namespace MojeMiasto.ViewModels
 {
     internal partial class SettingsViewModel : BaseViewModel
     {
+        // Create a variable deleteText
         [ObservableProperty]
         public string deleteText;
 
 
         public SettingsViewModel()
         {
+
+            // Message to delete the account
             DeleteText = "usuń konto";
         }
 
@@ -33,6 +36,7 @@ namespace MojeMiasto.ViewModels
         {
             var result = await MediaPicker.PickPhotoAsync(new MediaPickerOptions
             {
+                // A message for selecting a profile photo
                 Title = "Wybierz zdjęcie"
             });
 
@@ -56,15 +60,16 @@ namespace MojeMiasto.ViewModels
             Application.Current.MainPage = new AppShell();
         }
 
-        
 
 
+        // Redirect to LoginPage
         [RelayCommand]
         void GoLocation()
         {
             Shell.Current.Navigation.PushAsync(new LocationPage());
         }
 
+        // Function to logout
         [RelayCommand]
         void Logout()
         {
@@ -74,6 +79,7 @@ namespace MojeMiasto.ViewModels
             Application.Current.MainPage = new NavigationPage(new WelcomePage());
         }
 
+        // Function to delete the account
         [RelayCommand]
         void Delete()
         {

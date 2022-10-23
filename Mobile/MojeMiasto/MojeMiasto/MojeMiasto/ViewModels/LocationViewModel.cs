@@ -13,10 +13,11 @@ using Xamarin.Forms;
 namespace MojeMiasto.ViewModels
 {
     public partial class LocationViewModel : BaseViewModel
-    {
-
+    { 
+        // Create a variable cityEntry
         [ObservableProperty]
         string cityEntry;
+        // Create a variable districtEntry
         [ObservableProperty]
         string districtEntry;
 

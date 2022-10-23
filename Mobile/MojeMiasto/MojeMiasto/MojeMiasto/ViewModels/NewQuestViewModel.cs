@@ -19,36 +19,39 @@ namespace MojeMiasto.ViewModels
     public partial class NewQuestViewModel : BaseViewModel
     {
 
+        // Create a variable startDate
         [ObservableProperty]
         DateTime startDate;
-
+        // Create a variable endDate
         [ObservableProperty]
         DateTime endDate;
 
-
+        // Create a variable startTime
         [ObservableProperty]
         TimeSpan startTime;
-
+        // Create a variable endTime
         [ObservableProperty]
         TimeSpan endTime;
 
 
         public NewQuestViewModel()
         {
+
+            // Sign the time variable until today
             StartDate = DateTime.Today;
             EndDate = DateTime.Today;
         }
 
-
+        // Create a variable isChecked
         [ObservableProperty]
         bool isChecked;
-
+        // Create a variable name
         [ObservableProperty]
         string name;
-
+        // Create a variable description
         [ObservableProperty]
         string description;
-
+        // Create a variable error
         [ObservableProperty]
         string error;
 
@@ -105,6 +108,8 @@ namespace MojeMiasto.ViewModels
 
             Quest quest = new Quest
             {
+
+                // Assign values ​​to variables
                 id = 0,
                 name = Name,
                 description = Description,

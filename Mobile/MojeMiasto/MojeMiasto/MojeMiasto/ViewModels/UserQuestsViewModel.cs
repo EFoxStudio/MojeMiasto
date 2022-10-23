@@ -6,6 +6,7 @@ using MojeMiasto.Views;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Reflection;
 using System.Text;
 using Xamarin.Essentials;
 using Xamarin.Forms;
@@ -53,7 +54,7 @@ namespace MojeMiasto.ViewModels
                 IsBusy = false;
                 return;
             }
-
+            //Will create Quest list under variable date
             List<Quest> data;
 
             if (selectedCity == true)

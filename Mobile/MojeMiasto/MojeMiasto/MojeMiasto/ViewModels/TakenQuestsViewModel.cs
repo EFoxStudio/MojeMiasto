@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using EFox.ApiConnection.Toolkit;
 using MojeMiasto.Models;
-using MojeMiasto.Views;
 using System.Collections.ObjectModel;
-using System.Text;
 using Xamarin.Essentials;
-using Xamarin.Forms;
 namespace MojeMiasto.ViewModels
 {
     public partial class TakenQuestsViewModel : BaseViewModel

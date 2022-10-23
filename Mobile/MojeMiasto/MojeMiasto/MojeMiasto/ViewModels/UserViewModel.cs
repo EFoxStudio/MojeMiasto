@@ -10,10 +10,13 @@ namespace MojeMiasto.ViewModels
 {
     internal partial class UserViewModel : BaseViewModel
     {
+        // Create a variable user
         [ObservableProperty]
         UI_User user;
         public UserViewModel(UI_User data)
         {
+
+            //Assign a user to a date
             user = data;
         }
 

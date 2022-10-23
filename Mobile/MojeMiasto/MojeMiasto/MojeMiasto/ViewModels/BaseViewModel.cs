@@ -12,7 +12,7 @@ using Xamarin.Forms;
 
 namespace MojeMiasto.ViewModels
 {
-    //Usable items for everything
+    //Usable items for everything :)
     public partial class BaseViewModel : ObservableObject
     {
         //creating variables
