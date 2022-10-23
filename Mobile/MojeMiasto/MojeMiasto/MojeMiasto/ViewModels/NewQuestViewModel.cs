@@ -116,8 +116,6 @@ namespace MojeMiasto.ViewModels
                 hired_id = 0,
                 done = false
             };
-            Error = $"start: {StartDate}, end: { EndDate}";
-            return;
 
             await questConn.Post("quests", quest);
 
