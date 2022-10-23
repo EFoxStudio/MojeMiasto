@@ -63,7 +63,7 @@ namespace MojeMiasto.ViewModels
 
             Cities = new ObservableCollection<City>(citiesList);
         }
-
+        //function to search districts
         [RelayCommand]
         public async void SearchDistricts()
         {
@@ -86,7 +86,7 @@ namespace MojeMiasto.ViewModels
 
             Districts = new ObservableCollection<District>(districtsList);
         }
-
+        //function to set cities
         [RelayCommand]
         public async void SetCity(City city)
         {
@@ -114,7 +114,7 @@ namespace MojeMiasto.ViewModels
                 return;
             DistrictEntry = null;
         }
-
+        //function to set districts
         [RelayCommand]
         public async void SetDistrict(District district)
         {
@@ -135,7 +135,7 @@ namespace MojeMiasto.ViewModels
             NewDistrictsVis = false;
             DistrictCollectionVis = false;
         }
-
+        //function to add a new city
         [RelayCommand]
         public void NewCity()
         {
@@ -151,7 +151,7 @@ namespace MojeMiasto.ViewModels
             cityConn.Post("cities", city);
             SetCity(city);
         }
-
+        //function to add new districts
         [RelayCommand]
         public void NewDistrict()
         {
@@ -173,8 +173,6 @@ namespace MojeMiasto.ViewModels
             districtConn.Post("districts", district);
 
             SetDistrict(district);
-
-            
         }
     }
 }

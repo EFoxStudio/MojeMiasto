@@ -2,29 +2,108 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:system="clr-namespace:System;assembly=mscorlib"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MojeMiasto.Views.NewQuestPage">
+             x:Class="MojeMiasto.Views.NewQuestPage"
+             BackgroundImage="Background.png"
+             Shell.NavBarIsVisible="False">
     <ContentPage.Content>
         <StackLayout>
+            <!-- Header -->
+            <StackLayout Style="{StaticResource Header}">
+                <ImageButton Source="ArrowL.png" 
+                             Style="{StaticResource Header_Menu}"
+                             HeightRequest="40"
+                             Command="{Binding GoBackCommand}"/>
+                <Label Text="Nowe Zlecenie"
+                       FontSize="25"
+                       Style="{StaticResource Header_Label}"/>
+                <ImageButton Style="{StaticResource Header_Profile}">
+                    <ImageButton.Source>
+                        <UriImageSource
+                            Uri="{Binding UserIcon}"
+                            CacheValidity="0"
+                            CachingEnabled="False"/>
+                    </ImageButton.Source>
+                </ImageButton>
+            </StackLayout >
+            <ScrollView>
+                <StackLayout>
+                    <Frame BackgroundColor="Transparent" Padding="20,5,20,5">
+                        <Frame BackgroundColor="{StaticResource black}" CornerRadius="10" Padding="10">
+                            <Frame BackgroundColor="{StaticResource grey}" CornerRadius="10" Padding="0">
+                                <StackLayout>
+                                    <Entry Text="{Binding Name, Mode=TwoWay}" Placeholder="Nazwa" Style="{StaticResource Entry_default}"/>
+                                </StackLayout>
+                            </Frame>
+                        </Frame>
+                    </Frame>
 
-            <Entry Text="{Binding Name, Mode=TwoWay}" Placeholder="Nazwa" ClearButtonVisibility="WhileEditing"/>
-            <Entry Text="{Binding Description, Mode=TwoWay}" Placeholder="Opis" ClearButtonVisibility="WhileEditing"/>
-            <Label Text="Czy pokazać w całym mieście?"/>
-            <CheckBox IsChecked="{Binding IsChecked}"/>
-            <Label x:Name="resultLabel"/>
+                    <Frame BackgroundColor="Transparent" Padding="20,5,20,5">
+                        <Frame BackgroundColor="{StaticResource black}" CornerRadius="10" Padding="10">
+                            <Frame BackgroundColor="{StaticResource grey}" CornerRadius="10" Padding="0">
+                                <StackLayout>
+                                    <Entry Text="{Binding Description, Mode=TwoWay}" Placeholder="Opis" Style="{StaticResource Entry_default}"/>
+                                </StackLayout>
+                            </Frame>
+                        </Frame>
+                    </Frame>
 
-            <Label Text="Data rozpoczęcia:" />
-            <DatePicker Format="D" MinimumDate="{x:Static system:DateTime.Today}" Date="{Binding StartDate}" />
-            <TimePicker Format="HH:mm" Time="{Binding StartTime}"/>
-            <Label Text="End Date:" />
-            <DatePicker MinimumDate="{Binding StartDate}" Date="{Binding EndDate}" Format="D" />
-            <TimePicker Format="HH:mm" Time="{Binding EndTime}"/>
+                    <Frame BackgroundColor="Transparent" Padding="20,5,20,5">
+                        <Frame BackgroundColor="{StaticResource black}" CornerRadius="10" Padding="10">
+                            <Frame BackgroundColor="{StaticResource grey}" CornerRadius="10" Padding="0">
+                                <StackLayout Orientation="Horizontal" VerticalOptions="StartAndExpand">
+                                    <CheckBox IsChecked="{Binding IsChecked}" Color="{StaticResource purple}"/>
+                                    <Label Text="Czy pokazać w całym mieście?" TextColor="{StaticResource white}" VerticalOptions="CenterAndExpand" VerticalTextAlignment="Center"/>
+                                </StackLayout>
+                            </Frame>
+                        </Frame>
+                    </Frame>
 
-            <Label Text="{Binding Error}"/>
-            <Button Command="{Binding SubmitCommand}" Text="Dodaj"/>
+                    <Frame BackgroundColor="Transparent" Padding="20,5,20,5">
+                        <Frame BackgroundColor="{StaticResource black}" CornerRadius="10" Padding="10" HeightRequest="100">
+                            <Frame BackgroundColor="{StaticResource grey}" CornerRadius="10" Padding="0">
+                                <StackLayout >
 
-            <Label Text="Welcome to add new quest page!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+                                    <Label Text="Data rozpoczęcia:" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" FontSize="20" TextColor="{StaticResource purple}"/>
+                                    <StackLayout Orientation="Horizontal" VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand">
+                                        <DatePicker Format="D" MinimumDate="{x:Static system:DateTime.Today}" Date="{Binding StartDate}" TextColor="{StaticResource white}"/>
+                                        <TimePicker Format="HH:mm" Time="{Binding StartTime}" TextColor="{StaticResource white}"/>
+
+                                    </StackLayout>
+                                </StackLayout>
+                            </Frame>
+                        </Frame>
+                    </Frame>
+
+                    <Frame BackgroundColor="Transparent" Padding="20,5,20,5">
+                        <Frame BackgroundColor="{StaticResource black}" CornerRadius="10" Padding="10" HeightRequest="100">
+                            <Frame BackgroundColor="{StaticResource grey}" CornerRadius="10" Padding="0">
+                                <StackLayout>
+
+                                    <Label Text="Data zakończenia:" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" FontSize="20" TextColor="{StaticResource purple}"/>
+                                    <StackLayout Orientation="Horizontal" VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand">
+                                        <DatePicker MinimumDate="{Binding StartDate}" Date="{Binding EndDate}" Format="D" TextColor="{StaticResource white}"/>
+                                        <TimePicker Format="HH:mm" Time="{Binding EndTime}" TextColor="{StaticResource white}"/>
+
+                                    </StackLayout>
+                                </StackLayout>
+                            </Frame>
+                        </Frame>
+                    </Frame>
+
+                    <Label Text="{Binding Error}" TextColor="#a10000" FontSize="20" HorizontalOptions="Center"/>
+
+                    <Frame BackgroundColor="Transparent">
+                        <Frame BackgroundColor="{StaticResource black}" CornerRadius="100" Padding="15">
+                            <Frame BackgroundColor="{StaticResource grey}" CornerRadius="100" Padding="0">
+                                <StackLayout>
+                                    <Button Command="{Binding SubmitCommand}" Text="Dodaj" BackgroundColor="{StaticResource grey}" TextColor="{StaticResource white}"/>
+                                </StackLayout>
+                            </Frame>
+                        </Frame>
+                    </Frame>
+                    
+                </StackLayout>
+            </ScrollView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -45,7 +45,6 @@ namespace MojeMiasto.ViewModels
             IsBusy = false;
         }
 
-
         [RelayCommand]
         public async void Done()
         {

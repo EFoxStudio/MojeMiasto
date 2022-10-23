@@ -44,7 +44,12 @@ namespace MojeMiasto.ViewModels
             
         }
 
-        
+
+        [RelayCommand]
+        void Back()
+        {
+            Application.Current.MainPage.Navigation.PopAsync(false);
+        }
 
      
     }
