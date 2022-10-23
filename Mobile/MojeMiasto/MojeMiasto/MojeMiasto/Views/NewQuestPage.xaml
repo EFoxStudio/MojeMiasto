@@ -1,10 +1,27 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:system="clr-namespace:System;assembly=mscorlib"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MojeMiasto.Views.NewQuestPage">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
+
+            <Entry Text="{Binding Name, Mode=TwoWay}" Placeholder="Nazwa" ClearButtonVisibility="WhileEditing"/>
+            <Entry Text="{Binding Description, Mode=TwoWay}" Placeholder="Opis" ClearButtonVisibility="WhileEditing"/>
+            <Label Text="Czy pokazać w całym mieście?"/>
+            <CheckBox IsChecked="{Binding IsChecked}"/>
+            <Label x:Name="resultLabel"/>
+
+            <Label Text="Data rozpoczęcia:" />
+            <DatePicker x:Name="MyDatePicker" Format="D" MinimumDate="{x:Static system:DateTime.Today}" Date="{Binding StartDate}" />
+
+            <Label Text="End Date:" />
+            <DatePicker x:Name="endDatePicker" MinimumDate="{Binding StartDate}" Date="{Binding EndDate}" Format="D" />
+
+            <Label Text="{Binding Error}"/>
+            <Button Command="{Binding SubmitCommand}" Text="Dodaj"/>
+
+            <Label Text="Welcome to add new quest page!"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
         </StackLayout>
