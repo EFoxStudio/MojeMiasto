@@ -193,3 +193,6 @@ UpgradeLog*.htm
 FakesAssemblies/
 
 .vscode/settings.json
+
+*/appsettings.json
+*/appsettings.Development.json
